@@ -1,0 +1,15 @@
+{
+    "_id":"OiEQqFNqkjPSQTOF6JnmiYAiMSo2",
+    "userName":"UserName",
+    "email": "email",
+    "bio": "''",
+    "profileImg": "url",
+    "mixtapes": [],
+    "selfLikes": [],
+    "othersLikes": 0,
+    "selfFollows": [],
+    "othersFollows": 0,
+    "tracksUploads": [],
+    "albumsUploads": []
+                          
+  }
