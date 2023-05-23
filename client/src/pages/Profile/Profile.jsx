@@ -11,9 +11,13 @@ import {
 } from './styles';
 import { auth } from '../../config/firebase.config';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/Auth.context';
 
 const Profile = () => {
+	const { currentUser } = useContext(AuthContext);
 	const navigate = useNavigate();
+	console.log(currentUser);
 	return (
 		<StyledProfile>
 			<StyledProfileHeader>
@@ -22,19 +26,20 @@ const Profile = () => {
 					buttonIcon={'/images/button-arrow.svg'}
 					url={'/'}
 				/>
+				<SecondaryButton text={'EDIT'} url={'/profile-edit'} />
 			</StyledProfileHeader>
 
 			<StyledMainProfileContentContainer>
-				<StyledProfileImage src='' alt='' />
+				<StyledProfileImage src={currentUser.profileImg} alt='' />
 				<div>
-					<StyledUsername>Username</StyledUsername>
-					<p>Followers: 0</p>
+					<StyledUsername>{currentUser.userName}</StyledUsername>
+					<p>Followers: {currentUser.likes.othersLikes}</p>
 				</div>
 			</StyledMainProfileContentContainer>
 			<div>
-				<p>Email</p>
+				<p>{currentUser.email}</p>
 				<p>Bio</p>
-				<p></p>
+				<p>{currentUser.bio}</p>
 			</div>
 
 			<div>

@@ -12,6 +12,8 @@ import MainButton from '../../components/main-button/MainButton';
 import { useNavigate } from 'react-router-dom';
 import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 import { StyledProfileHeader } from '../Profile/styles';
+import SocialLogin from '../../components/social-logIn/SocialLogin';
+import { useFetch } from '../../hooks/useFetch';
 
 const Login = () => {
 	const {
@@ -20,6 +22,7 @@ const Login = () => {
 		formState: { errors }
 	} = useForm({ mode: 'onBlur' });
 	const navigate = useNavigate();
+	const { setFetchInfo } = useFetch();
 	return (
 		<StyledSignIn>
 			<StyledProfileHeader>
@@ -29,6 +32,7 @@ const Login = () => {
 					url={'/'}
 				/>
 			</StyledProfileHeader>
+			<SocialLogin setFetchInfo={setFetchInfo} />
 			<form
 				onSubmit={handleSubmit((formData, e) =>
 					onSubmit(formData, e, navigate)

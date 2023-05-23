@@ -63,6 +63,10 @@ controller.createUser = async (req, res) => {
     },
   });
 
+  const userExist = await UserModel.findById(req.body._id);
+  if (userExist)
+    return res.status(409).send({ error: "User Already has a profile" });
+
   const currentUser = await newUser.save();
   console.log(currentUser);
   res.send(currentUser);

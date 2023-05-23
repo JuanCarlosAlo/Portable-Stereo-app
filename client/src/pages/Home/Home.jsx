@@ -10,8 +10,7 @@ import { AuthContext } from '../../context/Auth.context';
 import HeaderLogin from '../../components/header-login/HeaderLogin';
 
 const Home = () => {
-	const { currentUser, loadingFirebase } = useContext(AuthContext);
-	if (loadingFirebase) return <h2>...Loading</h2>;
+	const { currentUser } = useContext(AuthContext);
 
 	return (
 		<StyledHome>

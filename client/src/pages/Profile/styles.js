@@ -12,6 +12,7 @@ const StyledProfile = styled.div`
 const StyledProfileHeader = styled.header`
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	height: ${HEADER_MEASUREMENTS.HEIGHT};
 	margin-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
 `;
