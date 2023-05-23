@@ -1,4 +1,4 @@
-const BASE = 'http://localhost:3000/';
+const BASE = 'http://localhost:3000/portable-stereo/';
 
 export const URLS = {
 	ALL: BASE + 'users/',

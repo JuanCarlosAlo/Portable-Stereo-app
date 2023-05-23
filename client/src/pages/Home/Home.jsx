@@ -14,23 +14,13 @@ const Home = () => {
 	if (loadingFirebase) return <h2>...Loading</h2>;
 
 	return (
-		<>
-			{currentUser ? (
-				<StyledHome>
-					<HeaderLogin />
-					<Banner />
-					<Section title={ARTICLE_TITLES.RECENTLY_UPLOAD} />
-					<Player />
-				</StyledHome>
-			) : (
-				<StyledHome>
-					<HeaderNoLogin />
-					<Banner />
-					<Section title={ARTICLE_TITLES.RECENTLY_UPLOAD} />
-					<Player />
-				</StyledHome>
-			)}
-		</>
+		<StyledHome>
+			{currentUser ? <HeaderLogin /> : <HeaderNoLogin />}
+			{!currentUser ? <Banner /> : <Section title={ARTICLE_TITLES.MIXTAPES} />}
+			<Section title={ARTICLE_TITLES.RECENTLY_UPLOAD} />
+			<Section title={ARTICLE_TITLES.TOP_MUSIC} />
+			<Player />
+		</StyledHome>
 	);
 };
 

@@ -4,13 +4,14 @@ import { COLORS } from '../../constants/colors';
 const StyledSection = styled.div`
 	display: flex;
 	gap: 1rem;
-	height: 350px;
+	height: 250px;
 `;
 const StyledTitleContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	width: 90%;
+	height: fit-content;
 	margin-left: auto;
 	margin-right: auto;
 `;

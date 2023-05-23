@@ -1,6 +1,9 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import MainButton from '../../components/main-button/MainButton';
-import { FORM_VALIDATIONS } from '../../constants/inputValidation';
+import {
+	FORM_DEFAULT_VALUES,
+	FORM_VALIDATIONS
+} from '../../constants/inputValidation';
 import {
 	StyledErrorText,
 	StyledInput,
@@ -9,17 +12,30 @@ import {
 } from './styles';
 import { useForm } from 'react-hook-form';
 import { auth } from '../../config/firebase.config';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { StyledProfileHeader } from '../Profile/styles';
 import SecondaryButton from '../../components/secondary-button/SecondaryButton';
+import { useFetch } from '../../hooks/useFetch';
+import { URLS } from '../../constants/urls';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../context/Auth.context';
+import { HEADERS } from '../../constants/headers';
+import { METHODS } from '../../constants/methods';
 const Register = () => {
+	const { currentUser } = useContext(AuthContext);
+
 	const {
 		handleSubmit,
 		register,
 		formState: { errors }
 	} = useForm({ mode: 'onBlur' });
 
-	const navigate = useNavigate();
+	const { data, loading, error, setFetchInfo } = useFetch({ url: URLS.ALL });
+	const [verificationError, setVerificationError] = useState();
+
+	if (currentUser) return <Navigate to={'/'} />;
+	if (loading) return <h2>Loading</h2>;
+	if (error) return <h2>Error</h2>;
 	return (
 		<StyledRegister>
 			<StyledProfileHeader>
@@ -32,7 +48,7 @@ const Register = () => {
 			<h2>Register</h2>
 			<form
 				onSubmit={handleSubmit((formData, e) =>
-					onSubmit(formData, e, navigate)
+					onSubmit(formData, e, setFetchInfo, data, setVerificationError)
 				)}
 			>
 				<StyledInputContainer>
@@ -55,26 +71,49 @@ const Register = () => {
 					/>
 					<StyledErrorText>{errors?.password?.message}</StyledErrorText>
 				</StyledInputContainer>
+				{verificationError && (
+					<StyledErrorText>{verificationError}</StyledErrorText>
+				)}
 				<MainButton text={'Next'} width={'250px'} type={'submit'} />
 			</form>
 		</StyledRegister>
 	);
 };
 
-const onSubmit = async (formData, e, navigate) => {
+const onSubmit = async (
+	formData,
+	e,
+	setFetchInfo,
+	data,
+	setVerificationError
+) => {
 	e.preventDefault();
 	const { email, password } = formData;
-	console.log(formData, e);
-	try {
-		const userRegistered = await createUserWithEmailAndPassword(
-			auth,
-			email,
-			password
-		);
-		console.log(email, password, userRegistered);
-		navigate('/');
-	} catch (error) {
-		console.log(error);
+
+	const emailUsed = data.find(user => user.email === email);
+	if (!emailUsed) {
+		try {
+			const userRegistered = await createUserWithEmailAndPassword(
+				auth,
+				email,
+				password
+			);
+			await setFetchInfo({
+				url: URLS.POST,
+				options: {
+					method: METHODS.POST,
+					body: JSON.stringify({
+						_id: userRegistered.user.uid,
+						email,
+						userName: Date.now(),
+						...FORM_DEFAULT_VALUES
+					}),
+					headers: HEADERS
+				}
+			});
+		} catch (error) {
+			setVerificationError(error);
+		}
 	}
 };
 
