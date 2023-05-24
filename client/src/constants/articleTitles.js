@@ -6,6 +6,6 @@ export const ARTICLE_TITLES = {
 	FEATURED: 'Featured',
 	TOP_MUSIC: 'Top Music',
 	DISCOGRAPHY: 'Discography',
-	RECENTLY_UPLOAD: 'Recently Upload',
+	RECENTLY_UPLOADED: 'Recently Uploaded',
 	POPULAR: 'Popular'
 };

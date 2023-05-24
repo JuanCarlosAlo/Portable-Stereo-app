@@ -16,6 +16,7 @@ const io = new Server(server, {
 
 // Rutas
 const usersRoutes = require("./routes/users.routes");
+const songsRoutes = require("./routes/songs.routes");
 // Middlewares para cliente
 app.use(cors());
 app.use(express.json());
@@ -55,7 +56,7 @@ io.on("connection", (socket) => {
 
 // Uso de rutas
 app.use("/portable-stereo/users", usersRoutes);
-
+app.use("/portable-stereo/songs", songsRoutes);
 const startServer = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URL);

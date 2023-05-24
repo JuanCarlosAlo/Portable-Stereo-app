@@ -16,7 +16,7 @@ import { Navigate } from 'react-router-dom';
 import { StyledProfileHeader } from '../Profile/styles';
 import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 import { useFetch } from '../../hooks/useFetch';
-import { URLS } from '../../constants/urls';
+import { URLS, USERS_URLS } from '../../constants/urls';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/Auth.context';
 import { HEADERS } from '../../constants/headers';
@@ -101,7 +101,7 @@ const onSubmit = async (
 				password
 			);
 			await setFetchInfo({
-				url: URLS.POST,
+				url: USERS_URLS.POST,
 				options: {
 					method: METHODS.POST,
 					body: JSON.stringify({

@@ -3,7 +3,7 @@ import { auth } from '../../config/firebase.config';
 import { StyledButton, StyledButtonIcon } from './styles';
 import { HEADERS } from '../../constants/headers';
 import { FORM_DEFAULT_VALUES } from '../../constants/inputValidation';
-import { URLS } from '../../constants/urls';
+import { USERS_URLS } from '../../constants/urls';
 import { METHODS } from '../../constants/methods';
 
 const SocialLogin = ({ setFetchInfo }) => {
@@ -24,7 +24,7 @@ const registerWithGoogle = async setFetchInfo => {
 		const userName = 'UserName' + Date.now();
 
 		setFetchInfo({
-			url: URLS.POST,
+			url: USERS_URLS.POST,
 			options: {
 				method: METHODS.POST,
 				body: JSON.stringify({

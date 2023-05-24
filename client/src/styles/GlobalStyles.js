@@ -19,6 +19,10 @@ const GlobalStyles = createGlobalStyle`
     font-family: Red-Seven;
     src: url('/Fonts/red-seven/Red-Seven.otf');
 }
+@font-face {
+    font-family: Digital7;
+    src: url('/Fonts/digital_7/digital-7.ttf');
+}
   img{
     display: block;
     max-width: 100%;

@@ -1,10 +1,8 @@
 const express = require("express");
-const usersRoutes = express.Router();
-const controller = require("../controllers/users.controller");
+const songsRoutes = express.Router();
+const controller = require("../controllers/songs.controller");
 
-usersRoutes.post("/", controller.createSong);
-usersRoutes.get("/", controller.getAllSongs);
-usersRoutes.get("/:id", controller.songById);
-usersRoutes.patch("/:id", controller.updateSong);
+songsRoutes.post("/", controller.createSong);
+songsRoutes.get("/", controller.getAllSongs);
 
-module.exports = usersRoutes;
+module.exports = songsRoutes;

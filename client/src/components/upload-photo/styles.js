@@ -8,6 +8,7 @@ const StyledImg = styled.img`
 			return '50%';
 		} else return 0;
 	}};
+	object-fit: cover;
 `;
 
 export { StyledImg };

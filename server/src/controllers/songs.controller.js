@@ -1,5 +1,5 @@
 const { v4 } = require("uuid");
-const UserModel = require("../schemes/users.scheme");
+const SongModel = require("../schemes/songs.scheme");
 
 const controller = {};
 
@@ -25,7 +25,7 @@ controller.getAllSongsWithUser = async (req, res) => {
 controller.createSong = async (req, res) => {
   const { _id, title, author, cover, likes, soundFile } = req.body;
 
-  const newSong = new UserModel({
+  const newSong = new SongModel({
     _id,
     title,
     author,
@@ -34,7 +34,7 @@ controller.createSong = async (req, res) => {
     soundFile,
   });
   await newSong.save();
-  const currenSong = await UserModel.findById(req.body._id);
+  const currenSong = await SongModel.findById(req.body._id);
   console.log(currenSong);
   res.send(currenSong);
 };

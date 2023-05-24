@@ -3,6 +3,7 @@ import { COLORS } from '../../constants/colors';
 
 const StyledSection = styled.div`
 	display: flex;
+	flex-direction: column;
 	gap: 1rem;
 	height: 250px;
 `;
@@ -16,6 +17,11 @@ const StyledTitleContainer = styled.div`
 	margin-right: auto;
 `;
 
+const StyledImg = styled.img`
+	height: 100px;
+	width: 100px;
+`;
+
 const StyledBar = styled.div`
 	width: 50%;
 	height: 1px;
@@ -25,4 +31,4 @@ const StyledBar = styled.div`
 	}
 `;
 
-export { StyledTitleContainer, StyledBar, StyledSection };
+export { StyledTitleContainer, StyledBar, StyledSection, StyledImg };

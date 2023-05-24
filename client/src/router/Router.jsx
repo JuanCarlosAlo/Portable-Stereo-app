@@ -5,6 +5,7 @@ import Register from '../pages/Register/Register';
 import Profile from '../pages/Profile/Profile';
 import Login from '../pages/Login/Login';
 import EditProfile from '../pages/Edit-Profile/EditProfile';
+import ProtectedRoute from './ProtectedRoute';
 
 const Router = () => {
 	return (
@@ -13,9 +14,23 @@ const Router = () => {
 				<Route path='/' element={<Layout />}>
 					<Route index element={<Home />} />
 					<Route path='/register' element={<Register />} />
-					<Route path='/profile' element={<Profile />} />
+					<Route
+						path='/profile'
+						element={
+							<ProtectedRoute>
+								<Profile />
+							</ProtectedRoute>
+						}
+					/>
 					<Route path='/login' element={<Login />} />
-					<Route path='/profile-edit' element={<EditProfile />} />
+					<Route
+						path='/profile-edit'
+						element={
+							<ProtectedRoute>
+								<EditProfile />
+							</ProtectedRoute>
+						}
+					/>
 				</Route>
 			</Route>
 		</Routes>
