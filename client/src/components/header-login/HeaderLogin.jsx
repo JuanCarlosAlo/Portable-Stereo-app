@@ -10,7 +10,7 @@ const HeaderLogin = ({ userData }) => {
 			</Link>
 
 			<Link to={'/profile'}>
-				<StyledProfileImg src='' alt='' />
+				<StyledProfileImg src={userData.profileImg} alt='' />
 			</Link>
 		</StyledHeader>
 	);

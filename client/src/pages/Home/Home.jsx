@@ -14,7 +14,7 @@ const Home = () => {
 
 	return (
 		<StyledHome>
-			{currentUser ? <HeaderLogin /> : <HeaderNoLogin />}
+			{currentUser ? <HeaderLogin userData={currentUser} /> : <HeaderNoLogin />}
 			{!currentUser ? <Banner /> : <Section title={ARTICLE_TITLES.MIXTAPES} />}
 			<Section title={ARTICLE_TITLES.RECENTLY_UPLOAD} />
 			<Section title={ARTICLE_TITLES.TOP_MUSIC} />

@@ -17,7 +17,7 @@ import { AuthContext } from '../../context/Auth.context';
 const Profile = () => {
 	const { currentUser } = useContext(AuthContext);
 	const navigate = useNavigate();
-	console.log(currentUser);
+	if (!currentUser) return;
 	return (
 		<StyledProfile>
 			<StyledProfileHeader>

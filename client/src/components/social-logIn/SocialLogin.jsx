@@ -23,7 +23,7 @@ const registerWithGoogle = async setFetchInfo => {
 		const credential = GoogleAuthProvider.credentialFromResult(result);
 		const userName = 'UserName' + Date.now();
 
-		await setFetchInfo({
+		setFetchInfo({
 			url: URLS.POST,
 			options: {
 				method: METHODS.POST,

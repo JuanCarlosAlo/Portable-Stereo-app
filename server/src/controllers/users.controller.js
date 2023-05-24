@@ -79,7 +79,7 @@ controller.updateUser = async (req, res) => {
       { $set: { ...req.body } }
     );
   } catch {
-    res.status(500).send({ error: "Error" });
+    return res.status(500).send({ error: "Error" });
   }
 
   const currentUser = await UserModel.findById(req.params.id);

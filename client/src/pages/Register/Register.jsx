@@ -47,7 +47,7 @@ const Register = () => {
 				/>
 			</StyledProfileHeader>
 			<h2>Register</h2>
-			<SocialLogin setFetchInfo={{ setFetchInfo }} />
+			<SocialLogin setFetchInfo={setFetchInfo} />
 			<form
 				onSubmit={handleSubmit((formData, e) =>
 					onSubmit(formData, e, setFetchInfo, data, setVerificationError)

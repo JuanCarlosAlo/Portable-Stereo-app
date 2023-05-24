@@ -10,7 +10,6 @@ import { StyledImg } from './styles';
 import { IMAGES } from '../../constants/imagesUrls';
 
 const UploadPhoto = ({ profileInfo, setProfile, type, currentUser }) => {
-	console.log(currentUser.profileImg);
 	return (
 		<>
 			<form>
@@ -21,7 +20,7 @@ const UploadPhoto = ({ profileInfo, setProfile, type, currentUser }) => {
 							e.target.files[0],
 							setProfile,
 							profileInfo,
-							currentUser.profileImg
+							currentUser
 						)
 					}
 				/>
@@ -34,14 +33,9 @@ const UploadPhoto = ({ profileInfo, setProfile, type, currentUser }) => {
 	);
 };
 
-const handleLoadFile = async (
-	file,
-	setProfile,
-	profileInfo,
-	userProfileImg
-) => {
-	if (userProfileImg !== IMAGES.DEFAULT_PROFILE) {
-		const storageRefDelete = ref(storage, userProfileImg);
+const handleLoadFile = async (file, setProfile, profileInfo, currentUser) => {
+	if (profileInfo.profileImg !== IMAGES.DEFAULT_PROFILE) {
+		const storageRefDelete = ref(storage, profileInfo.profileImg);
 		try {
 			await deleteObject(storageRefDelete);
 		} catch (error) {
@@ -50,7 +44,8 @@ const handleLoadFile = async (
 	}
 	const nameNoExtension = file.name.substring(0, file.name.lastIndexOf('.'));
 	const finalName = `${nameNoExtension}-${v4()}`;
-	const storageRef = ref(storage, finalName);
+	const directory = currentUser.email;
+	const storageRef = ref(storage, `${directory}/${finalName}`);
 	try {
 		const upload = await uploadBytes(storageRef, file);
 		const imageURL = await getDownloadURL(storageRef);
