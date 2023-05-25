@@ -9,6 +9,8 @@ const UsersScheme = mongoose.Schema(
     bio: String,
     artist: Boolean,
     recentlyListen: Array,
+    accountCreated: Number,
+    totalListeners: Number,
     mixtapes: Array,
     likes: {
       selfLikes: Array,
@@ -22,6 +24,7 @@ const UsersScheme = mongoose.Schema(
       tracksUploads: Array,
       albumsUploads: Array,
     },
+    type: String,
   },
   {
     collection: "users",

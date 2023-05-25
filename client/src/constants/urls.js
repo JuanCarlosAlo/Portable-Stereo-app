@@ -8,6 +8,7 @@ export const USERS_URLS = {
 
 export const SONGS_URLS = {
 	ALL: BASE + 'songs/',
-	POST: BASE + 'songs/create-song',
-	PATCH: BASE + 'songs/'
+	POST: BASE + 'songs/new-song',
+	PATCH: BASE + 'songs/',
+	EVERYTHING: BASE + 'songs/everything'
 };

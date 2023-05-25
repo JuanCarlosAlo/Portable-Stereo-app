@@ -6,11 +6,11 @@ import {
 	StyledSliderContainer,
 	StyledTitleContainer
 } from './styles';
+
 import Preview from '../preview/Preview';
 import SecondaryButton from '../secondary-button/SecondaryButton';
 
-const Section = ({ title, allData }) => {
-	console.log(allData);
+const SectionMixtapes = ({ title, allData }) => {
 	if (!allData) return <h2>Loading</h2>;
 	return (
 		<StyledSection>
@@ -21,6 +21,11 @@ const Section = ({ title, allData }) => {
 			</StyledTitleContainer>
 			<StyledSliderContainer>
 				<StyledContent>
+					<Preview
+						mixtape={true}
+						title={'Add new mixtape'}
+						img={'/images/add_file.jpg'}
+					/>
 					{allData.map(element => (
 						<Preview
 							key={v4()}
@@ -35,4 +40,4 @@ const Section = ({ title, allData }) => {
 	);
 };
 
-export default Section;
+export default SectionMixtapes;

@@ -19,6 +19,7 @@ const patterns = {
 };
 export const FORM_DEFAULT_VALUES = {
 	bio: '',
+	recentlyListen: [],
 	profileImg: IMAGES.DEFAULT_PROFILE,
 	mixtapes: [],
 	selfLikes: [],
@@ -26,7 +27,8 @@ export const FORM_DEFAULT_VALUES = {
 	selfFollows: [],
 	othersFollows: 0,
 	tracksUploads: [],
-	albumsUploads: []
+	albumsUploads: [],
+	type: 'user'
 };
 
 export const FORM_VALIDATIONS = {

@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
-import { HEADER_MEASUREMENTS } from '../../constants/headerMeasurements';
+import { HEADER_MEASUREMENTS } from '../../constants/Measurements';
 
 const StyledHeader = styled.header`
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

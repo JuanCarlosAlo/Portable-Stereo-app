@@ -1,26 +1,35 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
 import { PLAYER } from '../../constants/player';
-import { HEADER_MEASUREMENTS } from '../../constants/headerMeasurements';
+import { HEADER_MEASUREMENTS } from '../../constants/Measurements';
 
 const StyledProfile = styled.div`
 	padding-left: 1rem;
 	padding-right: 1rem;
 	padding-bottom: ${PLAYER.HEIGHT};
+	padding-top: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
 `;
 
 const StyledProfileHeader = styled.header`
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	padding-left: 1rem;
+	padding-right: 1rem;
 	height: ${HEADER_MEASUREMENTS.HEIGHT};
-	margin-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
 `;
 const StyledUsername = styled.p`
-	font-size: 2rem;
+	font-size: 1rem;
 	margin: 0;
 	font-family: FotRodin-EB;
 	color: ${COLORS.MAIN};
+	@media screen and (min-width: 465px) {
+		font-size: 2rem;
+	}
 `;
 
 const StyledProfileImage = styled.img`

@@ -33,7 +33,7 @@ const EditProfile = () => {
 				<SecondaryButton
 					text={'BACK'}
 					buttonIcon={'/images/button-arrow.svg'}
-					url={'/'}
+					url={'/profile'}
 				/>
 			</StyledProfileHeader>
 

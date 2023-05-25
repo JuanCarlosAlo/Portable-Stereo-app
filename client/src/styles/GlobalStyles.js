@@ -59,17 +59,19 @@ const GlobalStyles = createGlobalStyle`
   }
   /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  height: 3px;
+  
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+ 
+  background: ${COLORS.MAIN};
 }
 
 /* Handle on hover */
@@ -84,6 +86,7 @@ input:-webkit-autofill
   -webkit-box-shadow: 0 0 0px 1000px #000 inset;
   transition: background-color 5000s ease-in-out 0s;
   outline: none;
+  
 }
 `;
 

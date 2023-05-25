@@ -1,13 +1,19 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
+import { HEADER_MEASUREMENTS } from '../../constants/Measurements';
 
 const StyledHeader = styled.header`
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding-left: 2rem;
 	padding-right: 2rem;
-	height: 60px;
+	height: ${HEADER_MEASUREMENTS.HEIGHT};
+	background-color: ${COLORS.BLACK};
 `;
 
 const StyledHeaderLogo = styled.h1`

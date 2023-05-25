@@ -3,12 +3,16 @@ const mongoose = require("mongoose");
 const SongSchema = mongoose.Schema({
   _id: String,
   title: String,
-  author: String,
+  artist: String,
   cover: String,
   likes: Number,
   soundFile: String,
+  artistId: String,
+  replays: Number,
+  date: Number,
+  type: String,
 });
 
 const SongModel = mongoose.model("songs", SongSchema);
 
-module.exports = { SongSchema, SongModel };
+module.exports = SongModel;

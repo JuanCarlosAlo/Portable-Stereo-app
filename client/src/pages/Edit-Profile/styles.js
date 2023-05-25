@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
-
-import { HEADER_MEASUREMENTS } from '../../constants/headerMeasurements';
+import { HEADER_MEASUREMENTS } from '../../constants/Measurements';
 
 const StyledEditProfile = styled.div`
 	display: flex;
@@ -10,14 +9,20 @@ const StyledEditProfile = styled.div`
 
 	padding-left: 1rem;
 	padding-right: 1rem;
+	padding-top: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
 `;
 
 const StyledProfileHeader = styled.header`
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	padding-left: 1rem;
+	padding-right: 1rem;
 	height: ${HEADER_MEASUREMENTS.HEIGHT};
-	margin-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
 `;
 
 const StyledMainProfileContentContainer = styled.div`

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
-import { HEADER_MEASUREMENTS } from '../../constants/headerMeasurements';
+import { HEADER_MEASUREMENTS } from '../../constants/measurements';
 
 const StyledRegister = styled.div`
 	position: relative;

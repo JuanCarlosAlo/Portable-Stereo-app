@@ -16,7 +16,7 @@ import { Navigate } from 'react-router-dom';
 import { StyledProfileHeader } from '../Profile/styles';
 import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 import { useFetch } from '../../hooks/useFetch';
-import { URLS, USERS_URLS } from '../../constants/urls';
+import { USERS_URLS } from '../../constants/urls';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/Auth.context';
 import { HEADERS } from '../../constants/headers';
@@ -31,7 +31,9 @@ const Register = () => {
 		formState: { errors }
 	} = useForm({ mode: 'onBlur' });
 
-	const { data, loading, error, setFetchInfo } = useFetch({ url: URLS.ALL });
+	const { data, loading, error, setFetchInfo } = useFetch({
+		url: USERS_URLS.ALL
+	});
 	const [verificationError, setVerificationError] = useState();
 
 	if (currentUser) return <Navigate to={'/'} />;
@@ -107,6 +109,7 @@ const onSubmit = async (
 					body: JSON.stringify({
 						_id: userRegistered.user.uid,
 						email,
+						artist: false,
 						userName: Date.now(),
 						...FORM_DEFAULT_VALUES
 					}),

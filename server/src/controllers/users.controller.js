@@ -38,7 +38,10 @@ controller.createUser = async (req, res) => {
     othersFollows,
     tracksUploads,
     albumsUploads,
+    type,
   } = req.body;
+
+  const newDate = Date.now();
 
   const newUser = new UserModel({
     _id,
@@ -48,6 +51,8 @@ controller.createUser = async (req, res) => {
     bio,
     artist,
     recentlyListen,
+    accountCreated: newDate,
+    totalListeners: 0,
     mixtapes,
     likes: {
       selfLikes,
@@ -61,6 +66,7 @@ controller.createUser = async (req, res) => {
       tracksUploads,
       albumsUploads,
     },
+    type,
   });
 
   const userExist = await UserModel.findById(req.body._id);

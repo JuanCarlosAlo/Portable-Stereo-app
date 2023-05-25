@@ -1,10 +1,11 @@
 const { v4 } = require("uuid");
 const SongModel = require("../schemes/songs.scheme");
+const UserModel = require("../schemes/users.scheme");
 
 const controller = {};
 
 controller.getAllSongs = async (req, res) => {
-  const autentifiedUser = await UserModel.find();
+  const autentifiedUser = await SongModel.find();
   try {
     console.log(autentifiedUser, req.params.id);
     res.status(200).send(autentifiedUser);
@@ -12,30 +13,36 @@ controller.getAllSongs = async (req, res) => {
     res.status(500).send({ error: "Error al leer la base de datos" });
   }
 };
-controller.getAllSongsWithUser = async (req, res) => {
-  const allSongs = await UserModel.find();
-  const user = await UserModel.findById(req.params.id);
+controller.getAllSongsWithUsers = async (req, res) => {
+  const allSongs = await SongModel.find();
+  const allUsers = await UserModel.find();
   try {
-    res.status(200).send({ allSongs, user });
+    res.status(200).send({ allSongs, allUsers });
   } catch (error) {
     res.status(500).send({ error: "Error al leer la base de datos" });
   }
 };
 
-controller.createSong = async (req, res) => {
-  const { _id, title, author, cover, likes, soundFile } = req.body;
+controller.newSong = async (req, res) => {
+  const { title, artist, cover, likes, soundFile, artistId, replays, type } =
+    req.body;
+  const newDate = Date.now();
 
   const newSong = new SongModel({
-    _id,
+    _id: v4(),
     title,
-    author,
+    artist,
     cover,
     likes,
     soundFile,
+    artistId,
+    replays,
+    date: newDate,
+    type,
   });
   await newSong.save();
   const currenSong = await SongModel.findById(req.body._id);
-  console.log(currenSong);
+
   res.send(currenSong);
 };
 

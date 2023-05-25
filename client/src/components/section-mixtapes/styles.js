@@ -24,7 +24,7 @@ const StyledImg = styled.img`
 `;
 
 const StyledBar = styled.div`
-	width: 20%;
+	width: 30%;
 	height: 1px;
 	background-color: ${COLORS.MAIN};
 	@media screen and (min-width: 460px) {
@@ -36,9 +36,9 @@ const StyledSliderContainer = styled.div`
 `;
 const StyledContent = styled.div`
 	display: flex;
-	width: max-content;
+	width: 100%;
 	align-items: center;
-	gap: 1rem;
+	gap: 4rem;
 `;
 export {
 	StyledTitleContainer,
