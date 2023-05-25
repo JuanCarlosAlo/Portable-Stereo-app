@@ -9,15 +9,14 @@ import {
 import Preview from '../preview/Preview';
 import SecondaryButton from '../secondary-button/SecondaryButton';
 
-const Section = ({ title, allData }) => {
-	console.log(allData);
+const Section = ({ title, allData, url }) => {
 	if (!allData) return <h2>Loading</h2>;
 	return (
 		<StyledSection>
 			<StyledTitleContainer>
 				<p>{title}</p>
 				<StyledBar></StyledBar>
-				<SecondaryButton text={'Show all'} url={'/'} />
+				{url && <SecondaryButton text={'Show all'} />}
 			</StyledTitleContainer>
 			<StyledSliderContainer>
 				<StyledContent>
@@ -27,6 +26,7 @@ const Section = ({ title, allData }) => {
 							type={element.type}
 							title={element.type === 'user' ? element.userName : element.title}
 							img={element.type === 'user' ? element.profileImg : element.cover}
+							songData={element}
 						/>
 					))}
 				</StyledContent>

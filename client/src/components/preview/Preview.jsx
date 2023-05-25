@@ -1,11 +1,16 @@
+import { useRef } from 'react';
 import { StyledImg, StyledMixtape, StyledPreview, StyledTitle } from './styles';
+import { usePlayer } from '../../hooks/usePlayer';
 
-const Preview = ({ type, img, title, mixtape }) => {
+const Preview = ({ type, img, title, mixtape, songData }) => {
+	const titleElement = useRef(null);
+	// console.log(titleElement.current.scrollWidth);
+	const { setSongData } = usePlayer();
 	if (!mixtape) {
 		return (
-			<StyledPreview>
+			<StyledPreview onClick={() => setSongData(songData)}>
 				<StyledImg src={img} alt='Preview image' type={type} />
-				<StyledTitle>{title}</StyledTitle>
+				<StyledTitle ref={titleElement}>{title}</StyledTitle>
 			</StyledPreview>
 		);
 	} else {

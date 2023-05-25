@@ -23,13 +23,9 @@ const StyledImg = styled.img`
 const StyledTitle = styled.p`
 	max-width: 150px;
 	white-space: nowrap;
-	/* animation: movingtitle 10s infinite alternate linear; */
+	/* animation: movingtitle 5s infinite alternate linear; */
 	overflow: hidden;
-	/* @keyframes movingtitle {
-		to {
-			text-indent: -2rem;
-		}
-	} */
+	text-overflow: ellipsis;
 `;
 const StyledPreview = styled.div`
 	display: flex;
@@ -40,11 +36,13 @@ const StyledPreview = styled.div`
 `;
 const StyledMixtape = styled.div`
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
+	gap: 1rem;
 	align-items: center;
-	width: max-content;
+	width: 98%;
 	border: 2px solid ${COLORS.MAIN};
+	border-radius: 0.5rem;
+	overflow: hidden;
 `;
 
 export { StyledImg, StyledTitle, StyledPreview, StyledMixtape };

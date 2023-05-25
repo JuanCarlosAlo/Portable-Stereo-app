@@ -12,6 +12,9 @@ import { IMAGES } from '../../constants/imagesUrls';
 const UploadPhoto = ({ profileInfo, setProfile, type, currentUser }) => {
 	return (
 		<>
+			{profileInfo.profileImg && (
+				<StyledImg type={type} src={profileInfo.profileImg} alt='' />
+			)}
 			<form>
 				<input
 					type='file'
@@ -25,10 +28,6 @@ const UploadPhoto = ({ profileInfo, setProfile, type, currentUser }) => {
 					}
 				/>
 			</form>
-
-			{profileInfo.profileImg && (
-				<StyledImg type={type} src={profileInfo.profileImg} alt='' />
-			)}
 		</>
 	);
 };

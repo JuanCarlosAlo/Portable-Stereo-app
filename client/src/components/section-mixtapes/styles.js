@@ -5,7 +5,7 @@ const StyledSection = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	height: 270px;
+	max-height: 270px;
 	overflow: hidden;
 `;
 const StyledTitleContainer = styled.div`
@@ -36,9 +36,13 @@ const StyledSliderContainer = styled.div`
 `;
 const StyledContent = styled.div`
 	display: flex;
+	justify-content: center;
 	width: 100%;
 	align-items: center;
 	gap: 4rem;
+	font-family: digital7;
+	font-size: 1.2rem;
+	letter-spacing: 0.2rem;
 `;
 export {
 	StyledTitleContainer,

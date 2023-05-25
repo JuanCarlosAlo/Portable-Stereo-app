@@ -27,7 +27,7 @@ const StyledBar = styled.div`
 	width: 20%;
 	height: 1px;
 	background-color: ${COLORS.MAIN};
-	@media screen and (min-width: 460px) {
+	@media screen and (min-width: 768px) {
 		width: 60%;
 	}
 `;

@@ -4,14 +4,16 @@ import { HEADER_MEASUREMENTS } from '../../constants/Measurements';
 
 const StyledHeader = styled.header`
 	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
+	top: 1%;
+	left: 1%;
+	width: 98%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding-left: 2rem;
 	padding-right: 2rem;
+	border: 2px solid ${COLORS.MAIN};
+	border-radius: 0.5rem;
 	height: ${HEADER_MEASUREMENTS.HEIGHT};
 	background-color: ${COLORS.BLACK};
 `;

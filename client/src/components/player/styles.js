@@ -11,7 +11,7 @@ const StyledPlayerContainer = styled.div`
 	align-items: center;
 	height: ${PLAYER.HEIGHT};
 	width: 98%;
-	border-radius: 1rem;
+	border-radius: 0.5rem;
 	background-color: ${COLORS.BLACK};
 `;
 
