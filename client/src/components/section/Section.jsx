@@ -11,6 +11,7 @@ import SecondaryButton from '../secondary-button/SecondaryButton';
 
 const Section = ({ title, allData, url }) => {
 	if (!allData) return <h2>Loading</h2>;
+	console.log(allData);
 	return (
 		<StyledSection>
 			<StyledTitleContainer>

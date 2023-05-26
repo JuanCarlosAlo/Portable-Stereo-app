@@ -1,28 +1,28 @@
- {"user":
-  {
-    "_id":"OiEQqFNqkjPSQTOF6JnmiYAiMSo2",
-    "userName":"UserName",
-    "email": "email",
-    "bio": "''",
-    "profileImg": "url",
-    "mixtapes": [],
-    "selfLikes": [],
-    "othersLikes": 0,
-    "selfFollows": [],
-    "othersFollows": 0,
-    "tracksUploads": [],
-    "albumsUploads": []
-                          
-  },
-  "song":{
-    "title": "You are killing me",
-    "artist": "Astrophysiscs",
-    "cover": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/jc.alonsome%40gmail.com%2FYou%20are%20killing%20me%2Ffront.png?alt=media&token=6c5a234b-a795-4f5a-8604-38d32cc57d94",
-    "likes": 128,
-    "soundFile": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/astrophysics%40email.com%2FLobotomy%2FAstrophysics%20-%2005.%20lobotomy.mp3?alt=media&token=c8aa0717-5f0e-427f-9e9d-8ec97f4eaa4b",
-    "artistId": "vNitm86XPBW14eV5baXURzixiou2",
-    "replays": 665967
-    
-  }
-  
+{
+	"user": {
+		"_id": "OiEQqFNqkjPSQTOF6JnmiYAiMSo2",
+		"userName": "UserName",
+		"email": "email",
+		"bio": "''",
+		"profileImg": "url",
+		"mixtapes": [],
+		"selfLikes": [],
+		"othersLikes": 0,
+		"selfFollows": [],
+		"othersFollows": 0,
+		"tracksUploads": [],
+		"albumsUploads": []
+	},
+	"song": [
+		{
+			"title": "You are killing me",
+			"artist": "Astrophysiscs",
+			"cover": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/jc.alonsome%40gmail.com%2FYou%20are%20killing%20me%2Ffront.png?alt=media&token=6c5a234b-a795-4f5a-8604-38d32cc57d94",
+			"likes": 128,
+			"soundFile": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/astrophysics%40email.com%2FLobotomy%2FAstrophysics%20-%2005.%20lobotomy.mp3?alt=media&token=c8aa0717-5f0e-427f-9e9d-8ec97f4eaa4b",
+			"artistId": "vNitm86XPBW14eV5baXURzixiou2",
+			"replays": 665967,
+			"type": "song"
+		}
+	]
 }

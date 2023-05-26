@@ -24,9 +24,34 @@ controller.getAllSongsWithUsers = async (req, res) => {
 };
 
 controller.newSong = async (req, res) => {
-  const { title, artist, cover, likes, soundFile, artistId, replays, type } =
-    req.body;
   const newDate = Date.now();
+  const songArrayId = v4();
+  const {
+    title,
+    songTitle,
+    artist,
+    songCover,
+    cover,
+    likes,
+    songLikes,
+    soundFile,
+    artistId,
+    replays,
+    type,
+  } = req.body;
+  const songItem = {
+    _id: songArrayId,
+    date: newDate,
+    songTitle,
+    artist,
+    songCover,
+    songLikes,
+    soundFile,
+    artistId,
+    replays,
+    date: newDate,
+    type,
+  };
 
   const newSong = new SongModel({
     _id: v4(),
@@ -34,16 +59,14 @@ controller.newSong = async (req, res) => {
     artist,
     cover,
     likes,
-    soundFile,
     artistId,
     replays,
     date: newDate,
-    type,
+    songItem,
   });
-  await newSong.save();
-  const currenSong = await SongModel.findById(req.body._id);
 
-  res.send(currenSong);
+  await newSong.save();
+  res.end();
 };
 
 module.exports = controller;
