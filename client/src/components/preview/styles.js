@@ -27,13 +27,7 @@ const StyledTitle = styled.p`
 	overflow: hidden;
 	text-overflow: ellipsis;
 `;
-const StyledPreview = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	width: 150px;
-`;
+
 const StyledMixtape = styled.div`
 	display: flex;
 	justify-content: flex-start;
@@ -45,4 +39,29 @@ const StyledMixtape = styled.div`
 	overflow: hidden;
 `;
 
-export { StyledImg, StyledTitle, StyledPreview, StyledMixtape };
+const StyledPlay = styled.div`
+	position: absolute;
+	right: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 40px;
+	width: 40px;
+	background-color: ${COLORS.MAIN};
+	opacity: 0;
+	transition: opacity 0.2s ease-in-out;
+`;
+const StyledPreview = styled.div`
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 150px;
+	cursor: pointer;
+	&:hover ${StyledPlay} {
+		opacity: 1;
+	}
+`;
+
+export { StyledImg, StyledTitle, StyledPreview, StyledMixtape, StyledPlay };

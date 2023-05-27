@@ -1,3 +1,3 @@
 export const PLAYER = {
-	HEIGHT: '80px'
+	HEIGHT: '100px'
 };

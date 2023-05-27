@@ -1,7 +1,7 @@
 import Banner from '../../components/banner/Banner';
 
 import Section from '../../components/section/Section';
-import Player from '../../components/player/Player';
+
 import { ARTICLE_TITLES } from '../../constants/articleTitles';
 import { StyledHome } from './styles';
 import HeaderNoLogin from '../../components/header-noLogin/HeaderNoLogin';
@@ -11,7 +11,7 @@ import HeaderLogin from '../../components/header-login/HeaderLogin';
 import Loading from '../../components/loading/Loading';
 import { useFetch } from '../../hooks/useFetch';
 import { SONGS_URLS } from '../../constants/urls';
-import SectionMixtapes from '../../components/section-mixtapes/SectionMixtapes';
+
 import { sortDataSliceTen } from '../../utils/sortData';
 
 const Home = () => {
@@ -26,14 +26,7 @@ const Home = () => {
 	return (
 		<StyledHome>
 			{currentUser ? <HeaderLogin userData={currentUser} /> : <HeaderNoLogin />}
-			{!currentUser ? (
-				<Banner />
-			) : (
-				<SectionMixtapes
-					title={ARTICLE_TITLES.MIXTAPES}
-					allData={currentUser.mixtapes}
-				/>
-			)}
+			{!currentUser && <Banner />}
 			<Section
 				title={ARTICLE_TITLES.RECENTLY_UPLOADED}
 				allData={latestrMusic}
@@ -44,7 +37,6 @@ const Home = () => {
 				allData={data.allUsers}
 				url={'/show-all'}
 			/>
-			<Player />
 		</StyledHome>
 	);
 };

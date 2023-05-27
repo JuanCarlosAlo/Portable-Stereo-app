@@ -8,6 +8,7 @@ const StyledSignIn = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	padding-top: ${HEADER_MEASUREMENTS.HEIGHT};
 	width: 100%;
 `;
 const StyledLoginHeader = styled.header`

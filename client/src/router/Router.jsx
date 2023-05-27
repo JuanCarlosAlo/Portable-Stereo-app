@@ -6,7 +6,8 @@ import Profile from '../pages/Profile/Profile';
 import Login from '../pages/Login/Login';
 import EditProfile from '../pages/Edit-Profile/EditProfile';
 import ProtectedRoute from './ProtectedRoute';
-import UserPage from '../pages/SongDetails/SongDetails';
+
+import SongDetails from '../pages/SongDetails/SongDetails';
 
 const Router = () => {
 	return (
@@ -32,7 +33,8 @@ const Router = () => {
 							</ProtectedRoute>
 						}
 					/>
-					<Route path='/user/:userName' element={<UserPage />} />
+					{/* <Route path='/user/:userName' element={<UserPage />} /> */}
+					<Route path='/song/:title' element={<SongDetails />} />
 				</Route>
 			</Route>
 		</Routes>

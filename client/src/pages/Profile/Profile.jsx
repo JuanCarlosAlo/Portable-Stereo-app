@@ -1,5 +1,5 @@
 import { signOut } from 'firebase/auth';
-import Player from '../../components/player/Player';
+
 import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 import {
 	StyledButton,
@@ -48,8 +48,6 @@ const Profile = () => {
 				</StyledButton>
 				<StyledButton>Delete Account</StyledButton>
 			</div>
-
-			<Player />
 		</StyledProfile>
 	);
 };

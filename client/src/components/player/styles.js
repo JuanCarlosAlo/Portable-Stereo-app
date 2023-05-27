@@ -7,11 +7,13 @@ const StyledPlayerContainer = styled.div`
 	bottom: 2%;
 	left: 1%;
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	justify-content: space-between;
 	align-items: center;
 	height: ${PLAYER.HEIGHT};
 	width: 98%;
 	border-radius: 0.5rem;
+	padding-bottom: 0.5rem;
 	background-color: ${COLORS.BLACK};
 `;
 
