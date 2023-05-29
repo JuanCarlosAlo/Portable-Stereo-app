@@ -1,28 +1,121 @@
 {
-	"user": {
-		"_id": "OiEQqFNqkjPSQTOF6JnmiYAiMSo2",
-		"userName": "UserName",
-		"email": "email",
-		"bio": "''",
-		"profileImg": "url",
-		"mixtapes": [],
-		"selfLikes": [],
-		"othersLikes": 0,
-		"selfFollows": [],
-		"othersFollows": 0,
-		"tracksUploads": [],
-		"albumsUploads": []
-	},
-	"song": [
-		{
-			"title": "You are killing me",
-			"artist": "Astrophysiscs",
-			"cover": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/jc.alonsome%40gmail.com%2FYou%20are%20killing%20me%2Ffront.png?alt=media&token=6c5a234b-a795-4f5a-8604-38d32cc57d94",
-			"likes": 128,
-			"soundFile": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/astrophysics%40email.com%2FLobotomy%2FAstrophysics%20-%2005.%20lobotomy.mp3?alt=media&token=c8aa0717-5f0e-427f-9e9d-8ec97f4eaa4b",
-			"artistId": "vNitm86XPBW14eV5baXURzixiou2",
-			"replays": 665967,
-			"type": "song"
-		}
+	"title": "Human After All",
+	"artist": "DaftPunk",
+	"cover": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FCover.jpg?alt=media&token=47fd2f26-f7bb-41a6-93ab-c9fc4c31d42f",
+	"likes":  12952324 ,
+	"artistId": "27VBXN2MTId9dHP5o6cmkZnZYG13",
+	"replays":  5684321 ,
+	"songItem": [
+	  {
+		"songTitle": "Human After All",
+		"artist": "DaftPunk",
+		"songCover": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FHuman%20After%20All%2FCover.jpg?alt=media&token=37dfd292-e9be-40b8-b375-eb331caae637",
+		"songLikes": 645954,
+		"soundFile": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FHuman%20After%20All%2F01.%20Human%20After%20All.mp3?alt=media&token=4df2ef26-baf4-49f7-bdef-01fb9a9a4391",
+		"artistId": "27VBXN2MTId9dHP5o6cmkZnZYG13",
+		"replays": 1685687,
+		"type": "song"
+	  },
+	  {
+		"songTitle": "The Prime Time Of Your Life",
+		"artist": "DaftPunk",
+		"songCover": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FThe%20Prime%20Time%20Of%20Your%20Life%2FCover.jpg?alt=media&token=dd020afb-3ab6-449e-a91f-840e2d75b1ab",
+		"songLikes": 405954,
+		"soundFile": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FThe%20Prime%20Time%20Of%20Your%20Life%2F02.%20The%20Prime%20Time%20Of%20Your%20Life.mp3?alt=media&token=9aa01fdc-20b1-49fb-b0f2-e38f69180737",
+		"artistId": "27VBXN2MTId9dHP5o6cmkZnZYG13",
+		"replays": 631687,
+		"type": "song"
+	  },
+	  {
+		"songTitle": "Robot Rock",
+		"artist": "DaftPunk",
+		"songCover": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FRobot%20Rock%2FCover.jpg?alt=media&token=5f70d3e3-8db9-4516-85d0-96aad1a51603",
+		"songLikes": 728954,
+		"soundFile": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FRobot%20Rock%2F03.%20Robot%20Rock.mp3?alt=media&token=e3d34d10-8c9e-4a3d-bb6f-29d191ceea1a",
+		"artistId": "27VBXN2MTId9dHP5o6cmkZnZYG13",
+		"replays": 1211687,
+		"type": "song"
+	  },
+	  {
+		"songTitle": "Steam Machine",
+		"artist": "DaftPunk",
+		"songCover": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FSteam%20Machine%2FCover.jpg?alt=media&token=805b8940-ba7b-4724-bd19-048887b49000",
+		"songLikes": 495954,
+		"soundFile": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FSteam%20Machine%2F04.%20Steam%20Machine.mp3?alt=media&token=af0de279-6680-4b05-af8c-a595daec2b23",
+		"artistId": "27VBXN2MTId9dHP5o6cmkZnZYG13",
+		"replays": 821687,
+		"type": "song"
+	  },
+	  {
+		"songTitle": "Steam Machine",
+		"artist": "DaftPunk",
+		"songCover": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FSteam%20Machine%2FCover.jpg?alt=media&token=805b8940-ba7b-4724-bd19-048887b49000",
+		"songLikes": 495954,
+		"soundFile": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FSteam%20Machine%2F04.%20Steam%20Machine.mp3?alt=media&token=af0de279-6680-4b05-af8c-a595daec2b23",
+		"artistId": "27VBXN2MTId9dHP5o6cmkZnZYG13",
+		"replays": 821687,
+		"type": "song"
+	  },
+	  {
+		"songTitle": "Make Love",
+		"artist": "DaftPunk",
+		"songCover": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FMake%20Love%2FCover.jpg?alt=media&token=07164f0f-85f1-4abe-afe0-a61935907367",
+		"songLikes": 501954,
+		"soundFile": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FMake%20Love%2F05.%20Make%20Love.mp3?alt=media&token=cdbeb394-4cda-4e0e-a704-d47a032374e2",
+		"artistId": "27VBXN2MTId9dHP5o6cmkZnZYG13",
+		"replays": 721687,
+		"type": "song"
+	  },
+	  {
+		"songTitle": "The Brainwasher",
+		"artist": "DaftPunk",
+		"songCover": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FThe%20Brainwasher%2FCover.jpg?alt=media&token=7ccb2caf-f4d7-4a54-9632-bedc23ddd552",
+		"songLikes": 701954,
+		"soundFile": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FThe%20Brainwasher%2F06.%20The%20Brainwasher.mp3?alt=media&token=d15818da-3487-4ffe-aa8d-50e30ba360e0",
+		"artistId": "27VBXN2MTId9dHP5o6cmkZnZYG13",
+		"replays": 840687,
+		"type": "song"
+	  },
+	  {
+		"songTitle": "OnOff",
+		"artist": "DaftPunk",
+		"songCover": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FThe%20Brainwasher%2FCover.jpg?alt=media&token=7ccb2caf-f4d7-4a54-9632-bedc23ddd552",
+		"songLikes": 651954,
+		"soundFile": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FOnOff%2F07.%20OnOff.mp3?alt=media&token=39b551c8-4e76-4e45-8aaf-9888e1e0168e",
+		"artistId": "27VBXN2MTId9dHP5o6cmkZnZYG13",
+		"replays": 910687,
+		"type": "song"
+	  },
+	  {
+		"songTitle": "Television Rules The Nation",
+		"artist": "DaftPunk",
+		"songCover": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FThe%20Brainwasher%2FCover.jpg?alt=media&token=7ccb2caf-f4d7-4a54-9632-bedc23ddd552",
+		"songLikes": 984954,
+		"soundFile": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FTelevision%20Rules%20The%20Nation%2F08.%20Television%20Rules%20The%20Nation.mp3?alt=media&token=0624d921-02b1-4543-8419-5013cf442b06",
+		"artistId": "27VBXN2MTId9dHP5o6cmkZnZYG13",
+		"replays": 1426687,
+		"type": "song"
+	  },
+	  {
+		"songTitle": "Technologic",
+		"artist": "DaftPunk",
+		"songCover": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FThe%20Brainwasher%2FCover.jpg?alt=media&token=7ccb2caf-f4d7-4a54-9632-bedc23ddd552",
+		"songLikes": 1657954,
+		"soundFile": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FTechnologic%2F09.%20Technologic.mp3?alt=media&token=87ea25ad-43a8-42dd-b008-bf4605602af6",
+		"artistId": "27VBXN2MTId9dHP5o6cmkZnZYG13",
+		"replays": 1926787,
+		"type": "song"
+	  },
+	  {
+		"songTitle": "Emotion",
+		"artist": "DaftPunk",
+		"songCover": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FThe%20Brainwasher%2FCover.jpg?alt=media&token=7ccb2caf-f4d7-4a54-9632-bedc23ddd552",
+		"songLikes": 687954,
+		"soundFile": "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/daftpunk%40email.com%2FAlive%2FEmotion%2F10.%20Emotion.mp3?alt=media&token=63861b78-3923-4562-896a-a0bce03e2919",
+		"artistId": "27VBXN2MTId9dHP5o6cmkZnZYG13",
+		"replays": 426787,
+		"type": "song"
+	  }
 	]
+
 }

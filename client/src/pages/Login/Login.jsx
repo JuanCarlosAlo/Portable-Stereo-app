@@ -10,10 +10,10 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../config/firebase.config';
 import MainButton from '../../components/main-button/MainButton';
 import { useNavigate } from 'react-router-dom';
-import SecondaryButton from '../../components/secondary-button/SecondaryButton';
-import { StyledProfileHeader } from '../Profile/styles';
+
 import SocialLogin from '../../components/social-logIn/SocialLogin';
 import { useFetch } from '../../hooks/useFetch';
+import HeaderBack from '../../components/header-back/HeaderBack';
 
 const Login = () => {
 	const {
@@ -25,13 +25,7 @@ const Login = () => {
 	const { setFetchInfo } = useFetch();
 	return (
 		<StyledSignIn>
-			<StyledProfileHeader>
-				<SecondaryButton
-					text={'BACK'}
-					buttonIcon={'/images/button-arrow.svg'}
-					url={'/'}
-				/>
-			</StyledProfileHeader>
+			<HeaderBack url={'/'} text={'BACK'} />
 			<SocialLogin setFetchInfo={setFetchInfo} />
 			<form
 				onSubmit={handleSubmit((formData, e) =>
@@ -72,9 +66,7 @@ const onSubmit = async (formData, e, navigate) => {
 	try {
 		await signInWithEmailAndPassword(auth, email, password);
 		navigate('/');
-	} catch (error) {
-		console.log(error);
-	}
+	} catch (error) {}
 	// e.target.reset();
 };
 

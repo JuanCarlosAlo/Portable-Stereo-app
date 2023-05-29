@@ -1,28 +1,62 @@
-import { useLocation, useNavigate } from 'react-router-dom';
-import { StyledSongHeader } from './styles';
+import { Navigate, useLocation } from 'react-router-dom';
+import {
+	SongArtist,
+	SongTitle,
+	StyledPlayButtonContainer,
+	StyledSongContainer,
+	StyledSongDetailsPage,
+	StyledSongHeader,
+	StyledSongInfo,
+	StyledSongPlayContainer,
+	StyledsongHeaderImg
+} from './styles';
+import HeaderBack from '../../components/header-back/HeaderBack';
+import { useContext } from 'react';
+import { SongContext } from '../../context/Song.context';
+import PlayButton from '../../components/play-button/PlayButton';
+import { formatCompactNumber } from '../../utils/compactNumbers';
 
 const SongDetails = () => {
+	const { setSongData } = useContext(SongContext);
 	const { state } = useLocation();
-	const navigate = useNavigate();
-	console.log(state);
+
+	if (!state) return <Navigate to={'/'} />;
+	const songDate = new Date(state.date).toLocaleDateString();
+
 	return (
-		<div>
-			<div>
-				<button onClick={() => navigate('/')}>BACK</button>
-			</div>
+		<StyledSongDetailsPage>
+			<HeaderBack url={'/'} text={'BACK'} />
 			<StyledSongHeader>
-				<img src={state.cover} alt='cover' />
-				<p>{state.title}</p>
-				<p>{state.artist}</p>
+				<StyledsongHeaderImg src={state.cover} alt='cover' />
+				<StyledSongInfo>
+					<SongTitle>{state.title}</SongTitle>
+					<SongArtist>{state.artist}</SongArtist>
+					<SongArtist>{songDate}</SongArtist>
+				</StyledSongInfo>
+				<StyledPlayButtonContainer>
+					<PlayButton
+						setSongData={setSongData}
+						songData={state}
+						indexValue={0}
+					/>
+				</StyledPlayButtonContainer>
 			</StyledSongHeader>
 			<div>
-				{state.songItem.map(song => (
-					<div key={song._id}>
+				{state.songItem.map((song, index) => (
+					<StyledSongContainer key={song._id}>
 						<p>{song.songTitle}</p>
-					</div>
+						<StyledSongPlayContainer>
+							<p>{formatCompactNumber(song.replays)}</p>
+							<PlayButton
+								setSongData={setSongData}
+								songData={state}
+								indexValue={index}
+							/>
+						</StyledSongPlayContainer>
+					</StyledSongContainer>
 				))}
 			</div>
-		</div>
+		</StyledSongDetailsPage>
 	);
 };
 

@@ -37,9 +37,7 @@ const handleLoadFile = async (file, setProfile, profileInfo, currentUser) => {
 		const storageRefDelete = ref(storage, profileInfo.profileImg);
 		try {
 			await deleteObject(storageRefDelete);
-		} catch (error) {
-			console.log(error);
-		}
+		} catch (error) {}
 	}
 	const nameNoExtension = file.name.substring(0, file.name.lastIndexOf('.'));
 	const finalName = `${nameNoExtension}-${v4()}`;
@@ -50,11 +48,7 @@ const handleLoadFile = async (file, setProfile, profileInfo, currentUser) => {
 		const imageURL = await getDownloadURL(storageRef);
 
 		setProfile({ ...profileInfo, profileImg: imageURL });
-		console.log(upload);
-		console.log(imageURL);
-	} catch (error) {
-		console.log(error);
-	}
+	} catch (error) {}
 };
 
 export default UploadPhoto;

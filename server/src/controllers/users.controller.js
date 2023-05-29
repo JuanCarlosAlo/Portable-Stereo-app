@@ -1,12 +1,12 @@
 const { v4 } = require("uuid");
 const UserModel = require("../schemes/users.scheme");
+const SongModel = require("../schemes/songs.scheme");
 
 const controller = {};
 
 controller.getUserId = async (req, res) => {
   const autentifiedUser = await UserModel.findById(req.params.id);
   try {
-    console.log(autentifiedUser, req.params.id);
     res.status(200).send(autentifiedUser);
   } catch (error) {
     res.status(500).send({ error: "Error al leer la base de datos" });
@@ -74,7 +74,7 @@ controller.createUser = async (req, res) => {
     return res.status(409).send({ error: "User Already has a profile" });
 
   const currentUser = await newUser.save();
-  console.log(currentUser);
+
   res.send(currentUser);
 };
 
@@ -89,7 +89,33 @@ controller.updateUser = async (req, res) => {
   }
 
   const currentUser = await UserModel.findById(req.params.id);
-  console.log(currentUser);
+
+  res.send(currentUser);
+};
+
+controller.updateRecentlyListen = async (req, res) => {
+  const songToUpload = await SongModel.findById(req.body.id);
+  const currentUser = await UserModel.findById(req.params.id);
+  const alreadyListened = currentUser.recentlyListen.find(
+    (song) => song._id === req.body.id
+  );
+  if (alreadyListened) {
+    const index = currentUser.recentlyListen.indexOf(alreadyListened);
+    currentUser.recentlyListen.splice(index, 1);
+  }
+  if (currentUser.recentlyListen.length === 10) {
+    currentUser.recentlyListen.pop();
+  }
+  await currentUser.recentlyListen.unshift(songToUpload);
+  try {
+    await UserModel.updateOne(
+      { _id: req.params.id },
+      { $set: { ...currentUser } }
+    );
+  } catch {
+    return res.status(500).send({ error: "Error" });
+  }
+
   res.send(currentUser);
 };
 

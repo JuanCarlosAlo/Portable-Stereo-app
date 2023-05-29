@@ -8,6 +8,7 @@ import EditProfile from '../pages/Edit-Profile/EditProfile';
 import ProtectedRoute from './ProtectedRoute';
 
 import SongDetails from '../pages/SongDetails/SongDetails';
+import Artist from '../pages/Artist/Artist';
 
 const Router = () => {
 	return (
@@ -33,7 +34,7 @@ const Router = () => {
 							</ProtectedRoute>
 						}
 					/>
-					{/* <Route path='/user/:userName' element={<UserPage />} /> */}
+					<Route path='/artist/:id' element={<Artist />} />
 					<Route path='/song/:title' element={<SongDetails />} />
 				</Route>
 			</Route>

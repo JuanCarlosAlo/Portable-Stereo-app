@@ -13,8 +13,7 @@ import {
 import { useForm } from 'react-hook-form';
 import { auth } from '../../config/firebase.config';
 import { Navigate } from 'react-router-dom';
-import { StyledProfileHeader } from '../Profile/styles';
-import SecondaryButton from '../../components/secondary-button/SecondaryButton';
+
 import { useFetch } from '../../hooks/useFetch';
 import { USERS_URLS } from '../../constants/urls';
 import { useContext, useState } from 'react';
@@ -22,6 +21,7 @@ import { AuthContext } from '../../context/Auth.context';
 import { HEADERS } from '../../constants/headers';
 import { METHODS } from '../../constants/methods';
 import SocialLogin from '../../components/social-logIn/SocialLogin';
+import HeaderBack from '../../components/header-back/HeaderBack';
 const Register = () => {
 	const { currentUser } = useContext(AuthContext);
 
@@ -41,13 +41,7 @@ const Register = () => {
 	if (error) return <h2>Error</h2>;
 	return (
 		<StyledRegister>
-			<StyledProfileHeader>
-				<SecondaryButton
-					text={'BACK'}
-					buttonIcon={'/images/button-arrow.svg'}
-					url={'/'}
-				/>
-			</StyledProfileHeader>
+			<HeaderBack url={'/'} text={'BACK'} />
 			<h2>Register</h2>
 			<SocialLogin setFetchInfo={setFetchInfo} />
 			<form

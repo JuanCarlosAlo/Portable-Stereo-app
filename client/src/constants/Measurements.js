@@ -1,4 +1,4 @@
 export const HEADER_MEASUREMENTS = {
-	HEIGHT: '80px',
+	HEIGHT: '60px',
 	MARGIN_BOTTOM: '5rem'
 };

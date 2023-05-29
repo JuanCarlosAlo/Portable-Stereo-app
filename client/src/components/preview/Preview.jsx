@@ -1,29 +1,21 @@
 import { useContext, useRef } from 'react';
-import {
-	StyledImg,
-	StyledMixtape,
-	StyledPlay,
-	StyledPreview,
-	StyledTitle
-} from './styles';
+import { StyledImg, StyledPlay, StyledPreview, StyledTitle } from './styles';
 
 import { SongContext } from '../../context/Song.context';
-import ButtonIcon from '../button-icon/ButtonIcon';
-import { useNavigate } from 'react-router-dom';
 
-const Preview = ({ type, img, title, mixtape, songData }) => {
+import { useNavigate } from 'react-router-dom';
+import PlayButton from '../play-button/PlayButton';
+
+const Preview = ({ type, img, title, songData }) => {
 	const titleElement = useRef(null);
 	// console.log(titleElement.current.scrollWidth);
 	const { setSongData } = useContext(SongContext);
 	const navigate = useNavigate();
-	if (!mixtape) {
+	if (type === 'user') {
 		return (
 			<StyledPreview>
-				<StyledPlay onClick={() => setSongData(songData.songItem)}>
-					<ButtonIcon img={'/images/play-icon.svg'} />
-				</StyledPlay>
 				<StyledImg
-					onClick={() => navigate(`/song/${title}`, { state: songData })}
+					onClick={() => navigate(`/artist/${songData._id}`)}
 					src={img}
 					alt='Preview image'
 					type={type}
@@ -33,10 +25,23 @@ const Preview = ({ type, img, title, mixtape, songData }) => {
 		);
 	} else {
 		return (
-			<StyledMixtape>
-				<StyledImg src={img} type={type} />
-				<p>{title}</p>
-			</StyledMixtape>
+			<StyledPreview>
+				<StyledPlay>
+					<PlayButton
+						setSongData={setSongData}
+						songData={songData}
+						indexValue={0}
+					/>
+				</StyledPlay>
+
+				<StyledImg
+					onClick={() => navigate(`/song/${title}`, { state: songData })}
+					src={img}
+					alt='Preview image'
+					type={type}
+				/>
+				<StyledTitle ref={titleElement}>{title}</StyledTitle>
+			</StyledPreview>
 		);
 	}
 };

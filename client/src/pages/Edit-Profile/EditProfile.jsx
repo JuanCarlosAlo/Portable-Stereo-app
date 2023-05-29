@@ -7,8 +7,9 @@ import { USERS_URLS } from '../../constants/urls';
 import { METHODS } from '../../constants/methods';
 import { HEADERS } from '../../constants/headers';
 import MainButton from '../../components/main-button/MainButton';
-import { StyledEditProfile, StyledProfileHeader } from './styles';
-import SecondaryButton from '../../components/secondary-button/SecondaryButton';
+import { StyledEditProfile } from './styles';
+
+import HeaderBack from '../../components/header-back/HeaderBack';
 
 const EditProfile = () => {
 	const { currentUser } = useContext(AuthContext);
@@ -29,13 +30,7 @@ const EditProfile = () => {
 	if (loading) return;
 	return (
 		<StyledEditProfile>
-			<StyledProfileHeader>
-				<SecondaryButton
-					text={'BACK'}
-					buttonIcon={'/images/button-arrow.svg'}
-					url={'/profile'}
-				/>
-			</StyledProfileHeader>
+			<HeaderBack url={'/profile'} text={'BACK'} />
 
 			<div>
 				<UploadPhoto
@@ -113,9 +108,7 @@ const onSubmit = async (
 				},
 				navigateTo: '/profile'
 			});
-		} catch (error) {
-			console.log(error);
-		}
+		} catch (error) {}
 	} else {
 		const usedUserName = data.find(user => user.userName === userName);
 
@@ -134,9 +127,7 @@ const onSubmit = async (
 					},
 					navigateTo: '/profile'
 				});
-			} catch (error) {
-				console.log(error);
-			}
+			} catch (error) {}
 		} else {
 			setUsedUsername('This username is already in use');
 		}

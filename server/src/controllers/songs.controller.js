@@ -7,7 +7,6 @@ const controller = {};
 controller.getAllSongs = async (req, res) => {
   const autentifiedUser = await SongModel.find();
   try {
-    console.log(autentifiedUser, req.params.id);
     res.status(200).send(autentifiedUser);
   } catch (error) {
     res.status(500).send({ error: "Error al leer la base de datos" });
@@ -67,6 +66,53 @@ controller.newSong = async (req, res) => {
 
   await newSong.save();
   res.end();
+};
+
+controller.newAlbum = async (req, res) => {
+  const newDate = Date.now();
+
+  const { title, artist, cover, likes, artistId, replays } = req.body;
+  const songItem = req.body.songItem.map((song) => {
+    return {
+      _id: v4(),
+      date: newDate,
+      songTitle: song.songTitle,
+      artist: song.artist,
+      songCover: song.songCover,
+      songLikes: song.songLikes,
+      soundFile: song.soundFile,
+      artistId: song.artistId,
+      replays: song.replays,
+      date: newDate,
+      type: song.type,
+    };
+  });
+
+  res.end();
+  const newAlbum = new SongModel({
+    _id: v4(),
+    title,
+    artist,
+    cover,
+    likes,
+    artistId,
+    replays,
+    date: newDate,
+    songItem,
+  });
+  const currentUserUpdated = await UserModel.findById(artistId);
+  await currentUserUpdated.uploads.albumsUploads.unshift(newAlbum);
+  try {
+    await UserModel.updateOne(
+      { _id: artistId },
+      { $set: { ...currentUserUpdated } }
+    );
+    await newAlbum.save();
+    res.end();
+  } catch {
+    return res.status(500).send({ error: "Error" });
+  }
+  await newAlbum.save();
 };
 
 module.exports = controller;

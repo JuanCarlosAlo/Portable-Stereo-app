@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
-import { HEADER_MEASUREMENTS } from '../../constants/Measurements';
+import { HEADER_MEASUREMENTS } from '../../constants/measurements';
 
 const StyledHeader = styled.header`
 	position: fixed;
@@ -14,6 +14,7 @@ const StyledHeader = styled.header`
 	padding-right: 2rem;
 	height: ${HEADER_MEASUREMENTS.HEIGHT};
 	margin-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
+	z-index: 10;
 `;
 
 const StyledHeaderLogo = styled.h1`

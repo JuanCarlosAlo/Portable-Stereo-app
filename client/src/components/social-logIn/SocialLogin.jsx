@@ -37,9 +37,7 @@ const registerWithGoogle = async setFetchInfo => {
 			},
 			navigateTo: '/'
 		});
-	} catch (error) {
-		console.log(error);
-	}
+	} catch (error) {}
 };
 
 export default SocialLogin;

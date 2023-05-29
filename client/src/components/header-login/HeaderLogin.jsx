@@ -6,7 +6,7 @@ const HeaderLogin = ({ userData }) => {
 	return (
 		<StyledHeader>
 			<Link to='/'>
-				<StyledHeaderLogo>LOGO</StyledHeaderLogo>
+				<StyledHeaderLogo>dass</StyledHeaderLogo>
 			</Link>
 
 			<Link to={'/profile'}>

@@ -49,26 +49,7 @@ const StyledSongName = styled.p`
 const StyledArtistInfoContainer = styled.div`
 	width: 60%;
 `;
-const StyledDurationContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-`;
-const StyledTime = styled.p`
-	display: none;
-	margin: 0;
-	padding: 0;
-	font-family: Digital7;
-	color: ${COLORS.MAIN};
-	letter-spacing: 0.2rem;
-	text-align: center;
-	@media screen and (min-width: 468px) {
-		display: block;
-	}
-`;
-const StyledCurrentTime = styled(StyledTime)`
-	font-size: 1rem;
-`;
+
 const StyledControlsContainer = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -107,9 +88,6 @@ export {
 	StyledSongInfo,
 	StyledArtistName,
 	StyledSongName,
-	StyledDurationContainer,
-	StyledTime,
-	StyledCurrentTime,
 	StyledArtistInfoContainer,
 	StyledButton,
 	StyledButtonsContainer,

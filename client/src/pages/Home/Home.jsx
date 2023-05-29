@@ -22,21 +22,33 @@ const Home = () => {
 
 	const popularMusic = sortDataSliceTen(data.allSongs, 'replays');
 	const latestrMusic = sortDataSliceTen(data.allSongs, 'date');
+	const allArtist = sortDataSliceTen(
+		data.allUsers.filter(user => user.artist === true),
+		'likes.othersLikes'
+	);
+	console.log(popularMusic);
 
 	return (
 		<StyledHome>
 			{currentUser ? <HeaderLogin userData={currentUser} /> : <HeaderNoLogin />}
-			{!currentUser && <Banner />}
+			{!currentUser ? (
+				<>
+					<Banner />
+				</>
+			) : (
+				<Section
+					title={ARTICLE_TITLES.RECENTLY_PLAYED}
+					allData={currentUser.recentlyListen}
+					url={'/show-all'}
+				/>
+			)}
 			<Section
 				title={ARTICLE_TITLES.RECENTLY_UPLOADED}
 				allData={latestrMusic}
 			/>
-			<Section title={ARTICLE_TITLES.POPULAR} allData={popularMusic} />
-			<Section
-				title={ARTICLE_TITLES.RECENTLY_PLAYED}
-				allData={data.allUsers}
-				url={'/show-all'}
-			/>
+			<Section title={ARTICLE_TITLES.POPULAR} allData={allArtist} />
+
+			<Section title={ARTICLE_TITLES.TOP_MUSIC} allData={popularMusic} />
 		</StyledHome>
 	);
 };

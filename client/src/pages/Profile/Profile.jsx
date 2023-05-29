@@ -1,11 +1,9 @@
 import { signOut } from 'firebase/auth';
 
-import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 import {
 	StyledButton,
 	StyledMainProfileContentContainer,
 	StyledProfile,
-	StyledProfileHeader,
 	StyledProfileImage,
 	StyledUsername
 } from './styles';
@@ -13,6 +11,7 @@ import { auth } from '../../config/firebase.config';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/Auth.context';
+import HeaderBack from '../../components/header-back/HeaderBack';
 
 const Profile = () => {
 	const { currentUser } = useContext(AuthContext);
@@ -20,14 +19,12 @@ const Profile = () => {
 	if (!currentUser) return;
 	return (
 		<StyledProfile>
-			<StyledProfileHeader>
-				<SecondaryButton
-					text={'BACK'}
-					buttonIcon={'/images/button-arrow.svg'}
-					url={'/'}
-				/>
-				<SecondaryButton text={'EDIT'} url={'/profile-edit'} />
-			</StyledProfileHeader>
+			<HeaderBack
+				url={'/'}
+				text={'BACK'}
+				secondaryText={'EDIT'}
+				secondaryUrl={'/profile-edit'}
+			/>
 
 			<StyledMainProfileContentContainer>
 				<StyledProfileImage src={currentUser.profileImg} alt='' />

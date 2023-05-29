@@ -29,7 +29,6 @@ export const useFetch = initialFetch => {
 		fetchData(fetchInfo, setFetchStatus, controller.signal, navigate);
 		return () => controller.abort();
 	}, [fetchInfo]);
-	console.log(fetchInfo);
 
 	return { ...fetchStatus, setFetchInfo };
 };
