@@ -18,6 +18,7 @@ const StyledHeader = styled.header`
 `;
 
 const StyledHeaderLogo = styled.h1`
+	font-family: Red-Seven;
 	font-size: 1rem;
 `;
 

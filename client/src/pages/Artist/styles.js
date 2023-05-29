@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
 
 const StyledArtistPage = styled.div`
-	padding-top: 6rem;
+	padding-top: 4rem;
 `;
 
 const StyledArtistHeader = styled.div`
@@ -13,6 +13,7 @@ const StyledArtistHeader = styled.div`
 	width: 100%;
 	background-image: url(${({ bgimg }) => bgimg});
 	background-size: cover;
+	background-position: center;
 	&::after {
 		content: '';
 		position: absolute;

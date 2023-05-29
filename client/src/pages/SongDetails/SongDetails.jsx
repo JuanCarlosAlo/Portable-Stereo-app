@@ -3,21 +3,19 @@ import {
 	SongArtist,
 	SongTitle,
 	StyledPlayButtonContainer,
-	StyledSongContainer,
 	StyledSongDetailsPage,
 	StyledSongHeader,
 	StyledSongInfo,
-	StyledSongPlayContainer,
 	StyledsongHeaderImg
 } from './styles';
 import HeaderBack from '../../components/header-back/HeaderBack';
-import { useContext } from 'react';
-import { SongContext } from '../../context/Song.context';
+
 import PlayButton from '../../components/play-button/PlayButton';
+
+import SongContainer from '../../components/song-container/SongContainer';
 import { formatCompactNumber } from '../../utils/compactNumbers';
 
 const SongDetails = () => {
-	const { setSongData } = useContext(SongContext);
 	const { state } = useLocation();
 
 	if (!state) return <Navigate to={'/'} />;
@@ -34,26 +32,18 @@ const SongDetails = () => {
 					<SongArtist>{songDate}</SongArtist>
 				</StyledSongInfo>
 				<StyledPlayButtonContainer>
-					<PlayButton
-						setSongData={setSongData}
-						songData={state}
-						indexValue={0}
-					/>
+					<PlayButton songData={state} indexValue={0} />
 				</StyledPlayButtonContainer>
 			</StyledSongHeader>
 			<div>
 				{state.songItem.map((song, index) => (
-					<StyledSongContainer key={song._id}>
-						<p>{song.songTitle}</p>
-						<StyledSongPlayContainer>
-							<p>{formatCompactNumber(song.replays)}</p>
-							<PlayButton
-								setSongData={setSongData}
-								songData={state}
-								indexValue={index}
-							/>
-						</StyledSongPlayContainer>
-					</StyledSongContainer>
+					<SongContainer
+						key={song._id}
+						index={index}
+						title={song.songTitle}
+						replays={formatCompactNumber(song.replays)}
+						songData={state}
+					/>
 				))}
 			</div>
 		</StyledSongDetailsPage>

@@ -6,10 +6,14 @@ import { useFetch } from '../../hooks/useFetch';
 import ButtonIcon from '../button-icon/ButtonIcon';
 import { StyledPlay } from './styles';
 import { AuthContext } from '../../context/Auth.context';
+import { SongContext } from '../../context/Song.context';
 
-const PlayButton = ({ setSongData, songData, indexValue }) => {
+const PlayButton = ({ songData, indexValue }) => {
+	console.log(songData);
+	const { setSongData } = useContext(SongContext);
 	const { setFetchInfo } = useFetch();
 	const { currentUser, loadingFirebase } = useContext(AuthContext);
+
 	if (loadingFirebase) return;
 	return (
 		<StyledPlay

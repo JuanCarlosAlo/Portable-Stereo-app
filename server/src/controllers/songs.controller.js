@@ -21,6 +21,15 @@ controller.getAllSongsWithUsers = async (req, res) => {
     res.status(500).send({ error: "Error al leer la base de datos" });
   }
 };
+controller.getAllSongsOfArtist = async (req, res) => {
+  const allSongs = await SongModel.find({ artistId: req.params.id });
+  const currentArtist = await UserModel.findById(req.params.id);
+  try {
+    res.status(200).send({ allSongs, currentArtist });
+  } catch (error) {
+    res.status(500).send({ error: "Error al leer la base de datos" });
+  }
+};
 
 controller.newSong = async (req, res) => {
   const newDate = Date.now();
@@ -70,11 +79,16 @@ controller.newSong = async (req, res) => {
 
 controller.newAlbum = async (req, res) => {
   const newDate = Date.now();
-
+  const albumId = v4();
   const { title, artist, cover, likes, artistId, replays } = req.body;
+  const currentUser = await UserModel.findById(artistId);
+
   const songItem = req.body.songItem.map((song) => {
+    const songId = v4();
+    currentUser.uploads.tracksUploads.unshift(songId);
+
     return {
-      _id: v4(),
+      _id: songId,
       date: newDate,
       songTitle: song.songTitle,
       artist: song.artist,
@@ -88,9 +102,8 @@ controller.newAlbum = async (req, res) => {
     };
   });
 
-  res.end();
   const newAlbum = new SongModel({
-    _id: v4(),
+    _id: albumId,
     title,
     artist,
     cover,
@@ -100,19 +113,12 @@ controller.newAlbum = async (req, res) => {
     date: newDate,
     songItem,
   });
-  const currentUserUpdated = await UserModel.findById(artistId);
-  await currentUserUpdated.uploads.albumsUploads.unshift(newAlbum);
-  try {
-    await UserModel.updateOne(
-      { _id: artistId },
-      { $set: { ...currentUserUpdated } }
-    );
-    await newAlbum.save();
-    res.end();
-  } catch {
-    return res.status(500).send({ error: "Error" });
-  }
+
+  await currentUser.uploads.albumsUploads.unshift(albumId);
+
   await newAlbum.save();
+  await currentUser.save();
+  res.send(newAlbum);
 };
 
 module.exports = controller;

@@ -6,7 +6,7 @@ const HeaderNoLogin = () => {
 	return (
 		<StyledHeader>
 			<Link to='/'>
-				<StyledHeaderLogo>LOGO</StyledHeaderLogo>
+				<StyledHeaderLogo>DASS</StyledHeaderLogo>
 			</Link>
 
 			<nav>

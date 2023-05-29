@@ -11,5 +11,6 @@ export const SONGS_URLS = {
 	ALL: BASE + 'songs/',
 	POST: BASE + 'songs/new-song',
 	PATCH: BASE + 'songs/',
-	EVERYTHING: BASE + 'songs/everything'
+	EVERYTHING: BASE + 'songs/everything',
+	ARTIST: BASE + 'songs/artist/'
 };

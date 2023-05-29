@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { HEADER_MEASUREMENTS } from '../../constants/Measurements';
+
 import { COLORS } from '../../constants/colors';
+import { HEADER_MEASUREMENTS } from '../../constants/measurements';
 
 const StyledSongDetailsPage = styled.div`
 	padding-top: ${HEADER_MEASUREMENTS.HEIGHT};
@@ -33,13 +34,6 @@ const SongArtist = styled.p`
 	font-size: 0.8rem;
 `;
 
-const StyledSongPlayContainer = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	gap: 1rem;
-`;
-
 const StyledSongHeader = styled.div`
 	display: flex;
 	justify-content: space-between;
@@ -56,24 +50,12 @@ const StyledPlayButtonContainer = styled.div`
 	margin-bottom: 1rem;
 `;
 
-const StyledSongContainer = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding-left: 1rem;
-	padding-right: 1rem;
-
-	border-radius: 0.5rem;
-`;
-
 export {
-	StyledSongHeader,
-	StyledSongDetailsPage,
-	StyledsongHeaderImg,
-	StyledSongContainer,
-	SongTitle,
 	SongArtist,
+	SongTitle,
 	StyledPlayButtonContainer,
+	StyledSongDetailsPage,
+	StyledSongHeader,
 	StyledSongInfo,
-	StyledSongPlayContainer
+	StyledsongHeaderImg
 };
