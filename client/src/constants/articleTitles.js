@@ -1,8 +1,7 @@
 export const ARTICLE_TITLES = {
 	RECENTLY_PLAYED: 'Recently Played',
 	MIXTAPES: 'Mixtapes',
-	LIKED_ALBUMS: 'Liked Albums',
-	LIKED_ARTIST: 'Liked Artist',
+	LIKED: 'Liked',
 	FEATURED: 'Featured',
 	TOP_MUSIC: 'Top Music',
 	DISCOGRAPHY: 'Discography',

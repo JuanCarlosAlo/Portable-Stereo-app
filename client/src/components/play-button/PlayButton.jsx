@@ -9,7 +9,6 @@ import { AuthContext } from '../../context/Auth.context';
 import { SongContext } from '../../context/Song.context';
 
 const PlayButton = ({ songData, indexValue }) => {
-	console.log(songData);
 	const { setSongData } = useContext(SongContext);
 	const { setFetchInfo } = useFetch();
 	const { currentUser, loadingFirebase } = useContext(AuthContext);
@@ -38,7 +37,7 @@ const handleClick = (
 	setFetchInfo,
 	currentUser
 ) => {
-	setSongData({ song: songData.songItem, index: indexValue });
+	if (songData) setSongData({ song: songData.songItem, index: indexValue });
 	if (currentUser) {
 		setFetchInfo({
 			url: USERS_URLS.RECENTLYPLAYED_UPDATE + currentUser.uid,

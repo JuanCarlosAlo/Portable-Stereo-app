@@ -4,7 +4,8 @@ export const USERS_URLS = {
 	ALL: BASE + 'users/',
 	POST: BASE + 'users/create-user',
 	PATCH: BASE + 'users/',
-	RECENTLYPLAYED_UPDATE: BASE + 'users/recently-played/'
+	RECENTLYPLAYED_UPDATE: BASE + 'users/recently-played/',
+	USER_DATA: BASE + 'users/user-data/'
 };
 
 export const SONGS_URLS = {

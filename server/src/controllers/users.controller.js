@@ -32,12 +32,10 @@ controller.createUser = async (req, res) => {
     artist,
     recentlyListen,
     mixtapes,
-    selfLikes,
-    othersLikes,
+    likes,
     selfFollows,
     othersFollows,
-    tracksUploads,
-    albumsUploads,
+    uploads,
     type,
   } = req.body;
 
@@ -54,18 +52,12 @@ controller.createUser = async (req, res) => {
     accountCreated: newDate,
     totalListeners: 0,
     mixtapes,
-    likes: {
-      selfLikes,
-      othersLikes,
-    },
+    likes,
     follows: {
       selfFollows,
       othersFollows,
     },
-    uploads: {
-      tracksUploads,
-      albumsUploads,
-    },
+    uploads,
     type,
   });
 
@@ -94,10 +86,11 @@ controller.updateUser = async (req, res) => {
 };
 
 controller.updateRecentlyListen = async (req, res) => {
-  const songToUpload = await SongModel.findById(req.body.id);
+  const songToUpload = req.body.id;
   const currentUser = await UserModel.findById(req.params.id);
+
   const alreadyListened = currentUser.recentlyListen.find(
-    (song) => song._id === req.body.id
+    (song) => song === req.body.id
   );
   if (alreadyListened) {
     const index = currentUser.recentlyListen.indexOf(alreadyListened);
@@ -107,16 +100,39 @@ controller.updateRecentlyListen = async (req, res) => {
     currentUser.recentlyListen.pop();
   }
   await currentUser.recentlyListen.unshift(songToUpload);
-  try {
-    await UserModel.updateOne(
-      { _id: req.params.id },
-      { $set: { ...currentUser } }
-    );
-  } catch {
-    return res.status(500).send({ error: "Error" });
-  }
+  console.log(currentUser);
+  currentUser.save();
 
-  res.send(currentUser);
+  res.end();
+};
+
+controller.getUserData = async (req, res) => {
+  const currentUser = await UserModel.findById(req.params.id);
+  const allUsers = await UserModel.find();
+  const allSongs = await SongModel.find();
+  const followinArtist = currentUser.follows.selfFollows.map(
+    async (song) => await SongModel.findById(song)
+  );
+  const likes = currentUser.likes.map(
+    async (song) => await SongModel.findById(song)
+  );
+  const recentlyListen = currentUser.recentlyListen.map(
+    async (song) => await SongModel.findById(song)
+  );
+  const recentlyListenPromises = await Promise.all(recentlyListen);
+  const followinArtistPromises = await Promise.all(followinArtist);
+  const likedPromises = await Promise.all(likes);
+  try {
+    res.status(200).send({
+      recentlyListenPromises,
+      followinArtistPromises,
+      likedPromises,
+      allUsers,
+      allSongs,
+    });
+  } catch (error) {
+    res.status(500).send({ error: "Error al leer la base de datos" });
+  }
 };
 
 module.exports = controller;

@@ -20,7 +20,7 @@ const SongDetails = () => {
 
 	if (!state) return <Navigate to={'/'} />;
 	const songDate = new Date(state.date).toLocaleDateString();
-
+	console.log(state);
 	return (
 		<StyledSongDetailsPage>
 			<HeaderBack url={'/'} text={'BACK'} />

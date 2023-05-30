@@ -12,18 +12,12 @@ const UsersScheme = mongoose.Schema(
     accountCreated: Number,
     totalListeners: Number,
     mixtapes: Array,
-    likes: {
-      selfLikes: Array,
-      othersLikes: Number,
-    },
+    likes: Array,
     follows: {
       selfFollows: Array,
       othersFollows: Number,
     },
-    uploads: {
-      tracksUploads: Array,
-      albumsUploads: Array,
-    },
+    uploads: Array,
     type: String,
   },
   {

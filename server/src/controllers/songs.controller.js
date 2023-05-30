@@ -12,15 +12,7 @@ controller.getAllSongs = async (req, res) => {
     res.status(500).send({ error: "Error al leer la base de datos" });
   }
 };
-controller.getAllSongsWithUsers = async (req, res) => {
-  const allSongs = await SongModel.find();
-  const allUsers = await UserModel.find();
-  try {
-    res.status(200).send({ allSongs, allUsers });
-  } catch (error) {
-    res.status(500).send({ error: "Error al leer la base de datos" });
-  }
-};
+
 controller.getAllSongsOfArtist = async (req, res) => {
   const allSongs = await SongModel.find({ artistId: req.params.id });
   const currentArtist = await UserModel.findById(req.params.id);
@@ -114,7 +106,7 @@ controller.newAlbum = async (req, res) => {
     songItem,
   });
 
-  await currentUser.uploads.albumsUploads.unshift(albumId);
+  await currentUser.uploads.unshift(albumId);
 
   await newAlbum.save();
   await currentUser.save();
