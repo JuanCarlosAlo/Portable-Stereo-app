@@ -4,8 +4,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
 import { useFetch } from '../../hooks/useFetch';
 import { SONGS_URLS } from '../../constants/urls';
-import HeaderLogin from '../../components/header-login/HeaderLogin';
-import HeaderNoLogin from '../../components/header-noLogin/HeaderNoLogin';
+
 import {
 	StyledArtistHeader,
 	StyledArtistPage,
@@ -26,20 +25,20 @@ const Artist = () => {
 	const { data, loading, error } = useFetch({ url: SONGS_URLS.ARTIST + id });
 	if (loadingFirebase || loading || error) return <Loading />;
 	if (currentUser && currentUser.uid === id) return <Navigate to={'/'} />;
+
 	const allArtistSongs = data.allSongs.map(song =>
 		song.songItem.map(songItem => {
 			return songItem;
 		})
 	);
 	const popularSongs = {
-		songItem: sortDataSliceTen(allArtistSongs[0], 'songLikes')
+		songItem: sortDataSliceTen(allArtistSongs[0], 'replays')
 	};
 	const discography = sortDataSliceTen(data.allSongs, 'date');
 	const featured = sortDataSliceTen(data.allSongs, 'likes');
 
 	return (
 		<StyledArtistPage>
-			{currentUser ? <HeaderLogin userData={currentUser} /> : <HeaderNoLogin />}
 			<div>
 				<StyledArtistHeader bgimg={data.currentArtist.headerImg}>
 					<StyledArtistProfileImg src={data.currentArtist.profileImg} />

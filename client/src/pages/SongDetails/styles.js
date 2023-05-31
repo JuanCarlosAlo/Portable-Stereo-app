@@ -4,7 +4,7 @@ import { COLORS } from '../../constants/colors';
 import { HEADER_MEASUREMENTS } from '../../constants/measurements';
 
 const StyledSongDetailsPage = styled.div`
-	padding-top: ${HEADER_MEASUREMENTS.HEIGHT};
+	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
 	padding-left: 1rem;
 	padding-right: 1rem;
 	margin-bottom: calc(100px + 2rem);

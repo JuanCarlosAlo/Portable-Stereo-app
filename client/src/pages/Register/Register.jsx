@@ -42,7 +42,7 @@ const Register = () => {
 	return (
 		<StyledRegister>
 			<HeaderBack url={'/'} text={'BACK'} />
-			<h2>Register</h2>
+
 			<SocialLogin setFetchInfo={setFetchInfo} />
 			<form
 				onSubmit={handleSubmit((formData, e) =>

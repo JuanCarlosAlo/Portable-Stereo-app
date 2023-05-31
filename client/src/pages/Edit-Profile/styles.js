@@ -6,10 +6,9 @@ const StyledEditProfile = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-
 	padding-left: 1rem;
 	padding-right: 1rem;
-	padding-top: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
+	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
 `;
 
 const StyledProfileHeader = styled.header`

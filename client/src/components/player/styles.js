@@ -4,7 +4,7 @@ import { PLAYER } from '../../constants/player';
 
 const StyledPlayerContainer = styled.div`
 	position: fixed;
-	bottom: 0;
+	bottom: 34px;
 	left: 0;
 	display: flex;
 	flex-direction: column;

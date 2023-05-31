@@ -4,13 +4,13 @@ import Section from '../../components/section/Section';
 
 import { ARTICLE_TITLES } from '../../constants/articleTitles';
 import { StyledHome } from './styles';
-import HeaderNoLogin from '../../components/header-noLogin/HeaderNoLogin';
+
 import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../context/Auth.context';
-import HeaderLogin from '../../components/header-login/HeaderLogin';
+
 import Loading from '../../components/loading/Loading';
 import { useFetch } from '../../hooks/useFetch';
-import { USERS_URLS } from '../../constants/urls';
+import { SONGS_URLS, USERS_URLS } from '../../constants/urls';
 
 import { sortDataSliceTen } from '../../utils/sortData';
 
@@ -18,23 +18,24 @@ const Home = () => {
 	const { currentUser, loadingFirebase } = useContext(AuthContext);
 	const { data, loading, error, setFetchInfo } = useFetch();
 	useEffect(() => {
-		if (!currentUser) return;
-
-		setFetchInfo({ url: USERS_URLS.USER_DATA + currentUser.uid });
+		if (!currentUser) {
+			setFetchInfo({ url: SONGS_URLS.ALL });
+		} else {
+			setFetchInfo({ url: USERS_URLS.USER_DATA + currentUser.uid });
+		}
 	}, [currentUser]);
 
 	if (loadingFirebase || loading || error) return <Loading />;
 	console.log(data);
 	const popularMusic = sortDataSliceTen(data.allSongs, 'replays');
 	const latestrMusic = sortDataSliceTen(data.allSongs, 'date');
-	const allArtist = sortDataSliceTen(
+	const popularArtist = sortDataSliceTen(
 		data.allUsers.filter(user => user.artist === true),
-		'likes.othersLikes'
+		'totalListeners'
 	);
 
 	return (
 		<StyledHome>
-			{currentUser ? <HeaderLogin userData={currentUser} /> : <HeaderNoLogin />}
 			{!currentUser ? (
 				<Banner />
 			) : (
@@ -50,7 +51,7 @@ const Home = () => {
 				title={ARTICLE_TITLES.RECENTLY_UPLOADED}
 				allData={latestrMusic}
 			/>
-			<Section title={ARTICLE_TITLES.POPULAR} allData={allArtist} />
+			<Section title={ARTICLE_TITLES.POPULAR} allData={popularArtist} />
 
 			<Section title={ARTICLE_TITLES.TOP_MUSIC} allData={popularMusic} />
 		</StyledHome>

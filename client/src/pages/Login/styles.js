@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
-import { HEADER_MEASUREMENTS } from '../../constants/measurements';
+import { HEADER_MEASUREMENTS } from '../../constants/Measurements';
 
 const StyledSignIn = styled.div`
 	position: relative;
@@ -8,7 +8,7 @@ const StyledSignIn = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding-top: ${HEADER_MEASUREMENTS.HEIGHT};
+	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
 	width: 100%;
 `;
 const StyledLoginHeader = styled.header`

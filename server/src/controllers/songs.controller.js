@@ -4,10 +4,11 @@ const UserModel = require("../schemes/users.scheme");
 
 const controller = {};
 
-controller.getAllSongs = async (req, res) => {
-  const autentifiedUser = await SongModel.find();
+controller.getAllSongsAndUsers = async (req, res) => {
+  const allSongs = await SongModel.find();
+  const allUsers = await UserModel.find();
   try {
-    res.status(200).send(autentifiedUser);
+    res.status(200).send({ allSongs, allUsers });
   } catch (error) {
     res.status(500).send({ error: "Error al leer la base de datos" });
   }
@@ -77,7 +78,7 @@ controller.newAlbum = async (req, res) => {
 
   const songItem = req.body.songItem.map((song) => {
     const songId = v4();
-    currentUser.uploads.tracksUploads.unshift(songId);
+    currentUser.uploads.unshift(songId);
 
     return {
       _id: songId,
@@ -103,6 +104,7 @@ controller.newAlbum = async (req, res) => {
     artistId,
     replays,
     date: newDate,
+    type: song.type,
     songItem,
   });
 
