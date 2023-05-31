@@ -24,51 +24,51 @@ controller.getAllSongsOfArtist = async (req, res) => {
   }
 };
 
-controller.newSong = async (req, res) => {
-  const newDate = Date.now();
-  const songArrayId = v4();
-  const {
-    title,
-    songTitle,
-    artist,
-    songCover,
-    cover,
-    likes,
-    songLikes,
-    soundFile,
-    artistId,
-    replays,
-    type,
-  } = req.body;
-  const songItem = {
-    _id: songArrayId,
-    date: newDate,
-    songTitle,
-    artist,
-    songCover,
-    songLikes,
-    soundFile,
-    artistId,
-    replays,
-    date: newDate,
-    type,
-  };
+// controller.newSong = async (req, res) => {
+//   const newDate = Date.now();
+//   const songArrayId = v4();
+//   const {
+//     title,
+//     songTitle,
+//     artist,
+//     songCover,
+//     cover,
+//     likes,
+//     songLikes,
+//     soundFile,
+//     artistId,
+//     replays,
+//     type,
+//   } = req.body;
+//   const songItem = {
+//     _id: songArrayId,
+//     date: newDate,
+//     songTitle,
+//     artist,
+//     songCover,
+//     songLikes,
+//     soundFile,
+//     artistId,
+//     replays,
+//     date: newDate,
+//     type,
+//   };
 
-  const newSong = new SongModel({
-    _id: v4(),
-    title,
-    artist,
-    cover,
-    likes,
-    artistId,
-    replays,
-    date: newDate,
-    songItem,
-  });
+//   const newSong = new SongModel({
+//     _id: v4(),
+//     title,
+//     artist,
+//     cover,
+//     likes,
+//     artistId,
+//     replays,
+//     date: newDate,
+//     songItem,
+//   });
 
-  await newSong.save();
-  res.end();
-};
+//   await newSong.save();
+//   res.end();
+// };
 
 controller.newAlbum = async (req, res) => {
   const newDate = Date.now();
@@ -113,6 +113,24 @@ controller.newAlbum = async (req, res) => {
   await newAlbum.save();
   await currentUser.save();
   res.send(newAlbum);
+};
+
+controller.getSearch = async (req, res) => {
+  const keyWord = req.params.key;
+  const searchSongs = await SongModel.aggregate([
+    { $unwind: "$songItem" },
+    {
+      $match: {
+        $or: [
+          { "songItem.songTitle": new RegExp(keyWord, "i") },
+          { title: new RegExp(keyWord, "i") },
+        ],
+      },
+    },
+    { $project: { _id: 0, songItem: 1 } },
+  ]);
+
+  console.log(searchSongs);
 };
 
 module.exports = controller;
