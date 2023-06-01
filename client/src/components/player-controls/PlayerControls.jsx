@@ -22,6 +22,7 @@ const PlayerControls = ({ file, index }) => {
 	const [volumeValue, setVolumeValue] = useState(0.5);
 	const [autoplayValue, setAutoplayValue] = useState(true);
 	const [muted, setMuted] = useState(false);
+
 	const { togglePlayPause, ready, loading, playing, volume, mute } =
 		useAudioPlayer({
 			src: file[songIndex].soundFile,

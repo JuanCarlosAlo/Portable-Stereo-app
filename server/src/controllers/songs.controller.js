@@ -117,20 +117,34 @@ controller.newAlbum = async (req, res) => {
 
 controller.getSearch = async (req, res) => {
   const keyWord = req.params.key;
-  const searchSongs = await SongModel.aggregate([
+  const searchAlbum = await SongModel.find({
+    title: new RegExp(keyWord, "i"),
+  });
+  const searchBySongTitle = await SongModel.aggregate([
     { $unwind: "$songItem" },
     {
       $match: {
-        $or: [
-          { "songItem.songTitle": new RegExp(keyWord, "i") },
-          { title: new RegExp(keyWord, "i") },
-        ],
+        "songItem.songTitle": new RegExp(keyWord, "i"),
       },
     },
-    { $project: { _id: 0, songItem: 1 } },
+    {
+      $project: {
+        _id: 0,
+        songItem: 1,
+      },
+    },
   ]);
 
-  console.log(searchSongs);
+  const searchArtist = await UserModel.find({
+    userName: new RegExp(keyWord, "i"),
+  });
+
+  const songItem = searchBySongTitle.map((item) => item.songItem);
+  try {
+    res.status(200).send({ songItem, searchAlbum, searchArtist });
+  } catch (error) {
+    res.status(500).send({ error: "Error al leer la base de datos" });
+  }
 };
 
 module.exports = controller;

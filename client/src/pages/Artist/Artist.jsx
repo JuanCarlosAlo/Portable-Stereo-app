@@ -36,7 +36,7 @@ const Artist = () => {
 	};
 	const discography = sortDataSliceTen(data.allSongs, 'date');
 	const featured = sortDataSliceTen(data.allSongs, 'likes');
-
+	console.log(popularSongs);
 	return (
 		<StyledArtistPage>
 			<div>
@@ -60,7 +60,7 @@ const Artist = () => {
 						return (
 							<SongContainer
 								key={song._id}
-								songData={song}
+								songData={popularSongs}
 								title={song.songTitle}
 								replays={formatCompactNumber(song.replays)}
 								index={index}

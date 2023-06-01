@@ -37,8 +37,9 @@ const handleClick = (
 	setFetchInfo,
 	currentUser
 ) => {
+	console.log(songData);
 	if (songData) setSongData({ song: songData.songItem, index: indexValue });
-	if (currentUser) {
+	if (currentUser && songData._id) {
 		setFetchInfo({
 			url: USERS_URLS.RECENTLYPLAYED_UPDATE + currentUser.uid,
 			options: {
