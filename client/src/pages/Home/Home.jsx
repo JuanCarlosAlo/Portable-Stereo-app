@@ -44,7 +44,10 @@ const Home = () => {
 						title={ARTICLE_TITLES.RECENTLY_PLAYED}
 						allData={data.recentlyListenPromises}
 					/>
-					<Section title={ARTICLE_TITLES.LIKED} allData={data.likedPromises} />
+					<Section
+						title={ARTICLE_TITLES.FOLLOWNG_ARTIST}
+						allData={data.followinArtistPromises}
+					/>
 				</>
 			)}
 			<Section

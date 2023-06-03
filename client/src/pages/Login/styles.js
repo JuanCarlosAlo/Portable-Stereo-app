@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
-import { HEADER_MEASUREMENTS } from '../../constants/Measurements';
+import { HEADER_MEASUREMENTS } from '../../constants/measurements';
 
 const StyledSignIn = styled.div`
 	position: relative;
@@ -16,13 +16,6 @@ const StyledLoginHeader = styled.header`
 	align-items: center;
 	height: ${HEADER_MEASUREMENTS.HEIGHT};
 	margin-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
-`;
-const StyledCrossButton = styled.img`
-	position: absolute;
-	top: 1rem;
-	left: 1rem;
-	height: 20px;
-	width: 20px;
 `;
 
 const StyledInputContainer = styled.div`
@@ -56,7 +49,6 @@ const StyledInput = styled.input`
 
 	&:focus {
 		outline: none;
-		border-radius: 1rem;
 		border: 1px solid ${COLORS.MAIN};
 		caret-color: ${COLORS.MAIN};
 	}
@@ -67,7 +59,6 @@ const StyledInput = styled.input`
 
 export {
 	StyledSignIn,
-	StyledCrossButton,
 	StyledInputContainer,
 	StyledErrorText,
 	StyledInput,

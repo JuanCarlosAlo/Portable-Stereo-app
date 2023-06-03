@@ -58,8 +58,8 @@ const StyledControlsContainer = styled.div`
 const StyledButton = styled.div`
 	align-items: center;
 	justify-content: center;
-	height: 25px;
-	width: 35px;
+	height: 30px;
+	width: 40px;
 	cursor: pointer;
 	background-color: ${COLORS.GRAY};
 	display: none;

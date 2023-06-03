@@ -37,7 +37,6 @@ const handleClick = (
 	setFetchInfo,
 	currentUser
 ) => {
-	console.log(songData);
 	if (songData) setSongData({ song: songData.songItem, index: indexValue });
 	if (currentUser && songData._id) {
 		setFetchInfo({

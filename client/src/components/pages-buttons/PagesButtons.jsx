@@ -16,7 +16,7 @@ const PagesButtons = ({ userData }) => {
 						<StyledButton>Your Mixtapes</StyledButton>
 					</Link>
 				) : (
-					<Link to={'/'}>
+					<Link to={'/register'}>
 						<StyledButton>Your Mixtapes</StyledButton>
 					</Link>
 				)}

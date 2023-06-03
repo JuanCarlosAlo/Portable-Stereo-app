@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
 import { PLAYER } from '../../constants/player';
-import { HEADER_MEASUREMENTS } from '../../constants/Measurements';
+import { HEADER_MEASUREMENTS } from '../../constants/measurements';
 
 const StyledProfile = styled.div`
 	padding-left: 1rem;
 	padding-right: 1rem;
 	padding-bottom: ${PLAYER.HEIGHT};
-	padding-top: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
+	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
 `;
 
 const StyledProfileHeader = styled.header`

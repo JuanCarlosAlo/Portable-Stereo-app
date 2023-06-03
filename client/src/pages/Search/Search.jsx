@@ -1,36 +1,37 @@
 import { useFetch } from '../../hooks/useFetch';
-import { StyledSearchPage } from './styles';
-
+import {
+	StyledInputContainer,
+	StyledSearchBar,
+	StyledSearchPage
+} from './styles';
 import { SONGS_URLS } from '../../constants/urls';
-import SongContainer from '../../components/song-container/SongContainer';
-import { formatCompactNumber } from '../../utils/compactNumbers';
 
-import { useNavigate } from 'react-router-dom';
-import PlayButton from '../../components/play-button/PlayButton';
+import SearchItem from '../../components/search-item/SearchItem';
 
 const Search = () => {
 	const { data, setFetchInfo } = useFetch();
-	const navigate = useNavigate();
-	console.log(data);
 	return (
 		<StyledSearchPage>
-			Search
-			<input
-				onChange={e => handleChange(e, setFetchInfo)}
-				type='text'
-				name='search'
-			/>
+			<StyledInputContainer>
+				<StyledSearchBar
+					onChange={e => handleChange(e, setFetchInfo)}
+					type='text'
+					name='search'
+					placeholder='Search Artist, songs, albums'
+				/>
+			</StyledInputContainer>
 			{data && (
-				<div>
+				<>
 					{data.songItem && (
 						<>
 							{data.songItem.map((element, index) => {
 								return (
-									<SongContainer
+									<SearchItem
 										key={element._id}
 										songData={data}
 										title={element.songTitle}
-										replays={formatCompactNumber(element.replays)}
+										img={element.songCover}
+										type={'Song'}
 										index={index}
 									/>
 								);
@@ -39,21 +40,17 @@ const Search = () => {
 					)}
 					{data.searchAlbum && (
 						<>
-							{data.searchAlbum.map((element, index) => {
-								console.log(element);
+							{data.searchAlbum.map(element => {
 								return (
-									<div key={element._id}>
-										<p
-											onClick={() =>
-												navigate(`/song/${element.title}`, {
-													state: element
-												})
-											}
-										>
-											{element.title}
-										</p>
-										<PlayButton songData={element} indexValue={index} />
-									</div>
+									<SearchItem
+										key={element._id}
+										songData={element}
+										title={element.title}
+										img={element.cover}
+										type={'Album'}
+										index={0}
+										url={`/song/${element.title}`}
+									/>
 								);
 							})}
 						</>
@@ -62,17 +59,18 @@ const Search = () => {
 						<>
 							{data.searchArtist.map(element => {
 								return (
-									<div
-										onClick={() => navigate(`/artist/${element._id}`)}
-										key={element.uid}
-									>
-										<p>{element.userName}</p>
-									</div>
+									<SearchItem
+										key={element._id}
+										title={element.userName}
+										img={element.profileImg}
+										type={'Artist'}
+										url={`/artist/${element._id}`}
+									/>
 								);
 							})}
 						</>
 					)}
-				</div>
+				</>
 			)}
 		</StyledSearchPage>
 	);

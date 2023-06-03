@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
-import { HEADER_MEASUREMENTS } from '../../constants/Measurements';
+import { HEADER_MEASUREMENTS } from '../../constants/measurements';
 
 const StyledRegister = styled.div`
 	position: relative;
@@ -22,7 +22,7 @@ const StyledInputContainer = styled.div`
 	@media screen and (min-width: 360px) {
 	}
 `;
-const StyledErrorText = styled.p`
+const StyledErrorText = styled.label`
 	color: red;
 `;
 
@@ -43,7 +43,7 @@ const StyledInput = styled.input`
 
 	&:focus {
 		outline: none;
-		border-radius: 1rem;
+
 		border: 1px solid ${COLORS.MAIN};
 		caret-color: ${COLORS.MAIN};
 	}

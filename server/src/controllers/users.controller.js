@@ -111,28 +111,72 @@ controller.getUserData = async (req, res) => {
   const allUsers = await UserModel.find();
   const allSongs = await SongModel.find();
   const followinArtist = currentUser.follows.selfFollows.map(
-    async (song) => await SongModel.findById(song)
-  );
-  const likes = currentUser.likes.map(
-    async (song) => await SongModel.findById(song)
+    async (artist) => await UserModel.findById(artist)
   );
   const recentlyListen = currentUser.recentlyListen.map(
     async (song) => await SongModel.findById(song)
   );
   const recentlyListenPromises = await Promise.all(recentlyListen);
   const followinArtistPromises = await Promise.all(followinArtist);
-  const likedPromises = await Promise.all(likes);
+
   try {
     res.status(200).send({
       recentlyListenPromises,
       followinArtistPromises,
-      likedPromises,
       allUsers,
       allSongs,
     });
   } catch (error) {
     res.status(500).send({ error: "Error al leer la base de datos" });
   }
+};
+
+controller.getMixtapes = async (req, res) => {
+  const currentUser = await UserModel.findById(req.params.id);
+  const likedMusic = await Promise.all(
+    currentUser.likes.map(async (song) => {
+      const songItem = await SongModel.findOne({ "songItem._id": song });
+      if (songItem) {
+        const foundSongItem = songItem.songItem.find(
+          (item) => item._id === song
+        );
+        return foundSongItem;
+      }
+    })
+  );
+
+  const likesData = {
+    title: "Liked Mixtape",
+    artist: currentUser.userName,
+    date: currentUser.accountCreated,
+    cover:
+      "https://firebasestorage.googleapis.com/v0/b/portable-stereo.appspot.com/o/liked_mixtape.svg?alt=media&token=38e1c494-bdd7-458b-bc65-04cf5bf4d286&_gl=1*1wkblad*_ga*MTc1NDYwMDMzNy4xNjgzNjI5NjE1*_ga_CW55HF8NVT*MTY4NTc5NzYzOC4zNy4xLjE2ODU3OTc2NzkuMC4wLjA.",
+    songItem: likedMusic.filter((item) => item !== undefined),
+  };
+
+  try {
+    res.status(200).send({ likesData });
+  } catch (error) {
+    res.status(500).send({ error: "Error al leer la base de datos" });
+  }
+};
+
+controller.updateLikes = async (req, res) => {
+  const songLiked = req.body.id;
+  const currentUser = await UserModel.findById(req.params.id);
+
+  const alreadyLiked = currentUser.likes.find((song) => song === req.body.id);
+  if (alreadyLiked) {
+    const index = currentUser.likes.indexOf(alreadyLiked);
+    await currentUser.likes.splice(index, 1);
+  } else {
+    await currentUser.likes.unshift(songLiked);
+  }
+
+  console.log(currentUser);
+  currentUser.save();
+
+  res.end();
 };
 
 module.exports = controller;

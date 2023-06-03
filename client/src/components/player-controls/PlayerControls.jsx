@@ -4,7 +4,6 @@ import {
 	StyledArtistInfoContainer,
 	StyledArtistName,
 	StyledButton,
-	StyledButtonLike,
 	StyledButtonPlay,
 	StyledButtonsContainer,
 	StyledControlsContainer,
@@ -15,6 +14,7 @@ import {
 	StyledSoundBar,
 	StyledSoundbarContainer
 } from './styles';
+import LikeButton from '../like-button/LikeButton';
 
 const PlayerControls = ({ file, index }) => {
 	const [songIndex, setSongIndex] = useState(index);
@@ -79,9 +79,7 @@ const PlayerControls = ({ file, index }) => {
 
 			<StyledControlsContainer>
 				<StyledButtonsContainer>
-					<StyledButtonLike>
-						<img src='/images/heart-dislike.svg' alt='pause-icon' />
-					</StyledButtonLike>
+					<LikeButton id={file[songIndex]._id} />
 					<StyledButton
 						onClick={() => {
 							if (songIndex === file.length - 1) return;

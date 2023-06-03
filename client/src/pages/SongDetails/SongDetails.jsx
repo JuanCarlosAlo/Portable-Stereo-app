@@ -43,6 +43,7 @@ const SongDetails = () => {
 						title={song.songTitle}
 						replays={formatCompactNumber(song.replays)}
 						songData={state}
+						id={song._id}
 					/>
 				))}
 			</div>

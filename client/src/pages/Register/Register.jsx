@@ -22,6 +22,7 @@ import { HEADERS } from '../../constants/headers';
 import { METHODS } from '../../constants/methods';
 import SocialLogin from '../../components/social-logIn/SocialLogin';
 import HeaderBack from '../../components/header-back/HeaderBack';
+import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 const Register = () => {
 	const { currentUser } = useContext(AuthContext);
 
@@ -42,8 +43,9 @@ const Register = () => {
 	return (
 		<StyledRegister>
 			<HeaderBack url={'/'} text={'BACK'} />
-
+			<h2>REGISTER</h2>
 			<SocialLogin setFetchInfo={setFetchInfo} />
+
 			<form
 				onSubmit={handleSubmit((formData, e) =>
 					onSubmit(formData, e, setFetchInfo, data, setVerificationError)
@@ -74,6 +76,8 @@ const Register = () => {
 				)}
 				<MainButton text={'Next'} width={'250px'} type={'submit'} />
 			</form>
+			<p>You already have an account?</p>
+			<SecondaryButton text={'Login here'} url={'/login'} />
 		</StyledRegister>
 	);
 };

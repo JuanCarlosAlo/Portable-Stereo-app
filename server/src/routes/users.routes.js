@@ -10,5 +10,7 @@ usersRoutes.get("/", controller.getUsers);
 usersRoutes.patch("/:id", controller.updateUser);
 usersRoutes.patch("/recently-played/:id", controller.updateRecentlyListen);
 usersRoutes.get("/user-data/:id", controller.getUserData);
+usersRoutes.get("/mixtapes/:id", controller.getMixtapes);
+usersRoutes.patch("/like/:id", controller.updateLikes);
 
 module.exports = usersRoutes;

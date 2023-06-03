@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import SocialLogin from '../../components/social-logIn/SocialLogin';
 import { useFetch } from '../../hooks/useFetch';
 import HeaderBack from '../../components/header-back/HeaderBack';
+import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 
 const Login = () => {
 	const {
@@ -26,6 +27,7 @@ const Login = () => {
 	return (
 		<StyledSignIn>
 			<HeaderBack url={'/'} text={'BACK'} />
+			<h2>SING IN</h2>
 			<SocialLogin setFetchInfo={setFetchInfo} />
 			<form
 				onSubmit={handleSubmit((formData, e) =>
@@ -42,7 +44,6 @@ const Login = () => {
 					/>
 					<StyledErrorText>{errors?.email?.message}</StyledErrorText>
 				</StyledInputContainer>
-
 				<StyledInputContainer>
 					<label htmlFor='password'>Password</label>
 					<StyledInput
@@ -55,6 +56,8 @@ const Login = () => {
 				</StyledInputContainer>
 				<MainButton width={'250px'} text={'Log In'} />
 			</form>
+			<p>You already have an account?</p>
+			<SecondaryButton text={'Register here'} url={'/register'} />
 		</StyledSignIn>
 	);
 };
