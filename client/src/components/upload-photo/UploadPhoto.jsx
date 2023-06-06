@@ -9,11 +9,11 @@ import { storage } from '../../config/firebase.config';
 import { StyledImg } from './styles';
 import { IMAGES } from '../../constants/imagesUrls';
 
-const UploadPhoto = ({ profileInfo, setProfile, type, currentUser }) => {
+const UploadPhoto = ({ value, setValue, keyValue, type, directory }) => {
 	return (
 		<>
-			{profileInfo.profileImg && (
-				<StyledImg type={type} src={profileInfo.profileImg} alt='' />
+			{value[keyValue] && (
+				<StyledImg type={type} src={value[keyValue]} alt='' />
 			)}
 			<form>
 				<input
@@ -21,9 +21,10 @@ const UploadPhoto = ({ profileInfo, setProfile, type, currentUser }) => {
 					onChange={e =>
 						handleLoadFile(
 							e.target.files[0],
-							setProfile,
-							profileInfo,
-							currentUser
+							setValue,
+							value,
+							keyValue,
+							directory
 						)
 					}
 				/>
@@ -32,22 +33,26 @@ const UploadPhoto = ({ profileInfo, setProfile, type, currentUser }) => {
 	);
 };
 
-const handleLoadFile = async (file, setProfile, profileInfo, currentUser) => {
-	if (profileInfo.profileImg !== IMAGES.DEFAULT_PROFILE) {
-		const storageRefDelete = ref(storage, profileInfo.profileImg);
+const handleLoadFile = async (file, setValue, value, keyValue, directory) => {
+	console.log(value[keyValue], IMAGES.DEFAULT_MIXTAPE);
+	if (
+		value[keyValue] !== IMAGES.DEFAULT_PROFILE &&
+		value[keyValue] !== IMAGES.DEFAULT_MIXTAPE
+	) {
+		console.log('delete');
+		const storageRefDelete = ref(storage, value[keyValue]);
 		try {
 			await deleteObject(storageRefDelete);
 		} catch (error) {}
 	}
 	const nameNoExtension = file.name.substring(0, file.name.lastIndexOf('.'));
 	const finalName = `${nameNoExtension}-${v4()}`;
-	const directory = currentUser.email;
 	const storageRef = ref(storage, `${directory}/${finalName}`);
 	try {
 		const upload = await uploadBytes(storageRef, file);
 		const imageURL = await getDownloadURL(storageRef);
 
-		setProfile({ ...profileInfo, profileImg: imageURL });
+		setValue({ ...value, [keyValue]: imageURL });
 	} catch (error) {}
 };
 

@@ -8,6 +8,6 @@ const StyledSMixtapesPage = styled.div`
 	align-items: center;
 	width: 100%;
 	gap: 1rem;
-	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP};
+	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
 `;
 export { StyledSMixtapesPage };

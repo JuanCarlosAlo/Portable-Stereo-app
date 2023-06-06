@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { HEADERS } from '../../constants/headers';
 import { METHODS } from '../../constants/methods';
-import { USERS_URLS } from '../../constants/urls';
+import { SONGS_URLS, USERS_URLS } from '../../constants/urls';
 import { useFetch } from '../../hooks/useFetch';
 import ButtonIcon from '../button-icon/ButtonIcon';
 import { StyledPlay } from './styles';
@@ -48,6 +48,15 @@ const handleClick = (
 			}
 		});
 	}
+
+	setFetchInfo({
+		url: SONGS_URLS.REPLAYS_UPDATE,
+		options: {
+			method: METHODS.PATCH,
+			body: JSON.stringify({ id: songData.songItem[indexValue]._id }),
+			headers: HEADERS
+		}
+	});
 };
 
 export default PlayButton;

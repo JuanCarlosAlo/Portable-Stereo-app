@@ -5,8 +5,10 @@ const UserModel = require("../schemes/users.scheme");
 const controller = {};
 
 controller.getAllSongsAndUsers = async (req, res) => {
+  console.log("test");
   const allSongs = await SongModel.find();
   const allUsers = await UserModel.find();
+
   try {
     res.status(200).send({ allSongs, allUsers });
   } catch (error) {
@@ -145,6 +147,22 @@ controller.getSearch = async (req, res) => {
   } catch (error) {
     res.status(500).send({ error: "Error al leer la base de datos" });
   }
+};
+
+controller.replays = async (req, res) => {
+  const currentSong = await SongModel.aggregate([
+    { $match: { "songItem._id": req.body.id } },
+    { $unwind: "$songItem" },
+    { $match: { "songItem._id": req.body.id } },
+    { $project: { _id: 0, songItem: 1 } },
+  ]);
+  const songItem = currentSong[0].songItem;
+
+  songItem.replays += 1;
+  await SongModel.findOneAndUpdate(
+    { "songItem._id": req.body.id },
+    { $set: { "songItem.$": songItem } }
+  );
 };
 
 module.exports = controller;

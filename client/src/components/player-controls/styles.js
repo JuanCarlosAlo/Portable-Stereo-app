@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
 
-const StyledPlayerButtons = styled.div`
+const StyledPlayerControls = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -41,7 +41,6 @@ const StyledSongName = styled.p`
 	font-size: 1rem;
 	margin: 0;
 	padding: 0;
-
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -63,6 +62,9 @@ const StyledButton = styled.div`
 	cursor: pointer;
 	background-color: ${COLORS.GRAY};
 	display: none;
+	@media screen and (min-width: 468px) {
+		display: flex;
+	}
 `;
 
 const StyledButtonPlay = styled(StyledButton)`
@@ -81,7 +83,7 @@ const StyledButtonsContainer = styled.div`
 	justify-content: flex-end;
 `;
 export {
-	StyledPlayerButtons,
+	StyledPlayerControls,
 	StyledSoundbarContainer,
 	StyledSoundBar,
 	StyledCover,

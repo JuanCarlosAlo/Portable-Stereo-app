@@ -6,9 +6,13 @@ import { useFetch } from '../../hooks/useFetch';
 import { SONGS_URLS } from '../../constants/urls';
 
 import {
+	StyledArtistContainer,
 	StyledArtistHeader,
+	StyledArtistInfo,
+	StyledArtistName,
 	StyledArtistPage,
-	StyledArtistProfileImg
+	StyledArtistProfileImg,
+	StyledBio
 } from './styles';
 import Section from '../../components/section/Section';
 import { ARTICLE_TITLES } from '../../constants/articleTitles';
@@ -16,6 +20,7 @@ import { sortDataSliceTen } from '../../utils/sortData';
 
 import SongContainer from '../../components/song-container/SongContainer';
 import { formatCompactNumber } from '../../utils/compactNumbers';
+import FollowButton from '../../components/follow-button/FollowButton';
 
 const Artist = () => {
 	const { id } = useParams();
@@ -36,23 +41,30 @@ const Artist = () => {
 	};
 	const discography = sortDataSliceTen(data.allSongs, 'date');
 	const featured = sortDataSliceTen(data.allSongs, 'likes');
-	console.log(popularSongs);
+
 	return (
 		<StyledArtistPage>
 			<div>
 				<StyledArtistHeader bgimg={data.currentArtist.headerImg}>
 					<StyledArtistProfileImg src={data.currentArtist.profileImg} />
 				</StyledArtistHeader>
-				<div>
-					<p>{data.currentArtist.userName}</p>
-					<div>
-						<p>{data.currentArtist.bio}</p>
+				<StyledArtistInfo>
+					<StyledArtistName>{data.currentArtist.userName}</StyledArtistName>
+					<StyledArtistContainer>
+						<StyledBio>{data.currentArtist.bio}</StyledBio>
 						<div>
-							<p>Followers: {data.currentArtist.follows.othersFollows}</p>
-							<p>Listeners: {data.currentArtist.totalListeners}</p>
+							<p>
+								Followers:{' '}
+								{formatCompactNumber(data.currentArtist.follows.othersFollows)}
+							</p>
+							<p>
+								Listeners:{' '}
+								{formatCompactNumber(data.currentArtist.totalListeners)}
+							</p>
+							<FollowButton id={data.currentArtist._id} />
 						</div>
-					</div>
-				</div>
+					</StyledArtistContainer>
+				</StyledArtistInfo>
 				<Section allData={featured} title={'FEATURED'} />
 				<div>
 					<p>{ARTICLE_TITLES.POPULAR}</p>
@@ -64,6 +76,7 @@ const Artist = () => {
 								title={song.songTitle}
 								replays={formatCompactNumber(song.replays)}
 								index={index}
+								id={song._id}
 							/>
 						);
 					})}

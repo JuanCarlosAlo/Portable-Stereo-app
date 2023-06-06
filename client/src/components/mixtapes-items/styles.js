@@ -6,6 +6,7 @@ const StyledMixtapeContainer = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	width: 90%;
+	padding-right: 1rem;
 	margin-left: auto;
 	margin-right: auto;
 	border: 1px solid ${COLORS.MAIN};
@@ -23,6 +24,7 @@ const StyledContent = styled.div`
 	gap: 1rem;
 	font-size: 1.2rem;
 	letter-spacing: 0.2rem;
+	cursor: pointer;
 `;
 const StyledInfoContainer = styled.div`
 	display: flex;

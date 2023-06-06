@@ -34,10 +34,11 @@ const EditProfile = () => {
 
 			<div>
 				<UploadPhoto
-					profileInfo={profileImg}
-					setProfile={setprofileImg}
+					value={profileImg}
+					setValue={setprofileImg}
 					type={'user'}
-					currentUser={currentUser}
+					keyValue={'profileImg'}
+					directory={currentUser.email}
 				/>
 			</div>
 			<form

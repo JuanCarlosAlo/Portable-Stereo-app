@@ -41,10 +41,30 @@ const StyledArtistProfileImg = styled.img`
 	border: 1px solid ${COLORS.WHITE};
 	z-index: 10;
 `;
+const StyledArtistInfo = styled.div`
+	padding-left: 1rem;
+	padding-right: 1rem;
+`;
+
+const StyledArtistContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;
+const StyledBio = styled.p`
+	width: 50%;
+	font-size: 0.8rem;
+`;
+const StyledArtistName = styled.p`
+	font-size: 1.2rem;
+`;
 
 export {
 	StyledArtistPage,
 	StyledArtistHeader,
 	StyledProfileImgContainer,
-	StyledArtistProfileImg
+	StyledArtistProfileImg,
+	StyledArtistContainer,
+	StyledBio,
+	StyledArtistInfo,
+	StyledArtistName
 };

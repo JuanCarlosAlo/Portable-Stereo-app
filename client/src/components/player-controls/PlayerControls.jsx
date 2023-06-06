@@ -8,7 +8,7 @@ import {
 	StyledButtonsContainer,
 	StyledControlsContainer,
 	StyledCover,
-	StyledPlayerButtons,
+	StyledPlayerControls,
 	StyledSongInfo,
 	StyledSongName,
 	StyledSoundBar,
@@ -68,7 +68,7 @@ const PlayerControls = ({ file, index }) => {
 	if (loading) return <div>Loading audio</div>;
 
 	return (
-		<StyledPlayerButtons>
+		<StyledPlayerControls>
 			<StyledSongInfo>
 				<StyledCover src={file[songIndex].songCover} alt='' />
 				<StyledArtistInfoContainer>
@@ -82,13 +82,18 @@ const PlayerControls = ({ file, index }) => {
 					<LikeButton id={file[songIndex]._id} />
 					<StyledButton
 						onClick={() => {
-							if (songIndex === file.length - 1) return;
-							setSongIndex(songIndex + 1);
+							if (songIndex === 0) return;
+							setSongIndex(songIndex - 1);
 						}}
 					>
 						<img src='/images/previous-icon.svg' alt='pause-icon' />
 					</StyledButton>
-					<StyledButton onClick={() => setLooping(!looping)}>Loop</StyledButton>
+					<StyledButton onClick={() => setLooping(!looping)}>
+						<img
+							src={looping ? '/images/loop.svg' : '/images/not-loop.svg'}
+							alt='pause-icon'
+						/>
+					</StyledButton>
 					<StyledButtonPlay
 						onClick={() => {
 							togglePlayPause();
@@ -102,8 +107,8 @@ const PlayerControls = ({ file, index }) => {
 					</StyledButtonPlay>
 					<StyledButton
 						onClick={() => {
-							if (songIndex === 0) return;
-							setSongIndex(songIndex - 1);
+							if (songIndex === file.length - 1) return;
+							setSongIndex(songIndex + 1);
 						}}
 					>
 						<img src='/images/next-icon.svg' alt='pause-icon' />
@@ -127,7 +132,7 @@ const PlayerControls = ({ file, index }) => {
 					/>
 				</StyledSoundbarContainer>
 			</StyledControlsContainer>
-		</StyledPlayerButtons>
+		</StyledPlayerControls>
 	);
 };
 

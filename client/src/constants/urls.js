@@ -7,7 +7,10 @@ export const USERS_URLS = {
 	RECENTLYPLAYED_UPDATE: BASE + 'users/recently-played/',
 	USER_DATA: BASE + 'users/user-data/',
 	MIXTAPES: BASE + 'users/mixtapes/',
-	LIKES_UPDATE: BASE + 'users/like/'
+	LIKES_UPDATE: BASE + 'users/like/',
+	FOLLOWS_UPDATE: BASE + 'users/follow/',
+	POST_MIXTAPE: BASE + 'users/create-mixtape/',
+	DELETE_MIXTAPE: BASE + 'users/delete-mixtape/'
 };
 
 export const SONGS_URLS = {
@@ -16,5 +19,6 @@ export const SONGS_URLS = {
 	PATCH: BASE + 'songs/',
 	EVERYTHING: BASE + 'songs/everything',
 	ARTIST: BASE + 'songs/artist/',
-	SEARCH: BASE + 'songs/get-search'
+	SEARCH: BASE + 'songs/get-search',
+	REPLAYS_UPDATE: BASE + 'songs/replays'
 };
