@@ -33,6 +33,7 @@ const Search = () => {
 										img={element.songCover}
 										type={'Song'}
 										index={index}
+										id={element._id}
 									/>
 								);
 							})}

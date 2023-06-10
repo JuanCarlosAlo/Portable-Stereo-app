@@ -1,6 +1,7 @@
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import {
 	SongArtist,
+	SongDate,
 	SongTitle,
 	StyledPlayButtonContainer,
 	StyledSongDetailsPage,
@@ -17,7 +18,7 @@ import { formatCompactNumber } from '../../utils/compactNumbers';
 
 const SongDetails = () => {
 	const { state } = useLocation();
-
+	const navigate = useNavigate();
 	if (!state) return <Navigate to={'/'} />;
 	const songDate = new Date(state.date).toLocaleDateString();
 	console.log(state);
@@ -28,8 +29,10 @@ const SongDetails = () => {
 				<StyledsongHeaderImg src={state.cover} alt='cover' />
 				<StyledSongInfo>
 					<SongTitle>{state.title}</SongTitle>
-					<SongArtist>{state.artist}</SongArtist>
-					<SongArtist>{songDate}</SongArtist>
+					<SongArtist onClick={() => navigate('/artist/' + state.artistId)}>
+						{state.artist}
+					</SongArtist>
+					<SongDate>{songDate}</SongDate>
 				</StyledSongInfo>
 				<StyledPlayButtonContainer>
 					<PlayButton songData={state} indexValue={0} />

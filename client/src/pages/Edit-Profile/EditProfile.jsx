@@ -7,7 +7,12 @@ import { USERS_URLS } from '../../constants/urls';
 import { METHODS } from '../../constants/methods';
 import { HEADERS } from '../../constants/headers';
 import MainButton from '../../components/main-button/MainButton';
-import { StyledEditProfile } from './styles';
+import {
+	StyledEditProfile,
+	StyledImgFileContainer,
+	StyledInput,
+	StyledInputContainer
+} from './styles';
 
 import HeaderBack from '../../components/header-back/HeaderBack';
 
@@ -32,7 +37,7 @@ const EditProfile = () => {
 		<StyledEditProfile>
 			<HeaderBack url={'/profile'} text={'BACK'} />
 
-			<div>
+			<StyledImgFileContainer>
 				<UploadPhoto
 					value={profileImg}
 					setValue={setprofileImg}
@@ -40,7 +45,7 @@ const EditProfile = () => {
 					keyValue={'profileImg'}
 					directory={currentUser.email}
 				/>
-			</div>
+			</StyledImgFileContainer>
 			<form
 				onSubmit={handleSubmit((formData, e) =>
 					onSubmit(
@@ -54,9 +59,9 @@ const EditProfile = () => {
 					)
 				)}
 			>
-				<div>
+				<StyledInputContainer>
 					<label htmlFor='userName'>UserName</label>
-					<input
+					<StyledInput
 						type='text'
 						name='userName'
 						id='userName'
@@ -64,17 +69,17 @@ const EditProfile = () => {
 						{...register('userName')}
 					/>
 					{usedUsername && <p>{usedUsername}</p>}
-				</div>
-				<div>
+				</StyledInputContainer>
+				<StyledInputContainer>
 					<label htmlFor='bio'>Bio</label>
-					<input
+					<StyledInput
 						type='text'
 						name='bio'
 						id='bio'
 						defaultValue={currentUser.bio}
 						{...register('bio')}
 					/>
-				</div>
+				</StyledInputContainer>
 
 				<MainButton text={'Accept'} width={'250px'} type={'submit'} />
 			</form>

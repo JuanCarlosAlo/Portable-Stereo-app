@@ -30,7 +30,7 @@ const PlayButton = ({ songData, indexValue }) => {
 		</StyledPlay>
 	);
 };
-const handleClick = (
+const handleClick = async (
 	setSongData,
 	songData,
 	indexValue,
@@ -39,7 +39,7 @@ const handleClick = (
 ) => {
 	if (songData) setSongData({ song: songData.songItem, index: indexValue });
 	if (currentUser && songData._id) {
-		setFetchInfo({
+		await setFetchInfo({
 			url: USERS_URLS.RECENTLYPLAYED_UPDATE + currentUser.uid,
 			options: {
 				method: METHODS.PATCH,
@@ -49,7 +49,7 @@ const handleClick = (
 		});
 	}
 
-	setFetchInfo({
+	await setFetchInfo({
 		url: SONGS_URLS.REPLAYS_UPDATE,
 		options: {
 			method: METHODS.PATCH,

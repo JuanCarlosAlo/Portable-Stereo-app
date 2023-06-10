@@ -12,7 +12,10 @@ import {
 	StyledArtistName,
 	StyledArtistPage,
 	StyledArtistProfileImg,
-	StyledBio
+	StyledBar,
+	StyledBio,
+	StyledPopularContainer,
+	StyledTitleContainer
 } from './styles';
 import Section from '../../components/section/Section';
 import { ARTICLE_TITLES } from '../../constants/articleTitles';
@@ -67,19 +70,24 @@ const Artist = () => {
 				</StyledArtistInfo>
 				<Section allData={featured} title={'FEATURED'} />
 				<div>
-					<p>{ARTICLE_TITLES.POPULAR}</p>
-					{popularSongs.songItem.map((song, index) => {
-						return (
-							<SongContainer
-								key={song._id}
-								songData={popularSongs}
-								title={song.songTitle}
-								replays={formatCompactNumber(song.replays)}
-								index={index}
-								id={song._id}
-							/>
-						);
-					})}
+					<StyledTitleContainer>
+						<p>{ARTICLE_TITLES.POPULAR}</p>
+						<StyledBar></StyledBar>
+					</StyledTitleContainer>
+					<StyledPopularContainer>
+						{popularSongs.songItem.map((song, index) => {
+							return (
+								<SongContainer
+									key={song._id}
+									songData={popularSongs}
+									title={song.songTitle}
+									replays={formatCompactNumber(song.replays)}
+									index={index}
+									id={song._id}
+								/>
+							);
+						})}
+					</StyledPopularContainer>
 				</div>
 				<Section allData={discography} title={ARTICLE_TITLES.DISCOGRAPHY} />
 			</div>

@@ -32,11 +32,6 @@ const StyledSongInfo = styled.div`
 const SongArtist = styled.p`
 	margin: 0;
 	font-size: 0.8rem;
-	cursor: pointer;
-`;
-const SongDate = styled.p`
-	margin: 0;
-	font-size: 0.8rem;
 `;
 
 const StyledSongHeader = styled.div`
@@ -55,6 +50,36 @@ const StyledPlayButtonContainer = styled.div`
 	margin-bottom: 1rem;
 `;
 
+const StyledEditButtonsContainer = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 2rem;
+	margin-bottom: 2rem;
+	border-bottom: 1px solid ${COLORS.MAIN};
+`;
+
+const StyledEditButton = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.5rem;
+	color: ${COLORS.MAIN};
+	font-weight: 800;
+	max-width: 350px;
+	cursor: pointer;
+	&:hover {
+		color: ${COLORS.WHITE};
+	}
+`;
+
+const StyledMixtapeSong = styled.div`
+	display: flex;
+	align-items: center;
+	width: 100%;
+	gap: 1rem;
+`;
+
 export {
 	SongArtist,
 	SongTitle,
@@ -63,5 +88,7 @@ export {
 	StyledSongHeader,
 	StyledSongInfo,
 	StyledsongHeaderImg,
-	SongDate
+	StyledEditButtonsContainer,
+	StyledEditButton,
+	StyledMixtapeSong
 };

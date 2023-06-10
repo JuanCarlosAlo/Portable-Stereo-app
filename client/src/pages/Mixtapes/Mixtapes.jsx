@@ -16,15 +16,16 @@ const Mixtapes = () => {
 	const { data, loading, error } = useFetch({
 		url: USERS_URLS.MIXTAPES + id
 	});
-	if (loading || error) return <Loading />;
 
+	if (loading || error) return <Loading />;
+	console.log(data);
 	return (
 		<StyledSMixtapesPage>
 			<HeaderBack
 				text={'BACK'}
 				url={'/'}
 				secondaryText={'+ MIXTAPE'}
-				secondaryUrl={'/create-mixtape/' + id}
+				secondaryUrl={'/create-mixtape'}
 			/>
 			<MixtapesItems
 				title={'Liked mixtape'}
@@ -33,9 +34,9 @@ const Mixtapes = () => {
 				cover={IMAGES.LIKES_MIXTAPE}
 				type={'likes'}
 			/>
-			{data.userMixtapes && (
+			{data.allMixtapes && (
 				<>
-					{data.userMixtapes.map(mixtape => (
+					{data.allMixtapes.map(mixtape => (
 						<MixtapesItems
 							key={mixtape._id}
 							title={mixtape.title}
@@ -44,6 +45,7 @@ const Mixtapes = () => {
 							cover={mixtape.cover}
 							edit={true}
 							id={mixtape._id}
+							url={'/mixtapes/' + currentUser._id}
 						/>
 					))}
 				</>

@@ -13,7 +13,7 @@ const LikeButton = ({ id }) => {
 	const { currentUser, loadingFirebase } = useContext(AuthContext);
 	const navigate = useNavigate();
 	if (loadingFirebase) return;
-	const alreadyLiked = currentUser.likes.find(song => song === id);
+	const alreadyLiked = currentUser.likes.songItem.find(song => song === id);
 
 	return (
 		<StyledLikeButton

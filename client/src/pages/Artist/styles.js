@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
+import { HEADER_MEASUREMENTS } from '../../constants/Measurements';
 
 const StyledArtistPage = styled.div`
 	padding-top: 4rem;
+	margin-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
 `;
 
 const StyledArtistHeader = styled.div`
@@ -58,6 +60,32 @@ const StyledArtistName = styled.p`
 	font-size: 1.2rem;
 `;
 
+const StyledTitleContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 90%;
+	height: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+`;
+
+const StyledBar = styled.div`
+	width: 20%;
+	height: 1px;
+	background-color: ${COLORS.MAIN};
+	@media screen and (min-width: 768px) {
+		width: 60%;
+	}
+`;
+
+const StyledPopularContainer = styled.div`
+	padding-left: 1rem;
+	padding-right: 1rem;
+	height: 320px;
+	overflow: hidden;
+`;
+
 export {
 	StyledArtistPage,
 	StyledArtistHeader,
@@ -66,5 +94,8 @@ export {
 	StyledArtistContainer,
 	StyledBio,
 	StyledArtistInfo,
-	StyledArtistName
+	StyledArtistName,
+	StyledTitleContainer,
+	StyledBar,
+	StyledPopularContainer
 };

@@ -10,7 +10,11 @@ export const USERS_URLS = {
 	LIKES_UPDATE: BASE + 'users/like/',
 	FOLLOWS_UPDATE: BASE + 'users/follow/',
 	POST_MIXTAPE: BASE + 'users/create-mixtape/',
-	DELETE_MIXTAPE: BASE + 'users/delete-mixtape/'
+	DELETE_MIXTAPE: BASE + 'users/delete-mixtape/',
+	ADD_TO_MIXTAPE: BASE + 'users/add-to-mixtape/',
+	GET_MIXTAPE_SONGS: BASE + 'users/mixtape-song/',
+	EDIT_MIXTAPE: BASE + 'users/edit-mixtape/',
+	DELETE_SONG_FROM_MIXTAPE: BASE + 'users/delete-from-mixtape/'
 };
 
 export const SONGS_URLS = {

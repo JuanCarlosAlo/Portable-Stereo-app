@@ -12,6 +12,7 @@ import Artist from '../pages/Artist/Artist';
 import Mixtapes from '../pages/Mixtapes/Mixtapes';
 import Search from '../pages/Search/Search';
 import CreateMixtape from '../pages/Create Mixtape/CreateMixtape';
+import MixtapeDetails from '../pages/MixtapeDetails/MixtapeDetails';
 
 const Router = () => {
 	return (
@@ -39,6 +40,7 @@ const Router = () => {
 					/>
 					<Route path='/artist/:id' element={<Artist />} />
 					<Route path='/song/:title' element={<SongDetails />} />
+					<Route path='/mixtape/:id' element={<MixtapeDetails />} />
 					<Route
 						path='/mixtapes/:id'
 						element={
@@ -48,7 +50,7 @@ const Router = () => {
 						}
 					/>
 					<Route
-						path='/create-mixtape/:id'
+						path='/create-mixtape'
 						element={
 							<ProtectedRoute>
 								<CreateMixtape />

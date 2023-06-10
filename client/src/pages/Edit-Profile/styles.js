@@ -6,6 +6,7 @@ const StyledEditProfile = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	padding-left: 1rem;
 	padding-right: 1rem;
 	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
@@ -47,10 +48,61 @@ const StyledButton = styled.button`
 		color: ${COLORS.BLACK};
 	}
 `;
+const StyledInputContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 300px;
+	margin-bottom: 1rem;
+	@media screen and (min-width: 360px) {
+	}
+`;
+const StyledErrorText = styled.label`
+	color: red;
+`;
+
+const StyledImgFileContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 4rem;
+`;
+
+const StyledInput = styled.input`
+	background-color: transparent;
+	border: none;
+	background-image: none;
+	background-color: transparent;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	width: 100%;
+	border-bottom: 1px solid ${COLORS.MAIN};
+	height: 3rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	color: ${COLORS.WHITE};
+
+	&:focus {
+		outline: none;
+
+		border: 1px solid ${COLORS.MAIN};
+		caret-color: ${COLORS.MAIN};
+	}
+	::placeholder {
+		color: ${COLORS.WHITE};
+	}
+`;
 
 export {
 	StyledButton,
 	StyledMainProfileContentContainer,
 	StyledEditProfile,
-	StyledProfileHeader
+	StyledProfileHeader,
+	StyledInputContainer,
+	StyledErrorText,
+	StyledInput,
+	StyledImgFileContainer
 };

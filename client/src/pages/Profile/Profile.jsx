@@ -2,10 +2,13 @@ import { signOut } from 'firebase/auth';
 
 import {
 	StyledButton,
+	StyledButtonsContainer,
+	StyledDataTitle,
 	StyledMainProfileContentContainer,
 	StyledProfile,
 	StyledProfileImage,
-	StyledUsername
+	StyledUsername,
+	Styledtext
 } from './styles';
 import { auth } from '../../config/firebase.config';
 import { useNavigate } from 'react-router-dom';
@@ -30,21 +33,24 @@ const Profile = () => {
 				<StyledProfileImage src={currentUser.profileImg} alt='' />
 				<div>
 					<StyledUsername>{currentUser.userName}</StyledUsername>
-					<p>Followers: {currentUser.likes.othersLikes}</p>
+					<StyledDataTitle>
+						Followers: {currentUser.follows.othersFollows}
+					</StyledDataTitle>
 				</div>
 			</StyledMainProfileContentContainer>
 			<div>
-				<p>{currentUser.email}</p>
-				<p>Bio</p>
-				<p>{currentUser.bio}</p>
+				<StyledDataTitle>Email</StyledDataTitle>
+				<Styledtext>{currentUser.email}</Styledtext>
+				<StyledDataTitle>Bio</StyledDataTitle>
+				<StyledDataTitle>{currentUser.bio}</StyledDataTitle>
 			</div>
 
-			<div>
+			<StyledButtonsContainer>
 				<StyledButton onClick={e => handleSubmit(navigate)}>
 					Log Out
 				</StyledButton>
 				<StyledButton>Delete Account</StyledButton>
-			</div>
+			</StyledButtonsContainer>
 		</StyledProfile>
 	);
 };

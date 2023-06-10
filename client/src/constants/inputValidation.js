@@ -22,7 +22,6 @@ export const FORM_DEFAULT_VALUES = {
 	recentlyListen: [],
 	profileImg: IMAGES.DEFAULT_PROFILE,
 	mixtapes: [],
-	likes: [],
 	selfFollows: [],
 	othersFollows: 0,
 	uploads: [],

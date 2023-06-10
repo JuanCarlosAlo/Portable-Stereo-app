@@ -7,15 +7,14 @@ import {
 	StyledMixtapeInfo,
 	StyledMixtapeTitle
 } from './styles';
+import DeleteButton from '../delete-button/DeleteButton';
 
-import DeleteButton from '../deleteButton/DeleteButton';
-
-const MixtapesItems = ({ title, allData, author, cover, edit, id }) => {
+const MixtapesItems = ({ title, allData, author, cover, edit, id, url }) => {
 	const navigate = useNavigate();
 	return (
 		<StyledMixtapeContainer>
 			<StyledContent
-				onClick={() => navigate(`/song/${title}`, { state: allData })}
+				onClick={() => navigate(`/mixtape/${allData._id}`, { state: allData })}
 			>
 				<StyledImg src={cover} alt='' />
 				<StyledInfoContainer>
@@ -23,7 +22,7 @@ const MixtapesItems = ({ title, allData, author, cover, edit, id }) => {
 					<StyledMixtapeInfo>{author}</StyledMixtapeInfo>
 				</StyledInfoContainer>
 			</StyledContent>
-			{edit && <DeleteButton id={id} />}
+			{edit && <DeleteButton id={id} title={title} url={url} />}
 		</StyledMixtapeContainer>
 	);
 };

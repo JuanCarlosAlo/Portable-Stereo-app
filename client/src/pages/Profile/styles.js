@@ -23,13 +23,24 @@ const StyledProfileHeader = styled.header`
 	height: ${HEADER_MEASUREMENTS.HEIGHT};
 `;
 const StyledUsername = styled.p`
-	font-size: 1rem;
+	font-size: 1.4rem;
 	margin: 0;
 	font-family: FotRodin-EB;
 	color: ${COLORS.MAIN};
 	@media screen and (min-width: 465px) {
 		font-size: 2rem;
 	}
+`;
+const StyledDataTitle = styled.p`
+	font-size: 1rem;
+	margin: 0;
+	font-family: FotRodin-EB;
+`;
+const Styledtext = styled.p`
+	font-size: 1rem;
+	margin: 0;
+	font-weight: 400;
+	margin-bottom: 2rem;
 `;
 
 const StyledProfileImage = styled.img`
@@ -52,6 +63,15 @@ const StyledProfileImage = styled.img`
 const StyledMainProfileContentContainer = styled.div`
 	display: flex;
 	gap: 1rem;
+	margin-bottom: 4rem;
+`;
+
+const StyledButtonsContainer = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
+	padding-top: 4rem;
 `;
 
 const StyledButton = styled.button`
@@ -59,8 +79,10 @@ const StyledButton = styled.button`
 	justify-content: center;
 	gap: 1rem;
 	align-items: center;
+
 	padding: 0.5rem;
-	width: 100%;
+	min-width: 150px;
+	max-width: 300px;
 	margin-bottom: 2rem;
 	border: 1px solid ${COLORS.MAIN};
 	border-radius: 0.5rem;
@@ -79,5 +101,8 @@ export {
 	StyledMainProfileContentContainer,
 	StyledProfile,
 	StyledProfileHeader,
-	StyledUsername
+	StyledUsername,
+	StyledButtonsContainer,
+	StyledDataTitle,
+	Styledtext
 };

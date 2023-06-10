@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
 
 const StyledImg = styled.img`
-	height: 120px;
-	width: 120px;
+	height: 100px;
+	width: 100px;
 	border-radius: ${({ type }) => {
 		if (type === 'user') {
 			return '50%';
@@ -57,10 +57,13 @@ const StyledPreview = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 150px;
+	width: 130px;
 	cursor: pointer;
 	&:hover ${StyledPlay} {
 		opacity: 1;
+	}
+	@media screen and (min-width: 468px) {
+		width: 150px;
 	}
 `;
 

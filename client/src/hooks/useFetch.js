@@ -5,7 +5,7 @@ const fetchData = async (fetchInfo, setFetchStatus, signal, navigate) => {
 	if (!fetchInfo) return;
 
 	const { url, options, navigateTo } = fetchInfo;
-	console.log(navigateTo);
+	console.log(url);
 	try {
 		const response = await fetch(url, options, signal);
 		const data = await response.json();
