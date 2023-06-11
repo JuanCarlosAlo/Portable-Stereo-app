@@ -3,11 +3,11 @@ import { useAudioPosition } from 'react-use-audio-player';
 
 import {
 	StyledBar,
+	StyledContainer,
 	StyledContainerBar,
 	StyledCurrentTime,
 	StyledDurationContainer,
-	StyledSlideBar,
-	StyledTime
+	StyledSlideBar
 } from './styles';
 
 const PlayerPlaybar = () => {
@@ -33,7 +33,7 @@ const PlayerPlaybar = () => {
 	);
 
 	return (
-		<>
+		<StyledContainer>
 			<StyledDurationContainer>
 				<StyledCurrentTime>{formatTime(elapsed)}</StyledCurrentTime>
 				{/* <StyledTime>{formatTime(duration)}</StyledTime> */}
@@ -42,7 +42,7 @@ const PlayerPlaybar = () => {
 				<StyledBar percentComplete={percentComplete} />
 				<StyledSlideBar percentComplete={percentComplete}></StyledSlideBar>
 			</StyledContainerBar>
-		</>
+		</StyledContainer>
 	);
 };
 const formatTime = seconds => {

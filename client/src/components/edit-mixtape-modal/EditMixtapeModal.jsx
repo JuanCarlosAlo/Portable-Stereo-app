@@ -8,6 +8,7 @@ import { USERS_URLS } from '../../constants/urls';
 import UploadPhoto from '../upload-photo/UploadPhoto';
 import { useForm } from 'react-hook-form';
 import MainButton from '../main-button/MainButton';
+import { StyledEditMixtape, StyledInput, StyledInputContainer } from './styles';
 
 const EditMixtapeModal = ({
 	setContent,
@@ -21,7 +22,7 @@ const EditMixtapeModal = ({
 		cover: mixtapeData.cover
 	});
 	return (
-		<div>
+		<StyledEditMixtape>
 			<CrossButton setState={setContent} stateValue={null} />
 			<UploadPhoto
 				setValue={setCover}
@@ -43,18 +44,18 @@ const EditMixtapeModal = ({
 					)
 				)}
 			>
-				<div>
+				<StyledInputContainer>
 					<label htmlFor='title'>Name</label>
-					<input
+					<StyledInput
 						type='text'
 						name='title'
 						defaultValue={mixtapeData.title}
 						{...register('title')}
 					/>
-				</div>
+				</StyledInputContainer>
 				<MainButton text={'Accept'} width={'250px'} type={'submit'} />
 			</form>
-		</div>
+		</StyledEditMixtape>
 	);
 };
 

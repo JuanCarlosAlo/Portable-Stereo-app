@@ -1,82 +1,30 @@
-import { useEffect, useState } from 'react';
-import { useAudioPlayer } from 'react-use-audio-player';
 import {
-	StyledArtistInfoContainer,
-	StyledArtistName,
 	StyledButton,
 	StyledButtonPlay,
 	StyledButtonsContainer,
 	StyledControlsContainer,
-	StyledCover,
 	StyledPlayerControls,
-	StyledSongInfo,
-	StyledSongName,
 	StyledSoundBar,
 	StyledSoundbarContainer
 } from './styles';
 import LikeButton from '../like-button/LikeButton';
 
-const PlayerControls = ({ file, index }) => {
-	const [songIndex, setSongIndex] = useState(index);
-	const [looping, setLooping] = useState(true);
-	const [volumeValue, setVolumeValue] = useState(0.5);
-	const [autoplayValue, setAutoplayValue] = useState(true);
-	const [muted, setMuted] = useState(false);
-
-	const { togglePlayPause, ready, loading, playing, volume, mute } =
-		useAudioPlayer({
-			src: file[songIndex].soundFile,
-			html5: true,
-			format: ['mp3'],
-			autoplay: autoplayValue,
-			onend: () => {
-				if (songIndex === file.length - 1) {
-					if (looping) {
-						setSongIndex(0);
-
-						console.log('looping');
-					} else {
-						console.log('not looping');
-						setSongIndex(0);
-						setAutoplayValue(false);
-					}
-				} else {
-					setSongIndex(songIndex + 1);
-				}
-			}
-		});
-
-	volume(volumeValue);
-
-	useEffect(() => {
-		mute(muted);
-	}, [muted, mute]);
-
-	useEffect(() => {
-		// Cambiar la canción actual cuando cambia la prop index
-		setSongIndex(index);
-	}, [index]);
-
-	useEffect(() => {
-		// Reiniciar el reproductor si cambia la prop file
-		setSongIndex(0);
-
-		setAutoplayValue(true);
-	}, [file]);
-
-	if (!ready && !loading) return <div>No audio to play</div>;
-	if (loading) return <div>Loading audio</div>;
-
+const PlayerControls = ({
+	file,
+	setSongIndex,
+	setLooping,
+	songIndex,
+	looping,
+	togglePlayPause,
+	setAutoplayValue,
+	playing,
+	setMuted,
+	muted,
+	setVolumeValue,
+	volumeValue
+}) => {
 	return (
 		<StyledPlayerControls>
-			<StyledSongInfo>
-				<StyledCover src={file[songIndex].songCover} alt='' />
-				<StyledArtistInfoContainer>
-					<StyledSongName>{file[songIndex].songTitle} </StyledSongName>
-					<StyledArtistName>{file[songIndex].artist} </StyledArtistName>
-				</StyledArtistInfoContainer>
-			</StyledSongInfo>
-
 			<StyledControlsContainer>
 				<StyledButtonsContainer>
 					<LikeButton id={file[songIndex]._id} />

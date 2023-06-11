@@ -17,4 +17,11 @@ const StyledPlayerContainer = styled.div`
 	background-color: ${COLORS.BLACK};
 `;
 
-export { StyledPlayerContainer };
+const StyledUpperPlayer = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+`;
+
+export { StyledPlayerContainer, StyledUpperPlayer };

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/Auth.context';
 import { Navigate, useParams } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
@@ -12,9 +12,10 @@ import {
 	StyledArtistName,
 	StyledArtistPage,
 	StyledArtistProfileImg,
-	StyledBar,
 	StyledBio,
 	StyledPopularContainer,
+	StyledSectionTitle,
+	StyledShowMoreButton,
 	StyledTitleContainer
 } from './styles';
 import Section from '../../components/section/Section';
@@ -31,6 +32,7 @@ const Artist = () => {
 	const { currentUser, loadingFirebase } = useContext(AuthContext);
 
 	const { data, loading, error } = useFetch({ url: SONGS_URLS.ARTIST + id });
+	const [showMore, setShowMore] = useState(false);
 	if (loadingFirebase || loading || error) return <Loading />;
 	if (currentUser && currentUser.uid === id) return <Navigate to={'/'} />;
 
@@ -68,13 +70,19 @@ const Artist = () => {
 						</div>
 					</StyledArtistContainer>
 				</StyledArtistInfo>
-				<Section allData={featured} title={'FEATURED'} />
-				<div>
+				<Section
+					allData={featured}
+					title={ARTICLE_TITLES.FEATURED}
+					more={true}
+				/>
+				<StyledPopularContainer showMore={showMore}>
 					<StyledTitleContainer>
-						<p>{ARTICLE_TITLES.POPULAR}</p>
-						<StyledBar></StyledBar>
+						<StyledSectionTitle>{ARTICLE_TITLES.POPULAR}</StyledSectionTitle>
+						<StyledShowMoreButton onClick={() => setShowMore(!showMore)}>
+							{showMore ? '- Show less' : '+ Show more'}
+						</StyledShowMoreButton>
 					</StyledTitleContainer>
-					<StyledPopularContainer>
+					<div>
 						{popularSongs.songItem.map((song, index) => {
 							return (
 								<SongContainer
@@ -87,9 +95,13 @@ const Artist = () => {
 								/>
 							);
 						})}
-					</StyledPopularContainer>
-				</div>
-				<Section allData={discography} title={ARTICLE_TITLES.DISCOGRAPHY} />
+					</div>
+				</StyledPopularContainer>
+				<Section
+					allData={discography}
+					title={ARTICLE_TITLES.DISCOGRAPHY}
+					more={true}
+				/>
 			</div>
 		</StyledArtistPage>
 	);

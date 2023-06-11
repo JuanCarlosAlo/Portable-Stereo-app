@@ -5,7 +5,7 @@ const StyledPlayerControls = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	width: 100%;
+
 	height: 100%;
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
@@ -13,46 +13,19 @@ const StyledPlayerControls = styled.div`
 const StyledSoundbarContainer = styled.div`
 	display: flex;
 	gap: 1rem;
-
 	justify-content: flex-end;
 `;
 const StyledSoundBar = styled.input`
 	width: 70px;
-`;
-const StyledCover = styled.img`
-	height: 50px;
-	width: 50px;
-`;
-const StyledSongInfo = styled.div`
-	display: flex;
-	align-items: center;
-	gap: 1rem;
-	width: 100%;
-`;
-const StyledArtistName = styled.p`
-	font-size: 0.6rem;
-	margin: 0;
-	padding: 0;
-	white-space: nowrap;
-
-	text-overflow: ellipsis;
-`;
-const StyledSongName = styled.p`
-	font-size: 1rem;
-	margin: 0;
-	padding: 0;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-`;
-const StyledArtistInfoContainer = styled.div`
-	width: 60%;
 `;
 
 const StyledControlsContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
+	@media screen and (min-width: 1024px) {
+		flex-direction: row;
+	}
 `;
 const StyledButton = styled.div`
 	align-items: center;
@@ -66,13 +39,8 @@ const StyledButton = styled.div`
 		display: flex;
 	}
 `;
-
 const StyledButtonPlay = styled(StyledButton)`
 	background-color: ${COLORS.MAIN};
-	display: flex;
-`;
-const StyledButtonLike = styled(StyledButton)`
-	background-color: ${COLORS.WHITE};
 	display: flex;
 `;
 
@@ -83,17 +51,11 @@ const StyledButtonsContainer = styled.div`
 	justify-content: flex-end;
 `;
 export {
-	StyledPlayerControls,
-	StyledSoundbarContainer,
-	StyledSoundBar,
-	StyledCover,
-	StyledSongInfo,
-	StyledArtistName,
-	StyledSongName,
-	StyledArtistInfoContainer,
 	StyledButton,
+	StyledButtonPlay,
 	StyledButtonsContainer,
 	StyledControlsContainer,
-	StyledButtonPlay,
-	StyledButtonLike
+	StyledPlayerControls,
+	StyledSoundBar,
+	StyledSoundbarContainer
 };

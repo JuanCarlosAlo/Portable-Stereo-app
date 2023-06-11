@@ -64,28 +64,33 @@ const StyledTitleContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 90%;
+	width: 100%;
 	height: fit-content;
-	margin-left: auto;
-	margin-right: auto;
 `;
 
-const StyledBar = styled.div`
-	width: 20%;
-	height: 1px;
-	background-color: ${COLORS.MAIN};
-	@media screen and (min-width: 768px) {
-		width: 60%;
-	}
+const StyledShowMoreButton = styled.p`
+	font-weight: 800;
+	margin: 0;
+	color: ${COLORS.MAIN};
+	cursor: pointer;
 `;
 
 const StyledPopularContainer = styled.div`
 	padding-left: 1rem;
 	padding-right: 1rem;
-	height: 320px;
+	height: ${({ showMore }) => {
+		if (showMore) {
+			return 'fit-content';
+		} else {
+			return '300px';
+		}
+	}};
 	overflow: hidden;
+	margin-bottom: 2rem;
 `;
-
+const StyledSectionTitle = styled.p`
+	font-weight: 800;
+`;
 export {
 	StyledArtistPage,
 	StyledArtistHeader,
@@ -96,6 +101,7 @@ export {
 	StyledArtistInfo,
 	StyledArtistName,
 	StyledTitleContainer,
-	StyledBar,
-	StyledPopularContainer
+	StyledPopularContainer,
+	StyledShowMoreButton,
+	StyledSectionTitle
 };

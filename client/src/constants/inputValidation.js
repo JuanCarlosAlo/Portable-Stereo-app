@@ -21,6 +21,7 @@ export const FORM_DEFAULT_VALUES = {
 	bio: '',
 	recentlyListen: [],
 	profileImg: IMAGES.DEFAULT_PROFILE,
+	headerImg: IMAGES.DEFAULT_HEADER,
 	mixtapes: [],
 	selfFollows: [],
 	othersFollows: 0,

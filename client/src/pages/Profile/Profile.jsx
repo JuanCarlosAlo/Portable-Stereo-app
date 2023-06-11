@@ -42,7 +42,7 @@ const Profile = () => {
 				<StyledDataTitle>Email</StyledDataTitle>
 				<Styledtext>{currentUser.email}</Styledtext>
 				<StyledDataTitle>Bio</StyledDataTitle>
-				<StyledDataTitle>{currentUser.bio}</StyledDataTitle>
+				<Styledtext>{currentUser.bio}</Styledtext>
 			</div>
 
 			<StyledButtonsContainer>

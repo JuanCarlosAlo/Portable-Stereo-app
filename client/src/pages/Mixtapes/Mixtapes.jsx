@@ -36,7 +36,7 @@ const Mixtapes = () => {
 			/>
 			{data.allMixtapes && (
 				<>
-					{data.allMixtapes.map(mixtape => (
+					{data.allMixtapes.map((mixtape, index) => (
 						<MixtapesItems
 							key={mixtape._id}
 							title={mixtape.title}
@@ -46,6 +46,7 @@ const Mixtapes = () => {
 							edit={true}
 							id={mixtape._id}
 							url={'/mixtapes/' + currentUser._id}
+							index={index}
 						/>
 					))}
 				</>

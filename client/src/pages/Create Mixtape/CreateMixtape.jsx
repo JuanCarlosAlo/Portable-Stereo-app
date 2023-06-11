@@ -1,6 +1,10 @@
 import { useLocation } from 'react-router-dom';
 import HeaderBack from '../../components/header-back/HeaderBack';
-import { StyledCreateMixtape } from './styles';
+import {
+	StyledCreateMixtape,
+	StyledInput,
+	StyledInputContainer
+} from './styles';
 import UploadPhoto from '../../components/upload-photo/UploadPhoto';
 import { useContext, useState } from 'react';
 import { IMAGES } from '../../constants/imagesUrls';
@@ -39,10 +43,10 @@ const CreateMixtape = () => {
 					onSubmit(formData, e, mixtape, currentUser, setFetchInfo, state)
 				)}
 			>
-				<div>
+				<StyledInputContainer>
 					<label htmlFor='title'>Name</label>
-					<input type='text' name='title' {...register('title')} />
-				</div>
+					<StyledInput type='text' name='title' {...register('title')} />
+				</StyledInputContainer>
 				<MainButton text={'Accept'} width={'250px'} type={'submit'} />
 			</form>
 		</StyledCreateMixtape>

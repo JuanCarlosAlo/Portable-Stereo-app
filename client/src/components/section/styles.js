@@ -5,8 +5,13 @@ const StyledSection = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	height: 270px;
-	overflow: hidden;
+	height: ${({ showMore }) => {
+		if (showMore) {
+			return 'fit-content';
+		} else {
+			return '270px';
+		}
+	}};
 `;
 const StyledTitleContainer = styled.div`
 	display: flex;
@@ -28,7 +33,7 @@ const StyledBar = styled.div`
 	height: 1px;
 	background-color: ${COLORS.MAIN};
 	@media screen and (min-width: 768px) {
-		width: 60%;
+		width: 90%;
 	}
 `;
 const StyledSliderContainer = styled.div`
@@ -40,11 +45,25 @@ const StyledContent = styled.div`
 	align-items: center;
 	gap: 1rem;
 `;
+
+const StyledShowMoreButton = styled.p`
+	font-weight: 800;
+	margin: 0;
+	color: ${COLORS.MAIN};
+	cursor: pointer;
+`;
+
+const StyledSectionTitle = styled.p`
+	font-weight: 800;
+`;
+
 export {
 	StyledTitleContainer,
 	StyledBar,
 	StyledSection,
 	StyledImg,
 	StyledContent,
-	StyledSliderContainer
+	StyledSliderContainer,
+	StyledShowMoreButton,
+	StyledSectionTitle
 };

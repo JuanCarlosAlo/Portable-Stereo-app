@@ -6,28 +6,28 @@ import {
 } from 'firebase/storage';
 import { v4 } from 'uuid';
 import { storage } from '../../config/firebase.config';
-import { StyledImg } from './styles';
+import { StyledAddFile, StyledImg, StyledInput } from './styles';
 import { IMAGES } from '../../constants/imagesUrls';
 
 const UploadPhoto = ({ value, setValue, keyValue, type, directory }) => {
 	return (
 		<>
-			{value[keyValue] && (
-				<StyledImg type={type} src={value[keyValue]} alt='' />
-			)}
 			<form>
-				<input
-					type='file'
-					onChange={e =>
-						handleLoadFile(
-							e.target.files[0],
-							setValue,
-							value,
-							keyValue,
-							directory
-						)
-					}
-				/>
+				<StyledImg type={type} src={value[keyValue]}>
+					<StyledInput
+						type='file'
+						onChange={e =>
+							handleLoadFile(
+								e.target.files[0],
+								setValue,
+								value,
+								keyValue,
+								directory
+							)
+						}
+					/>
+					<StyledAddFile />
+				</StyledImg>
 			</form>
 		</>
 	);
@@ -39,7 +39,6 @@ const handleLoadFile = async (file, setValue, value, keyValue, directory) => {
 		value[keyValue] !== IMAGES.DEFAULT_PROFILE &&
 		value[keyValue] !== IMAGES.DEFAULT_MIXTAPE
 	) {
-		console.log('delete');
 		const storageRefDelete = ref(storage, value[keyValue]);
 		try {
 			await deleteObject(storageRefDelete);

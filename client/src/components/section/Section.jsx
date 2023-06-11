@@ -3,24 +3,32 @@ import {
 	StyledBar,
 	StyledContent,
 	StyledSection,
+	StyledSectionTitle,
+	StyledShowMoreButton,
 	StyledSliderContainer,
 	StyledTitleContainer
 } from './styles';
 import Preview from '../preview/Preview';
-import SecondaryButton from '../secondary-button/SecondaryButton';
+import { useState } from 'react';
 
-const Section = ({ title, allData, url }) => {
+const Section = ({ title, allData, more }) => {
+	const [showMore, setShowMore] = useState(false);
 	if (!allData) return <h2>Loading</h2>;
 	if (allData.length === 0) return;
 
 	return (
 		<StyledSection>
 			<StyledTitleContainer>
-				<p>{title}</p>
-				<StyledBar></StyledBar>
-				{url && <SecondaryButton text={'Show all'} />}
+				<StyledSectionTitle>{title}</StyledSectionTitle>
+				{more ? (
+					<StyledShowMoreButton onClick={() => setShowMore(!showMore)}>
+						+ Show more
+					</StyledShowMoreButton>
+				) : (
+					<StyledBar />
+				)}
 			</StyledTitleContainer>
-			<StyledSliderContainer>
+			<StyledSliderContainer setShowMore={showMore}>
 				<StyledContent>
 					{allData.map(element => (
 						<Preview

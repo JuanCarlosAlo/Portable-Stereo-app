@@ -9,7 +9,16 @@ import {
 } from './styles';
 import DeleteButton from '../delete-button/DeleteButton';
 
-const MixtapesItems = ({ title, allData, author, cover, edit, id, url }) => {
+const MixtapesItems = ({
+	title,
+	allData,
+	author,
+	cover,
+	edit,
+	id,
+	url,
+	index
+}) => {
 	const navigate = useNavigate();
 	return (
 		<StyledMixtapeContainer>
@@ -22,7 +31,7 @@ const MixtapesItems = ({ title, allData, author, cover, edit, id, url }) => {
 					<StyledMixtapeInfo>{author}</StyledMixtapeInfo>
 				</StyledInfoContainer>
 			</StyledContent>
-			{edit && <DeleteButton id={id} title={title} url={url} />}
+			{edit && <DeleteButton id={id} title={title} url={url} index={index} />}
 		</StyledMixtapeContainer>
 	);
 };

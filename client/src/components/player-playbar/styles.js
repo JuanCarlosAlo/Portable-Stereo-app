@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
 
+const StyledContainer = styled.div`
+	position: relative;
+	width: 100%;
+`;
+
 const StyledBar = styled.div`
 	height: 3px;
 	max-width: 100%;
@@ -28,11 +33,17 @@ const StyledSlideBar = styled.div`
 	background-color: white;
 `;
 const StyledDurationContainer = styled.div`
+	position: absolute;
+	top: -5rem;
+	left: 300px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 `;
+
 const StyledTime = styled.p`
+	top: -4rem;
+	right: 40%;
 	display: none;
 	margin: 0;
 	padding: 0;
@@ -40,12 +51,12 @@ const StyledTime = styled.p`
 	color: ${COLORS.MAIN};
 	letter-spacing: 0.2rem;
 	text-align: center;
-	@media screen and (min-width: 468px) {
+	@media screen and (min-width: 600px) {
 		display: block;
 	}
 `;
 const StyledCurrentTime = styled(StyledTime)`
-	font-size: 1rem;
+	font-size: 2.5rem;
 `;
 
 export {
@@ -54,5 +65,6 @@ export {
 	StyledContainerBar,
 	StyledDurationContainer,
 	StyledCurrentTime,
-	StyledTime
+	StyledTime,
+	StyledContainer
 };
