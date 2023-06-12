@@ -12,6 +12,13 @@ const FollowButton = ({ id }) => {
 	const { currentUser, loadingFirebase } = useContext(AuthContext);
 	const navigate = useNavigate();
 	if (loadingFirebase) return;
+	if (!currentUser) {
+		return (
+			<StyledFollowingButton onClick={() => navigate('/register')}>
+				+ Follow
+			</StyledFollowingButton>
+		);
+	}
 	const alreadyFollowing = currentUser.follows.selfFollows.find(
 		song => song === id
 	);

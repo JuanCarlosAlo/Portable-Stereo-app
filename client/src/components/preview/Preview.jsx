@@ -8,7 +8,7 @@ import PlayButton from '../play-button/PlayButton';
 
 const Preview = ({ type, img, title, songData }) => {
 	const titleElement = useRef(null);
-	// console.log(titleElement.current.scrollWidth);
+	// (titleElement.current.scrollWidth);
 	const { setSongData } = useContext(SongContext);
 	const navigate = useNavigate();
 	if (type === 'user') {

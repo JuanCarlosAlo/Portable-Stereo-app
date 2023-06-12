@@ -1,88 +1,91 @@
-import { useContext, useEffect, useState } from 'react';
-import { StyledPlayerContainer, StyledUpperPlayer } from './styles';
-import { SongContext } from '../../context/Song.context';
 import { useAudioPlayer } from 'react-use-audio-player';
 import PlayerControls from '../player-controls/PlayerControls';
 import PlayerPlaybar from '../player-playbar/PlayerPlaybar';
 import PlayerInfo from '../player-info/PlayerInfo';
-const Player = () => {
-	const { songData } = useContext(SongContext);
-	if (!songData) return;
-	const file = songData.song;
-	const index = songData.index;
+import { StyledUpperPlayer } from './styles';
+import { useEffect, useState } from 'react';
+import { getSongInitialValue } from '../../utils/localStorage';
 
-	const [songIndex, setSongIndex] = useState(index);
-	const [looping, setLooping] = useState(true);
-	const [volumeValue, setVolumeValue] = useState(0.5);
-	const [autoplayValue, setAutoplayValue] = useState(true);
-	const [muted, setMuted] = useState(false);
+const Player = ({ file, index }) => {
+	const [playerState, setPlayerState] = useState({
+		songIndex: getSongInitialValue(index),
+		looping: true,
+		volumeValue: 0.5,
+		autoplayValue: true,
+		muted: false
+	});
+	useEffect(() => {
+		localStorage.setItem('data', JSON.stringify({ index }));
+	}, [playerState]);
 
 	const { togglePlayPause, ready, loading, playing, volume, mute } =
 		useAudioPlayer({
-			src: file[songIndex].soundFile,
+			src: file[playerState.songIndex].soundFile,
 			html5: true,
 			format: ['mp3'],
-			autoplay: autoplayValue,
+			autoplay: playerState.autoplayValue,
 			onend: () => {
-				if (songIndex === file.length - 1) {
-					if (looping) {
-						setSongIndex(0);
-
-						console.log('looping');
+				if (playerState.songIndex === file.length - 1) {
+					if (playerState.looping) {
+						setPlayerState(prevState => ({
+							...prevState,
+							songIndex: 0
+						}));
 					} else {
-						console.log('not looping');
-						setSongIndex(0);
-						setAutoplayValue(false);
+						setPlayerState(prevState => ({
+							...prevState,
+							songIndex: 0,
+							autoplayValue: false
+						}));
 					}
 				} else {
-					setSongIndex(songIndex + 1);
+					setPlayerState(prevState => ({
+						...prevState,
+						songIndex: prevState.songIndex + 1
+					}));
 				}
 			}
 		});
 
-	volume(volumeValue);
+	volume(playerState.volumeValue);
 
 	useEffect(() => {
-		mute(muted);
-	}, [muted, mute]);
+		mute(playerState.muted);
+	}, [playerState.muted, mute]);
 
 	useEffect(() => {
-		// Cambiar la canción actual cuando cambia la prop index
-		setSongIndex(index);
+		setPlayerState(prevState => ({
+			...prevState,
+			songIndex: index
+		}));
 	}, [index]);
 
 	useEffect(() => {
-		// Reiniciar el reproductor si cambia la prop file
-		setSongIndex(0);
-
-		setAutoplayValue(true);
+		setPlayerState(prevState => ({
+			...prevState,
+			songIndex: 0,
+			autoplayValue: true
+		}));
 	}, [file]);
 
 	if (!ready && !loading) return <div>No audio to play</div>;
 	if (loading) return <div>Loading audio</div>;
 
 	return (
-		<StyledPlayerContainer>
+		<>
 			<StyledUpperPlayer>
-				<PlayerInfo currentSong={file[songIndex]} />
+				<PlayerInfo currentSong={file[playerState.songIndex]} />
 				<PlayerControls
 					file={file}
-					looping={looping}
-					muted={muted}
+					setPlayerState={setPlayerState}
 					playing={playing}
-					setAutoplayValue={setAutoplayValue}
-					setLooping={setLooping}
-					setMuted={setMuted}
-					setSongIndex={setSongIndex}
-					setVolumeValue={setVolumeValue}
-					songIndex={songIndex}
+					playerState={playerState}
 					togglePlayPause={togglePlayPause}
-					volumeValue={volumeValue}
 				/>
 			</StyledUpperPlayer>
 
 			<PlayerPlaybar />
-		</StyledPlayerContainer>
+		</>
 	);
 };
 

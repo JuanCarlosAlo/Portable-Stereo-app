@@ -1,10 +1,19 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
-import { HEADER_MEASUREMENTS } from '../../constants/Measurements';
+import { HEADER_MEASUREMENTS } from '../../constants/measurements';
 
 const StyledArtistPage = styled.div`
 	padding-top: 4rem;
 	margin-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
+
+	@media screen and (min-width: 1024px) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		gap: 2rem;
+	}
 `;
 
 const StyledArtistHeader = styled.div`
@@ -27,6 +36,9 @@ const StyledArtistHeader = styled.div`
 			rgba(0, 0, 0, 0) 60%
 		);
 	}
+	@media screen and (min-width: 1024px) {
+		height: 350px;
+	}
 `;
 const StyledProfileImgContainer = styled.div`
 	position: absolute;
@@ -42,15 +54,30 @@ const StyledArtistProfileImg = styled.img`
 	border-radius: 50%;
 	border: 1px solid ${COLORS.WHITE};
 	z-index: 10;
+	@media screen and (min-width: 1024px) {
+		height: 200px;
+		width: 200px;
+		bottom: -150px;
+	}
 `;
 const StyledArtistInfo = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	width: 100%;
+	justify-content: space-between;
 	padding-left: 1rem;
 	padding-right: 1rem;
+	padding-bottom: 4rem;
+	@media screen and (min-width: 1024px) {
+		border-bottom: 1px solid ${COLORS.WHITE};
+	}
 `;
 
 const StyledArtistContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
+	width: 100%;
 `;
 const StyledBio = styled.p`
 	width: 50%;
@@ -58,6 +85,11 @@ const StyledBio = styled.p`
 `;
 const StyledArtistName = styled.p`
 	font-size: 1.2rem;
+	@media screen and (min-width: 1024px) {
+		font-size: 4rem;
+		font-weight: 800;
+		margin: 0;
+	}
 `;
 
 const StyledTitleContainer = styled.div`
@@ -85,11 +117,15 @@ const StyledPopularContainer = styled.div`
 			return '300px';
 		}
 	}};
+	width: 93%;
 	overflow: hidden;
 	margin-bottom: 2rem;
 `;
 const StyledSectionTitle = styled.p`
 	font-weight: 800;
+	@media screen and (min-width: 1024px) {
+		font-size: 1.5rem;
+	}
 `;
 export {
 	StyledArtistPage,

@@ -12,6 +12,16 @@ const StyledSection = styled.div`
 			return '270px';
 		}
 	}};
+	@media screen and (min-width: 1024px) {
+		font-size: 2rem;
+		height: ${({ showMore }) => {
+			if (showMore) {
+				return 'fit-content';
+			} else {
+				return '350px';
+			}
+		}};
+	}
 `;
 const StyledTitleContainer = styled.div`
 	display: flex;
@@ -33,7 +43,7 @@ const StyledBar = styled.div`
 	height: 1px;
 	background-color: ${COLORS.MAIN};
 	@media screen and (min-width: 768px) {
-		width: 90%;
+		width: 80%;
 	}
 `;
 const StyledSliderContainer = styled.div`
@@ -44,6 +54,9 @@ const StyledContent = styled.div`
 	width: max-content;
 	align-items: center;
 	gap: 1rem;
+	@media screen and (min-width: 768px) {
+		gap: 3rem;
+	}
 `;
 
 const StyledShowMoreButton = styled.p`
@@ -51,10 +64,14 @@ const StyledShowMoreButton = styled.p`
 	margin: 0;
 	color: ${COLORS.MAIN};
 	cursor: pointer;
+	font-size: 1rem;
 `;
 
 const StyledSectionTitle = styled.p`
 	font-weight: 800;
+	@media screen and (min-width: 1024px) {
+		font-size: 1.5rem;
+	}
 `;
 
 export {

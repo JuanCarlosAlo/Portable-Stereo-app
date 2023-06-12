@@ -11,41 +11,45 @@ import LikeButton from '../like-button/LikeButton';
 
 const PlayerControls = ({
 	file,
-	setSongIndex,
-	setLooping,
-	songIndex,
-	looping,
-	togglePlayPause,
-	setAutoplayValue,
+	setPlayerState,
 	playing,
-	setMuted,
-	muted,
-	setVolumeValue,
-	volumeValue
+	playerState,
+	togglePlayPause
 }) => {
 	return (
 		<StyledPlayerControls>
 			<StyledControlsContainer>
 				<StyledButtonsContainer>
-					<LikeButton id={file[songIndex]._id} />
+					<LikeButton id={file[playerState.songIndex]._id} />
 					<StyledButton
 						onClick={() => {
-							if (songIndex === 0) return;
-							setSongIndex(songIndex - 1);
+							if (playerState.songIndex === 0) return;
+							setPlayerState({
+								...playerState,
+								songIndex: playerState.songIndex - 1
+							});
 						}}
 					>
 						<img src='/images/previous-icon.svg' alt='pause-icon' />
 					</StyledButton>
-					<StyledButton onClick={() => setLooping(!looping)}>
+					<StyledButton
+						onClick={() =>
+							setPlayerState({ ...playerState, looping: !playerState.looping })
+						}
+					>
 						<img
-							src={looping ? '/images/loop.svg' : '/images/not-loop.svg'}
+							src={
+								playerState.looping
+									? '/images/loop.svg'
+									: '/images/not-loop.svg'
+							}
 							alt='pause-icon'
 						/>
 					</StyledButton>
 					<StyledButtonPlay
 						onClick={() => {
 							togglePlayPause();
-							setAutoplayValue(true);
+							setPlayerState({ ...playerState, autoplayValue: true });
 						}}
 					>
 						<img
@@ -55,28 +59,47 @@ const PlayerControls = ({
 					</StyledButtonPlay>
 					<StyledButton
 						onClick={() => {
-							if (songIndex === file.length - 1) return;
-							setSongIndex(songIndex + 1);
+							if (playerState.songIndex === file.length - 1) return;
+							setPlayerState({
+								...playerState,
+								songIndex: playerState.songIndex + 1
+							});
 						}}
 					>
 						<img src='/images/next-icon.svg' alt='pause-icon' />
 					</StyledButton>
 				</StyledButtonsContainer>
 				<StyledSoundbarContainer>
-					<StyledButton onClick={() => setMuted(!muted)}>
+					<StyledButton
+						onClick={() =>
+							setPlayerState({ ...playerState, muted: !playerState.muted })
+						}
+					>
 						<img
-							src={muted ? '/images/muted-icon.svg' : '/images/sound-icon.svg'}
+							src={
+								playerState.muted
+									? '/images/muted-icon.svg'
+									: '/images/sound-icon.svg'
+							}
 							alt='play-icon'
 						/>
 					</StyledButton>
 					<StyledSoundBar
-						onChange={e => setVolumeValue(e.target.value / 10)}
+						onChange={e =>
+							setPlayerState({
+								...playerState,
+								volumeValue: e.target.value / 10
+							})
+						}
 						type='range'
 						id='points'
 						name='points'
 						min='0'
 						max='10'
-						defaultValue={volumeValue * 10}
+						defaultValue={{
+							...playerState,
+							volumeValue: playerState.volumeValue * 10
+						}}
 					/>
 				</StyledSoundbarContainer>
 			</StyledControlsContainer>

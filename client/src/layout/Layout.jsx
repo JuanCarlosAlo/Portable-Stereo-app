@@ -1,7 +1,8 @@
 import { Outlet } from 'react-router-dom';
-import Player from '../components/player/Player';
+
 import Header from '../components/header/Header';
 import { AudioPlayerProvider } from 'react-use-audio-player';
+import PlayerContainer from '../components/player-container/PlayerContainer';
 
 const Layout = () => {
 	return (
@@ -9,7 +10,7 @@ const Layout = () => {
 			<Header />
 			<Outlet />
 			<AudioPlayerProvider>
-				<Player />
+				<PlayerContainer />
 			</AudioPlayerProvider>
 		</>
 	);

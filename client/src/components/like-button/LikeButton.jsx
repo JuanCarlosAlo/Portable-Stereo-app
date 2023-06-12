@@ -13,6 +13,14 @@ const LikeButton = ({ id }) => {
 	const { currentUser, loadingFirebase } = useContext(AuthContext);
 	const navigate = useNavigate();
 	if (loadingFirebase) return;
+
+	if (!currentUser) {
+		return (
+			<StyledLikeButton onClick={() => navigate('/register')}>
+				<ButtonIcon img={'/images/heart-dislike.png'} />
+			</StyledLikeButton>
+		);
+	}
 	const alreadyLiked = currentUser.likes.songItem.find(song => song === id);
 
 	return (

@@ -4,6 +4,7 @@ import {
 	StyledImg,
 	StyledItemInfo,
 	StyledSeachItem,
+	StyledSearchItemButtons,
 	StyledTitle,
 	StyledType
 } from './styles';
@@ -11,6 +12,7 @@ import AddToMixtapeButton from '../add-to-mixtape-button/AddToMixtapeButton';
 
 const SearchItem = ({ songData, index, title, img, type, url, id }) => {
 	const navigate = useNavigate();
+	songData.songItem;
 	return (
 		<StyledSeachItem>
 			<StyledItemInfo
@@ -24,10 +26,10 @@ const SearchItem = ({ songData, index, title, img, type, url, id }) => {
 				</div>
 			</StyledItemInfo>
 			{songData && (
-				<>
-					<AddToMixtapeButton id={id} />
+				<StyledSearchItemButtons>
+					{type === 'Song' && <AddToMixtapeButton id={id} />}
 					<PlayButton songData={songData} indexValue={index} />
-				</>
+				</StyledSearchItemButtons>
 			)}
 		</StyledSeachItem>
 	);

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from '../../constants/colors';
 
 const StyledAddButton = styled.div`
 	display: flex;
@@ -7,7 +8,9 @@ const StyledAddButton = styled.div`
 	border-radius: 0.2rem;
 	cursor: pointer;
 	height: 30px;
-	width: 25px;
+	width: 35px;
+	padding: 0.4rem;
+	background-color: ${COLORS.GRAY};
 `;
 
 export { StyledAddButton };

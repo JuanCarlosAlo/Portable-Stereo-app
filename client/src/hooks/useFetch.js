@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 const fetchData = async (fetchInfo, setFetchStatus, signal, navigate) => {
 	if (!fetchInfo) return;
-
+	fetchInfo;
 	const { url, options, navigateTo } = fetchInfo;
-	console.log(url);
+	navigateTo;
 	try {
 		const response = await fetch(url, options, signal);
 		const data = await response.json();

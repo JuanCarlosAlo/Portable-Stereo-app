@@ -8,7 +8,7 @@ import { AuthContext } from '../../context/Auth.context';
 import DeleteModal from '../delete-modal/DeleteModal';
 import Modal from '../modal/Modal';
 
-const DeleteButton = ({ id, title, url, index }) => {
+const DeleteButton = ({ id, title, url, index, fetchUrl }) => {
 	const [content, setContent] = useState(null);
 	const { setFetchInfo } = useFetch();
 	const { currentUser } = useContext(AuthContext);
@@ -25,6 +25,7 @@ const DeleteButton = ({ id, title, url, index }) => {
 							title={title}
 							url={url}
 							index={index}
+							fetchUrl={fetchUrl}
 						/>
 					)
 				}

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { COLORS } from '../../constants/colors';
-import { HEADER_MEASUREMENTS } from '../../constants/Measurements';
+import { HEADER_MEASUREMENTS } from '../../constants/measurements';
 
 const StyledSongDetailsPage = styled.div`
 	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
@@ -13,13 +13,19 @@ const StyledSongDetailsPage = styled.div`
 const StyledsongHeaderImg = styled.img`
 	height: 150px;
 	width: 150px;
+	@media screen and (min-width: 768px) {
+		height: 250px;
+		width: 250px;
+	}
 `;
 const SongTitle = styled.p`
 	font-family: Digital7;
-	width: 80%;
 	font-size: 2rem;
 	margin: 0;
 	color: ${COLORS.MAIN};
+	@media screen and (min-width: 768px) {
+		font-size: 3rem;
+	}
 `;
 
 const StyledSongInfo = styled.div`
@@ -49,6 +55,15 @@ const StyledSongHeader = styled.div`
 	overflow: hidden;
 	padding-right: 1rem;
 	margin-bottom: 2rem;
+	@media screen and (min-width: 768px) {
+		height: 250px;
+	}
+`;
+const StyledSongInfoContainer = styled.div`
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 2rem;
 `;
 
 const StyledPlayButtonContainer = styled.div`
@@ -63,5 +78,6 @@ export {
 	StyledSongHeader,
 	StyledSongInfo,
 	StyledsongHeaderImg,
-	SongDate
+	SongDate,
+	StyledSongInfoContainer
 };

@@ -18,7 +18,7 @@ const Mixtapes = () => {
 	});
 
 	if (loading || error) return <Loading />;
-	console.log(data);
+	data;
 	return (
 		<StyledSMixtapesPage>
 			<HeaderBack

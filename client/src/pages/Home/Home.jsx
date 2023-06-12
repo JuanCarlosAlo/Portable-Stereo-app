@@ -26,7 +26,7 @@ const Home = () => {
 	}, [currentUser]);
 
 	if (loadingFirebase || loading || error) return <Loading />;
-	console.log(data);
+	data;
 	const popularMusic = sortDataSliceTen(data.allSongs, 'replays');
 	const latestrMusic = sortDataSliceTen(data.allSongs, 'date');
 	const popularArtist = sortDataSliceTen(

@@ -68,6 +68,7 @@ const MixtapeDetails = () => {
 											title={state.title}
 											setFetchInfo={setFetchInfo}
 											url={'/mixtapes/' + currentUser._id}
+											fetchUrl={USERS_URLS.DELETE_MIXTAPE}
 										/>
 									)
 								}
@@ -130,7 +131,7 @@ const MixtapeDetails = () => {
 };
 
 const handleClick = async (setFetchInfo, songId, mixtapeId, currentUserId) => {
-	console.log(mixtapeId);
+	mixtapeId;
 	await setFetchInfo({
 		url: USERS_URLS.DELETE_SONG_FROM_MIXTAPE + currentUserId,
 		options: {

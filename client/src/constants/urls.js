@@ -14,7 +14,8 @@ export const USERS_URLS = {
 	ADD_TO_MIXTAPE: BASE + 'users/add-to-mixtape/',
 	GET_MIXTAPE_SONGS: BASE + 'users/mixtape-song/',
 	EDIT_MIXTAPE: BASE + 'users/edit-mixtape/',
-	DELETE_SONG_FROM_MIXTAPE: BASE + 'users/delete-from-mixtape/'
+	DELETE_SONG_FROM_MIXTAPE: BASE + 'users/delete-from-mixtape/',
+	DELETE_USER: BASE + 'users/delete-user/'
 };
 
 export const SONGS_URLS = {

@@ -7,6 +7,7 @@ import {
 	StyledSongDetailsPage,
 	StyledSongHeader,
 	StyledSongInfo,
+	StyledSongInfoContainer,
 	StyledsongHeaderImg
 } from './styles';
 import HeaderBack from '../../components/header-back/HeaderBack';
@@ -21,19 +22,21 @@ const SongDetails = () => {
 	const navigate = useNavigate();
 	if (!state) return <Navigate to={'/'} />;
 	const songDate = new Date(state.date).toLocaleDateString();
-	console.log(state);
+	state;
 	return (
 		<StyledSongDetailsPage>
 			<HeaderBack url={'/'} text={'BACK'} />
 			<StyledSongHeader>
-				<StyledsongHeaderImg src={state.cover} alt='cover' />
-				<StyledSongInfo>
-					<SongTitle>{state.title}</SongTitle>
-					<SongArtist onClick={() => navigate('/artist/' + state.artistId)}>
-						{state.artist}
-					</SongArtist>
-					<SongDate>{songDate}</SongDate>
-				</StyledSongInfo>
+				<StyledSongInfoContainer>
+					<StyledsongHeaderImg src={state.cover} alt='cover' />
+					<StyledSongInfo>
+						<SongTitle>{state.title}</SongTitle>
+						<SongArtist onClick={() => navigate('/artist/' + state.artistId)}>
+							{state.artist}
+						</SongArtist>
+						<SongDate>{songDate}</SongDate>
+					</StyledSongInfo>
+				</StyledSongInfoContainer>
 				<StyledPlayButtonContainer>
 					<PlayButton songData={state} indexValue={0} />
 				</StyledPlayButtonContainer>

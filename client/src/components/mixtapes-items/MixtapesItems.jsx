@@ -8,6 +8,7 @@ import {
 	StyledMixtapeTitle
 } from './styles';
 import DeleteButton from '../delete-button/DeleteButton';
+import { USERS_URLS } from '../../constants/urls';
 
 const MixtapesItems = ({
 	title,
@@ -31,7 +32,15 @@ const MixtapesItems = ({
 					<StyledMixtapeInfo>{author}</StyledMixtapeInfo>
 				</StyledInfoContainer>
 			</StyledContent>
-			{edit && <DeleteButton id={id} title={title} url={url} index={index} />}
+			{edit && (
+				<DeleteButton
+					id={id}
+					title={title}
+					url={url}
+					index={index}
+					fetchUrl={USERS_URLS.DELETE_MIXTAPE}
+				/>
+			)}
 		</StyledMixtapeContainer>
 	);
 };

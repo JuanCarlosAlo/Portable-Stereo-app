@@ -21,5 +21,6 @@ usersRoutes.delete(
 );
 usersRoutes.patch("/add-to-mixtape/:id", controller.addToMixtape);
 usersRoutes.patch("/edit-mixtape/:id", controller.editMixtape);
+usersRoutes.delete("/delete-user/:id", controller.deleteUser);
 
 module.exports = usersRoutes;

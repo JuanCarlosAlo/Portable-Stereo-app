@@ -12,46 +12,71 @@ import {
 } from './styles';
 import { auth } from '../../config/firebase.config';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/Auth.context';
 import HeaderBack from '../../components/header-back/HeaderBack';
+import Modal from '../../components/modal/Modal';
+import DeleteModal from '../../components/delete-modal/DeleteModal';
+import { useFetch } from '../../hooks/useFetch';
+import { USERS_URLS } from '../../constants/urls';
 
 const Profile = () => {
 	const { currentUser } = useContext(AuthContext);
 	const navigate = useNavigate();
+	const { setFetchInfo } = useFetch();
+	const [content, setContent] = useState(null);
 	if (!currentUser) return;
 	return (
-		<StyledProfile>
-			<HeaderBack
-				url={'/'}
-				text={'BACK'}
-				secondaryText={'EDIT'}
-				secondaryUrl={'/profile-edit'}
-			/>
+		<>
+			<StyledProfile>
+				<HeaderBack
+					url={'/'}
+					text={'BACK'}
+					secondaryText={'EDIT'}
+					secondaryUrl={'/profile-edit'}
+				/>
 
-			<StyledMainProfileContentContainer>
-				<StyledProfileImage src={currentUser.profileImg} alt='' />
+				<StyledMainProfileContentContainer>
+					<StyledProfileImage src={currentUser.profileImg} alt='' />
+					<div>
+						<StyledUsername>{currentUser.userName}</StyledUsername>
+						<StyledDataTitle>
+							Followers: {currentUser.follows.othersFollows}
+						</StyledDataTitle>
+					</div>
+				</StyledMainProfileContentContainer>
 				<div>
-					<StyledUsername>{currentUser.userName}</StyledUsername>
-					<StyledDataTitle>
-						Followers: {currentUser.follows.othersFollows}
-					</StyledDataTitle>
+					<StyledDataTitle>Email</StyledDataTitle>
+					<Styledtext>{currentUser.email}</Styledtext>
+					<StyledDataTitle>Bio</StyledDataTitle>
+					<Styledtext>{currentUser.bio}</Styledtext>
 				</div>
-			</StyledMainProfileContentContainer>
-			<div>
-				<StyledDataTitle>Email</StyledDataTitle>
-				<Styledtext>{currentUser.email}</Styledtext>
-				<StyledDataTitle>Bio</StyledDataTitle>
-				<Styledtext>{currentUser.bio}</Styledtext>
-			</div>
 
-			<StyledButtonsContainer>
-				<StyledButton onClick={e => handleSubmit(navigate)}>
-					Log Out
-				</StyledButton>
-				<StyledButton>Delete Account</StyledButton>
-			</StyledButtonsContainer>
-		</StyledProfile>
+				<StyledButtonsContainer>
+					<StyledButton onClick={e => handleSubmit(navigate)}>
+						Log Out
+					</StyledButton>
+					<StyledButton
+					// onClick={() =>
+					// 	setContent(
+					// 		<DeleteModal
+					// 			currentUser={currentUser}
+					// 			deleteUser={true}
+					// 			setContent={setContent}
+					// 			setFetchInfo={setFetchInfo}
+					// 			title={'your account'}
+					// 			fetchUrl={USERS_URLS.DELETE_USER}
+					// 			url={'/'}
+					// 		/>
+					// 	)
+					// }
+					>
+						Delete Account
+					</StyledButton>
+				</StyledButtonsContainer>
+			</StyledProfile>
+			<Modal>{content}</Modal>
+		</>
 	);
 };
 const handleSubmit = async navigate => {

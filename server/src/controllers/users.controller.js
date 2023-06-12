@@ -95,6 +95,16 @@ controller.updateUser = async (req, res) => {
 
   res.send(currentUser);
 };
+controller.deleteUser = async (req, res) => {
+  const currentUser = await UserModel.findById(req.params.id);
+  const userSongs = await SongModel.find({ artistId: currentUser._id });
+  if (userSongs)
+    userSongs.map(
+      async (album) => await SongModel.deleteOne({ _id: album._id })
+    );
+  await currentUser.markModified("currentUser");
+  currentUser.save();
+};
 
 controller.updateRecentlyListen = async (req, res) => {
   const currentUser = await UserModel.findById(req.params.id);
@@ -112,7 +122,7 @@ controller.updateRecentlyListen = async (req, res) => {
     currentUser.recentlyListen.pop();
   }
   await currentUser.recentlyListen.unshift(albumListened);
-  console.log(currentUser);
+  currentUser;
   currentUser.save();
 
   res.end();
@@ -325,7 +335,7 @@ controller.editMixtape = async (req, res) => {
   mixtapeToPatch.title = title;
   mixtapeToPatch.cover = cover;
 
-  console.log(currentUser);
+  currentUser;
   await currentUser.markModified("mixtapes");
   try {
     await currentUser.save();

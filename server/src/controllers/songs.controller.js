@@ -5,7 +5,7 @@ const UserModel = require("../schemes/users.scheme");
 const controller = {};
 
 controller.getAllSongsAndUsers = async (req, res) => {
-  console.log("test");
+  ("test");
   const allSongs = await SongModel.find();
   const allUsers = await UserModel.find();
 
@@ -75,7 +75,7 @@ controller.getAllSongsOfArtist = async (req, res) => {
 controller.newAlbum = async (req, res) => {
   const newDate = Date.now();
   const albumId = v4();
-  const { title, artist, cover, likes, artistId, replays } = req.body;
+  const { title, artist, cover, likes, artistId, replays, type } = req.body;
   const currentUser = await UserModel.findById(artistId);
 
   const songItem = req.body.songItem.map((song) => {
@@ -106,7 +106,7 @@ controller.newAlbum = async (req, res) => {
     artistId,
     replays,
     date: newDate,
-    type: song.type,
+    type,
     songItem,
   });
 

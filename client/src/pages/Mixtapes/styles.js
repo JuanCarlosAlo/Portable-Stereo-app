@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { HEADER_MEASUREMENTS } from '../../constants/Measurements';
+import { HEADER_MEASUREMENTS } from '../../constants/measurements';
 
 const StyledSMixtapesPage = styled.div`
 	display: flex;

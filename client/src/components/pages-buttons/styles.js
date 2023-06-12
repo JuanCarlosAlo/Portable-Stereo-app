@@ -11,6 +11,10 @@ const StyledPagesButtonsContainer = styled.ul`
 	width: 100%;
 	height: 34px;
 	background-color: ${COLORS.BLACK};
+	@media screen and (min-width: 768px) {
+		position: static;
+		gap: 1rem;
+	}
 `;
 
 const StyledButton = styled.div`
@@ -21,6 +25,10 @@ const StyledButton = styled.div`
 	font-size: 0.8rem;
 	color: ${COLORS.WHITE};
 	border: 1px solid ${COLORS.MAIN};
+
+	@media screen and (min-width: 1024px) {
+		width: 120px;
+	}
 `;
 
 export { StyledPagesButtonsContainer, StyledButton };

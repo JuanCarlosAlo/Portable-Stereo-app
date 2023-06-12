@@ -47,7 +47,6 @@ const StyledPlay = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
 	opacity: 0;
 	transition: opacity 0.2s ease-in-out;
 `;

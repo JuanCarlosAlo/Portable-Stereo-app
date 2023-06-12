@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { COLORS } from '../../constants/colors';
-import { HEADER_MEASUREMENTS } from '../../constants/Measurements';
+import { HEADER_MEASUREMENTS } from '../../constants/measurements';
 
 const StyledSongDetailsPage = styled.div`
 	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};

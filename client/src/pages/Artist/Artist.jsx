@@ -49,60 +49,54 @@ const Artist = () => {
 
 	return (
 		<StyledArtistPage>
-			<div>
-				<StyledArtistHeader bgimg={data.currentArtist.headerImg}>
-					<StyledArtistProfileImg src={data.currentArtist.profileImg} />
-				</StyledArtistHeader>
-				<StyledArtistInfo>
-					<StyledArtistName>{data.currentArtist.userName}</StyledArtistName>
-					<StyledArtistContainer>
-						<StyledBio>{data.currentArtist.bio}</StyledBio>
-						<div>
-							<p>
-								Followers:{' '}
-								{formatCompactNumber(data.currentArtist.follows.othersFollows)}
-							</p>
-							<p>
-								Listeners:{' '}
-								{formatCompactNumber(data.currentArtist.totalListeners)}
-							</p>
-							<FollowButton id={data.currentArtist._id} />
-						</div>
-					</StyledArtistContainer>
-				</StyledArtistInfo>
-				<Section
-					allData={featured}
-					title={ARTICLE_TITLES.FEATURED}
-					more={true}
-				/>
-				<StyledPopularContainer showMore={showMore}>
-					<StyledTitleContainer>
-						<StyledSectionTitle>{ARTICLE_TITLES.POPULAR}</StyledSectionTitle>
-						<StyledShowMoreButton onClick={() => setShowMore(!showMore)}>
-							{showMore ? '- Show less' : '+ Show more'}
-						</StyledShowMoreButton>
-					</StyledTitleContainer>
+			<StyledArtistHeader bgimg={data.currentArtist.headerImg}>
+				<StyledArtistProfileImg src={data.currentArtist.profileImg} />
+			</StyledArtistHeader>
+			<StyledArtistInfo>
+				<StyledArtistName>{data.currentArtist.userName}</StyledArtistName>
+				<StyledArtistContainer>
+					<StyledBio>{data.currentArtist.bio}</StyledBio>
 					<div>
-						{popularSongs.songItem.map((song, index) => {
-							return (
-								<SongContainer
-									key={song._id}
-									songData={popularSongs}
-									title={song.songTitle}
-									replays={formatCompactNumber(song.replays)}
-									index={index}
-									id={song._id}
-								/>
-							);
-						})}
+						<p>
+							Followers:{' '}
+							{formatCompactNumber(data.currentArtist.follows.othersFollows)}
+						</p>
+						<p>
+							Listeners:{' '}
+							{formatCompactNumber(data.currentArtist.totalListeners)}
+						</p>
+						<FollowButton id={data.currentArtist._id} />
 					</div>
-				</StyledPopularContainer>
-				<Section
-					allData={discography}
-					title={ARTICLE_TITLES.DISCOGRAPHY}
-					more={true}
-				/>
-			</div>
+				</StyledArtistContainer>
+			</StyledArtistInfo>
+			<Section allData={featured} title={ARTICLE_TITLES.FEATURED} more={true} />
+			<StyledPopularContainer showMore={showMore}>
+				<StyledTitleContainer>
+					<StyledSectionTitle>{ARTICLE_TITLES.POPULAR}</StyledSectionTitle>
+					<StyledShowMoreButton onClick={() => setShowMore(!showMore)}>
+						{showMore ? '- Show less' : '+ Show more'}
+					</StyledShowMoreButton>
+				</StyledTitleContainer>
+				<div>
+					{popularSongs.songItem.map((song, index) => {
+						return (
+							<SongContainer
+								key={song._id}
+								songData={popularSongs}
+								title={song.songTitle}
+								replays={formatCompactNumber(song.replays)}
+								index={index}
+								id={song._id}
+							/>
+						);
+					})}
+				</div>
+			</StyledPopularContainer>
+			<Section
+				allData={discography}
+				title={ARTICLE_TITLES.DISCOGRAPHY}
+				more={true}
+			/>
 		</StyledArtistPage>
 	);
 };

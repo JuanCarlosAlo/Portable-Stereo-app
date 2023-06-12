@@ -18,6 +18,12 @@ const StyledItemInfo = styled.div`
 		} else return 'pointer';
 	}};
 `;
+
+const StyledSearchItemButtons = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+`;
 const StyledImg = styled.img`
 	height: 80px;
 	width: 80px;
@@ -46,4 +52,11 @@ const StyledType = styled(StyledText)`
 	font-weight: 400;
 `;
 
-export { StyledSeachItem, StyledImg, StyledItemInfo, StyledTitle, StyledType };
+export {
+	StyledSeachItem,
+	StyledImg,
+	StyledItemInfo,
+	StyledTitle,
+	StyledType,
+	StyledSearchItemButtons
+};

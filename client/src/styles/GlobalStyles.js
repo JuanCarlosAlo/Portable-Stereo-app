@@ -32,6 +32,9 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-family:FotRodin-M ;
     color: ${COLORS.WHITE};
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
    
   }
   body::before{

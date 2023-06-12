@@ -7,10 +7,16 @@ const StyledSongContainer = styled.div`
 	width: 100%;
 	border-radius: 0.5rem;
 `;
+const StyledTitle = styled.p`
+	white-space: nowrap;
+	/* animation: movingtitle 5s infinite alternate linear; */
+	overflow: hidden;
+	text-overflow: ellipsis;
+`;
 const StyledSongPlayContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
 	gap: 1rem;
 `;
-export { StyledSongContainer, StyledSongPlayContainer };
+export { StyledSongContainer, StyledSongPlayContainer, StyledTitle };

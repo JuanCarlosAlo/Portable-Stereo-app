@@ -1,8 +1,9 @@
 import { deleteObject, ref } from 'firebase/storage';
 import { HEADERS } from '../../constants/headers';
 import { METHODS } from '../../constants/methods';
-import { USERS_URLS } from '../../constants/urls';
+
 import { storage } from '../../config/firebase.config';
+
 import {
 	StyledButtonsContainer,
 	StyledDeleteModal,
@@ -16,7 +17,9 @@ const DeleteModal = ({
 	setContent,
 	title,
 	url,
-	index
+	index,
+	fetchUrl,
+	deleteUser
 }) => {
 	return (
 		<StyledDeleteModal>
@@ -25,7 +28,16 @@ const DeleteModal = ({
 				<StyledEditButton onClick={() => setContent(null)}>No</StyledEditButton>
 				<StyledEditButton
 					onClick={() =>
-						handleClick(id, setFetchInfo, currentUser, setContent, url, index)
+						handleClick(
+							id,
+							setFetchInfo,
+							currentUser,
+							setContent,
+							url,
+							index,
+							fetchUrl,
+							deleteUser
+						)
 					}
 				>
 					Yes
@@ -41,34 +53,44 @@ const handleClick = async (
 	currentUser,
 	setContent,
 	url,
-	index
+	index,
+	fetchUrl,
+	deleteUser
 ) => {
-	if (url) {
+	if (index) {
+		const storageRefDelete = ref(storage, currentUser.mixtapes[index].cover);
+		try {
+			await deleteObject(storageRefDelete);
+		} catch (error) {}
+	}
+	if (deleteUser) {
 		await setFetchInfo({
-			url: USERS_URLS.DELETE_MIXTAPE + currentUser._id,
+			url: fetchUrl + currentUser._id,
+			options: {
+				method: METHODS.DELETE,
+				body: JSON.stringify(),
+				headers: HEADERS
+			},
+			navigateTo: url || undefined
+		});
+
+		try {
+			// delete user account
+		} catch (error) {}
+	} else {
+		console.log(fetchUrl);
+		await setFetchInfo({
+			url: fetchUrl + currentUser._id,
 			options: {
 				method: METHODS.DELETE,
 				body: JSON.stringify({ id }),
 				headers: HEADERS
 			},
-			navigateTo: url
+			navigateTo: url || undefined
 		});
-		const storageRefDelete = ref(storage, currentUser.mixtapes[index].cover);
-		try {
-			await deleteObject(storageRefDelete);
-		} catch (error) {}
-		setContent(null);
-	} else {
-		await setFetchInfo({
-			url: USERS_URLS.DELETE_MIXTAPE + currentUser._id,
-			options: {
-				method: METHODS.DELETE,
-				body: JSON.stringify({ id }),
-				headers: HEADERS
-			}
-		});
-		setContent(null);
 	}
+
+	setContent(null);
 };
 
 export default DeleteModal;
