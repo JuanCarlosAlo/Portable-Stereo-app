@@ -34,7 +34,6 @@ const UploadPhoto = ({ value, setValue, keyValue, type, directory }) => {
 };
 
 const handleLoadFile = async (file, setValue, value, keyValue, directory) => {
-	value[keyValue], IMAGES.DEFAULT_MIXTAPE;
 	if (
 		value[keyValue] !== IMAGES.DEFAULT_PROFILE &&
 		value[keyValue] !== IMAGES.DEFAULT_MIXTAPE

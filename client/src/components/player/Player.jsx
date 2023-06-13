@@ -4,19 +4,19 @@ import PlayerPlaybar from '../player-playbar/PlayerPlaybar';
 import PlayerInfo from '../player-info/PlayerInfo';
 import { StyledUpperPlayer } from './styles';
 import { useEffect, useState } from 'react';
-import { getSongInitialValue } from '../../utils/localStorage';
 
 const Player = ({ file, index }) => {
 	const [playerState, setPlayerState] = useState({
-		songIndex: getSongInitialValue(index),
+		songIndex: index,
 		looping: true,
 		volumeValue: 0.5,
 		autoplayValue: true,
 		muted: false
 	});
-	useEffect(() => {
-		localStorage.setItem('data', JSON.stringify({ index }));
-	}, [playerState]);
+	console.log(file);
+	// useEffect(() => {
+	// 	localStorage.setItem('songState', JSON.stringify({ playerState }));
+	// }, [playerState]);
 
 	const { togglePlayPause, ready, loading, playing, volume, mute } =
 		useAudioPlayer({

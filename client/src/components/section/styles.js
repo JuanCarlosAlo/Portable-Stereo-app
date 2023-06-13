@@ -18,7 +18,7 @@ const StyledSection = styled.div`
 			if (showMore) {
 				return 'fit-content';
 			} else {
-				return '350px';
+				return '300px';
 			}
 		}};
 	}
@@ -70,7 +70,7 @@ const StyledShowMoreButton = styled.p`
 const StyledSectionTitle = styled.p`
 	font-weight: 800;
 	@media screen and (min-width: 1024px) {
-		font-size: 1.5rem;
+		font-size: 1.2rem;
 	}
 `;
 

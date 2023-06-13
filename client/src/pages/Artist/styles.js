@@ -124,7 +124,7 @@ const StyledPopularContainer = styled.div`
 const StyledSectionTitle = styled.p`
 	font-weight: 800;
 	@media screen and (min-width: 1024px) {
-		font-size: 1.5rem;
+		font-size: 1.2rem;
 	}
 `;
 export {

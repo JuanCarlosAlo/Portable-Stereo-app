@@ -12,7 +12,7 @@ import AddToMixtapeButton from '../add-to-mixtape-button/AddToMixtapeButton';
 
 const SearchItem = ({ songData, index, title, img, type, url, id }) => {
 	const navigate = useNavigate();
-	songData.songItem;
+
 	return (
 		<StyledSeachItem>
 			<StyledItemInfo
