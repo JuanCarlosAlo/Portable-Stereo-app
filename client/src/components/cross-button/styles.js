@@ -6,6 +6,7 @@ const StyledCrossButton = styled.div`
 	left: 10%;
 	height: 20px;
 	width: 20px;
+	cursor: pointer;
 `;
 
 export { StyledCrossButton };

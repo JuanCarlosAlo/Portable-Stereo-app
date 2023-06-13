@@ -96,14 +96,22 @@ controller.updateUser = async (req, res) => {
   res.send(currentUser);
 };
 controller.deleteUser = async (req, res) => {
-  const currentUser = await UserModel.findById(req.params.id);
-  const userSongs = await SongModel.find({ artistId: currentUser._id });
-  if (userSongs)
-    userSongs.map(
-      async (album) => await SongModel.deleteOne({ _id: album._id })
-    );
-  await currentUser.markModified("currentUser");
-  currentUser.save();
+  try {
+    const currentUser = await UserModel.findById(req.params.id);
+
+    // Eliminar las canciones asociadas al usuario
+    await SongModel.deleteMany({ artistId: currentUser._id });
+
+    // Eliminar al usuario
+    await UserModel.findByIdAndDelete(currentUser._id);
+
+    res
+      .status(200)
+      .json({ message: "Usuario y canciones eliminadas correctamente" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al eliminar usuario y canciones" });
+  }
 };
 
 controller.updateRecentlyListen = async (req, res) => {

@@ -50,7 +50,7 @@ Si quieres echar un vistazo al proyecto, te recomiendo:
 
 ## Parte de Codigo
 
-![Captura del proyecto](https://raw.githubusercontent.com/JuanCarlosAlo/booking/main/assets/images/readme3.png)
+![Captura del proyecto](https://raw.githubusercontent.com/JuanCarlosAlo/Portable-Stereo-app/main/client/public/images/1080-3.jpg)
 
 ## Autor
 

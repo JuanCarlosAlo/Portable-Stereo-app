@@ -16,9 +16,9 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/Auth.context';
 import HeaderBack from '../../components/header-back/HeaderBack';
 import Modal from '../../components/modal/Modal';
-import DeleteModal from '../../components/delete-modal/DeleteModal';
 import { useFetch } from '../../hooks/useFetch';
 import { USERS_URLS } from '../../constants/urls';
+import DeleteAccountModal from '../../components/delete-account-modal/DeleteAccountModal';
 
 const Profile = () => {
 	const { currentUser } = useContext(AuthContext);
@@ -57,19 +57,17 @@ const Profile = () => {
 						Log Out
 					</StyledButton>
 					<StyledButton
-					// onClick={() =>
-					// 	setContent(
-					// 		<DeleteModal
-					// 			currentUser={currentUser}
-					// 			deleteUser={true}
-					// 			setContent={setContent}
-					// 			setFetchInfo={setFetchInfo}
-					// 			title={'your account'}
-					// 			fetchUrl={USERS_URLS.DELETE_USER}
-					// 			url={'/'}
-					// 		/>
-					// 	)
-					// }
+						onClick={() =>
+							setContent(
+								<DeleteAccountModal
+									setFetchInfo={setFetchInfo}
+									currentUser={currentUser}
+									fetchUrl={USERS_URLS.DELETE_USER}
+									url={'/'}
+									setContent={setContent}
+								/>
+							)
+						}
 					>
 						Delete Account
 					</StyledButton>

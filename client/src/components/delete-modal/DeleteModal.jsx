@@ -18,8 +18,7 @@ const DeleteModal = ({
 	title,
 	url,
 	index,
-	fetchUrl,
-	deleteUser
+	fetchUrl
 }) => {
 	return (
 		<StyledDeleteModal>
@@ -35,8 +34,7 @@ const DeleteModal = ({
 							setContent,
 							url,
 							index,
-							fetchUrl,
-							deleteUser
+							fetchUrl
 						)
 					}
 				>
@@ -54,8 +52,7 @@ const handleClick = async (
 	setContent,
 	url,
 	index,
-	fetchUrl,
-	deleteUser
+	fetchUrl
 ) => {
 	if (index) {
 		const storageRefDelete = ref(storage, currentUser.mixtapes[index].cover);
@@ -63,32 +60,17 @@ const handleClick = async (
 			await deleteObject(storageRefDelete);
 		} catch (error) {}
 	}
-	if (deleteUser) {
-		await setFetchInfo({
-			url: fetchUrl + currentUser._id,
-			options: {
-				method: METHODS.DELETE,
-				body: JSON.stringify(),
-				headers: HEADERS
-			},
-			navigateTo: url || undefined
-		});
 
-		try {
-			// delete user account
-		} catch (error) {}
-	} else {
-		console.log(fetchUrl);
-		await setFetchInfo({
-			url: fetchUrl + currentUser._id,
-			options: {
-				method: METHODS.DELETE,
-				body: JSON.stringify({ id }),
-				headers: HEADERS
-			},
-			navigateTo: url || undefined
-		});
-	}
+	console.log(fetchUrl);
+	await setFetchInfo({
+		url: fetchUrl + currentUser._id,
+		options: {
+			method: METHODS.DELETE,
+			body: JSON.stringify({ id }),
+			headers: HEADERS
+		},
+		navigateTo: url || undefined
+	});
 
 	setContent(null);
 };
