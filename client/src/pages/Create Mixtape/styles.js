@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { HEADER_MEASUREMENTS } from '../../constants/measurements';
+import { HEADER_MEASUREMENTS, PADDING } from '../../constants/measurements';
 import { COLORS } from '../../constants/colors';
 
 const StyledCreateMixtape = styled.div`
@@ -10,6 +10,11 @@ const StyledCreateMixtape = styled.div`
 	gap: 2rem;
 	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
 	padding-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
+
+	@media screen and (min-width: 1024px) {
+		padding-left: ${PADDING.DESKTOP_MAIN};
+		padding-right: ${PADDING.DESKTOP_MAIN};
+	}
 `;
 
 const StyledInputContainer = styled.div`

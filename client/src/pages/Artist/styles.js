@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
-import { HEADER_MEASUREMENTS } from '../../constants/measurements';
+import { HEADER_MEASUREMENTS, PADDING } from '../../constants/measurements';
 
 const StyledArtistPage = styled.div`
 	padding-top: 4rem;
@@ -13,6 +13,8 @@ const StyledArtistPage = styled.div`
 		justify-content: center;
 		width: 100%;
 		gap: 2rem;
+		padding-left: ${PADDING.DESKTOP_MAIN};
+		padding-right: ${PADDING.DESKTOP_MAIN};
 	}
 `;
 

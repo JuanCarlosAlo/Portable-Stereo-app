@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
 import { PLAYER } from '../../constants/player';
-import { HEADER_MEASUREMENTS } from '../../constants/measurements';
+import { HEADER_MEASUREMENTS, PADDING } from '../../constants/measurements';
 
 const StyledProfile = styled.div`
 	padding-left: 1rem;
@@ -29,6 +29,10 @@ const StyledUsername = styled.p`
 	color: ${COLORS.MAIN};
 	@media screen and (min-width: 465px) {
 		font-size: 2rem;
+	}
+	@media screen and (min-width: 1024px) {
+		padding-left: ${PADDING.DESKTOP_MAIN};
+		padding-right: ${PADDING.DESKTOP_MAIN};
 	}
 `;
 const StyledDataTitle = styled.p`

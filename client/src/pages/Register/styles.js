@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
-import { HEADER_MEASUREMENTS } from '../../constants/measurements';
+import { HEADER_MEASUREMENTS, PADDING } from '../../constants/measurements';
 
 const StyledRegister = styled.div`
 	position: relative;
@@ -10,6 +10,10 @@ const StyledRegister = styled.div`
 	justify-content: center;
 	width: 100%;
 	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
+	@media screen and (min-width: 1024px) {
+		padding-left: ${PADDING.DESKTOP_MAIN};
+		padding-right: ${PADDING.DESKTOP_MAIN};
+	}
 `;
 
 const StyledInputContainer = styled.div`

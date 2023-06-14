@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { HEADER_MEASUREMENTS } from '../../constants/measurements';
+import { HEADER_MEASUREMENTS, PADDING } from '../../constants/measurements';
 import { COLORS } from '../../constants/colors';
 
 const StyledSearchPage = styled.div`
@@ -10,6 +10,10 @@ const StyledSearchPage = styled.div`
 	width: 100%;
 	gap: 1rem;
 	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP};
+	@media screen and (min-width: 1024px) {
+		padding-left: ${PADDING.DESKTOP_MAIN};
+		padding-right: ${PADDING.DESKTOP_MAIN};
+	}
 `;
 
 const StyledSearchBar = styled.input`

@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 
 import { COLORS } from '../../constants/colors';
-import { HEADER_MEASUREMENTS } from '../../constants/measurements';
+import { HEADER_MEASUREMENTS, PADDING } from '../../constants/measurements';
 
 const StyledSongDetailsPage = styled.div`
 	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
 	padding-left: 1rem;
 	padding-right: 1rem;
 	margin-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
+	@media screen and (min-width: 1024px) {
+		padding-left: ${PADDING.DESKTOP_MAIN};
+		padding-right: ${PADDING.DESKTOP_MAIN};
+	}
 `;
 
 const StyledsongHeaderImg = styled.img`

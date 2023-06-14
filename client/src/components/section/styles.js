@@ -43,7 +43,7 @@ const StyledBar = styled.div`
 	height: 1px;
 	background-color: ${COLORS.MAIN};
 	@media screen and (min-width: 768px) {
-		width: 80%;
+		width: 60%;
 	}
 `;
 const StyledSliderContainer = styled.div`

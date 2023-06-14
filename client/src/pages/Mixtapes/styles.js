@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { HEADER_MEASUREMENTS } from '../../constants/measurements';
+import { HEADER_MEASUREMENTS, PADDING } from '../../constants/measurements';
 
 const StyledSMixtapesPage = styled.div`
 	display: flex;
@@ -10,5 +10,9 @@ const StyledSMixtapesPage = styled.div`
 	gap: 1rem;
 	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
 	margin-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
+	@media screen and (min-width: 1024px) {
+		padding-left: ${PADDING.DESKTOP_MAIN};
+		padding-right: ${PADDING.DESKTOP_MAIN};
+	}
 `;
 export { StyledSMixtapesPage };
