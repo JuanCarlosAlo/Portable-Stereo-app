@@ -8,6 +8,10 @@ const StyledProfile = styled.div`
 	padding-right: 1rem;
 	padding-bottom: ${PLAYER.HEIGHT};
 	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
+	@media screen and (min-width: 1024px) {
+		padding-left: ${PADDING.DESKTOP_MAIN};
+		padding-right: ${PADDING.DESKTOP_MAIN};
+	}
 `;
 
 const StyledProfileHeader = styled.header`
@@ -29,10 +33,6 @@ const StyledUsername = styled.p`
 	color: ${COLORS.MAIN};
 	@media screen and (min-width: 465px) {
 		font-size: 2rem;
-	}
-	@media screen and (min-width: 1024px) {
-		padding-left: ${PADDING.DESKTOP_MAIN};
-		padding-right: ${PADDING.DESKTOP_MAIN};
 	}
 `;
 const StyledDataTitle = styled.p`
