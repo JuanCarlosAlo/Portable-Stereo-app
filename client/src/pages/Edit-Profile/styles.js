@@ -9,7 +9,9 @@ const StyledEditProfile = styled.div`
 	align-items: center;
 	padding-left: 1rem;
 	padding-right: 1rem;
+
 	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
+	padding-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
 	@media screen and (min-width: 1024px) {
 		padding-left: ${PADDING.DESKTOP_MAIN};
 		padding-right: ${PADDING.DESKTOP_MAIN};

@@ -8,6 +8,7 @@ const StyledCreateMixtape = styled.div`
 	align-items: center;
 	justify-content: center;
 	gap: 2rem;
+	min-height: 100vh;
 	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
 	padding-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
 

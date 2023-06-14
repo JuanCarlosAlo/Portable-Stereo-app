@@ -9,7 +9,9 @@ const StyledSearchPage = styled.div`
 	align-items: center;
 	width: 100%;
 	gap: 1rem;
+	min-height: 100vh;
 	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP};
+	padding-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
 	@media screen and (min-width: 1024px) {
 		padding-left: ${PADDING.DESKTOP_MAIN};
 		padding-right: ${PADDING.DESKTOP_MAIN};

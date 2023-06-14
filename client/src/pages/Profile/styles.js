@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
-import { PLAYER } from '../../constants/player';
+
 import { HEADER_MEASUREMENTS, PADDING } from '../../constants/measurements';
 
 const StyledProfile = styled.div`
 	padding-left: 1rem;
 	padding-right: 1rem;
-	padding-bottom: ${PLAYER.HEIGHT};
+	min-height: 100vh;
+	padding-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
 	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
 	@media screen and (min-width: 1024px) {
 		padding-left: ${PADDING.DESKTOP_MAIN};

@@ -7,9 +7,10 @@ const StyledSMixtapesPage = styled.div`
 	justify-content: flex-start;
 	align-items: center;
 	width: 100%;
+	min-height: 100vh;
 	gap: 1rem;
 	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
-	margin-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
+	padding-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
 	@media screen and (min-width: 1024px) {
 		padding-left: ${PADDING.DESKTOP_MAIN};
 		padding-right: ${PADDING.DESKTOP_MAIN};

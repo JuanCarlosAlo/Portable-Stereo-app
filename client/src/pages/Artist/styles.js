@@ -4,8 +4,8 @@ import { HEADER_MEASUREMENTS, PADDING } from '../../constants/measurements';
 
 const StyledArtistPage = styled.div`
 	padding-top: 4rem;
-	margin-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
-
+	padding-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
+	min-height: 100vh;
 	@media screen and (min-width: 1024px) {
 		display: flex;
 		flex-direction: column;
@@ -13,6 +13,7 @@ const StyledArtistPage = styled.div`
 		justify-content: center;
 		width: 100%;
 		gap: 2rem;
+
 		padding-left: ${PADDING.DESKTOP_MAIN};
 		padding-right: ${PADDING.DESKTOP_MAIN};
 	}
@@ -116,7 +117,7 @@ const StyledPopularContainer = styled.div`
 		if (showMore) {
 			return 'fit-content';
 		} else {
-			return '300px';
+			return '320px';
 		}
 	}};
 	width: 93%;

@@ -8,7 +8,9 @@ const StyledSignIn = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	min-height: 100vh;
 	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
+	padding-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
 	width: 100%;
 	@media screen and (min-width: 1024px) {
 		padding-left: ${PADDING.DESKTOP_MAIN};

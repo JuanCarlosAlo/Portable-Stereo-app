@@ -7,7 +7,8 @@ const StyledSongDetailsPage = styled.div`
 	padding-top: ${HEADER_MEASUREMENTS.PADDING_TOP_BACK};
 	padding-left: 1rem;
 	padding-right: 1rem;
-	margin-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
+	min-height: 100vh;
+	padding-bottom: ${HEADER_MEASUREMENTS.MARGIN_BOTTOM};
 	@media screen and (min-width: 1024px) {
 		padding-left: ${PADDING.DESKTOP_MAIN};
 		padding-right: ${PADDING.DESKTOP_MAIN};
