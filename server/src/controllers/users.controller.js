@@ -135,7 +135,11 @@ controller.updateRecentlyListen = async (req, res) => {
   currentUser;
   currentUser.save();
 
-  res.end();
+  try {
+    res.status(200).send({ message: "updated successfully" });
+  } catch (error) {
+    res.status(500).send({ error: "Error al leer la base de datos" });
+  }
 };
 
 controller.getUserData = async (req, res) => {
@@ -249,9 +253,13 @@ controller.updateLikes = async (req, res) => {
     { $set: { "songItem.$": songItem } }
   );
   currentUser.save();
-
-  res.end();
+  try {
+    res.status(200).send({ message: "updated successfully" });
+  } catch (error) {
+    res.status(500).send({ error: "Error al leer la base de datos" });
+  }
 };
+
 controller.updateFollow = async (req, res) => {
   const artistFollow = await UserModel.findById(req.body.id);
   const currentUser = await UserModel.findById(req.params.id);
@@ -269,8 +277,11 @@ controller.updateFollow = async (req, res) => {
   }
   artistFollow.save();
   currentUser.save();
-
-  res.end();
+  try {
+    res.status(200).send({ message: "updated successfully" });
+  } catch (error) {
+    res.status(500).send({ error: "Error al leer la base de datos" });
+  }
 };
 
 controller.createMixtape = async (req, res) => {
@@ -288,10 +299,12 @@ controller.createMixtape = async (req, res) => {
   try {
     await currentUser.mixtapes.unshift(defaultMixtape);
     currentUser.save();
+    res.status(200).send({ message: "updated successfully" });
   } catch (error) {
     res.status(500).send({ error: "Error al leer la base de datos" });
   }
 };
+
 controller.deleteMixtape = async (req, res) => {
   const currentUser = await UserModel.findById(req.params.id);
 
@@ -303,6 +316,7 @@ controller.deleteMixtape = async (req, res) => {
     await currentUser.mixtapes.splice(index, 1);
     await currentUser.markModified("mixtapes");
     currentUser.save();
+    res.status(200).send({ message: "updated successfully" });
   } catch (error) {
     res.status(500).send({ error: "Error al leer la base de datos" });
   }

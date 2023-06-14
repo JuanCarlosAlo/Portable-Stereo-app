@@ -26,52 +26,6 @@ controller.getAllSongsOfArtist = async (req, res) => {
   }
 };
 
-// controller.newSong = async (req, res) => {
-//   const newDate = Date.now();
-//   const songArrayId = v4();
-//   const {
-//     title,
-//     songTitle,
-//     artist,
-//     songCover,
-//     cover,
-//     likes,
-//     songLikes,
-//     soundFile,
-//     artistId,
-//     replays,
-//     type,
-//   } = req.body;
-//   const songItem = {
-//     _id: songArrayId,
-//     date: newDate,
-//     songTitle,
-//     artist,
-//     songCover,
-//     songLikes,
-//     soundFile,
-//     artistId,
-//     replays,
-//     date: newDate,
-//     type,
-//   };
-
-//   const newSong = new SongModel({
-//     _id: v4(),
-//     title,
-//     artist,
-//     cover,
-//     likes,
-//     artistId,
-//     replays,
-//     date: newDate,
-//     songItem,
-//   });
-
-//   await newSong.save();
-//   res.end();
-// };
-
 controller.newAlbum = async (req, res) => {
   const newDate = Date.now();
   const albumId = v4();
@@ -114,7 +68,11 @@ controller.newAlbum = async (req, res) => {
 
   await newAlbum.save();
   await currentUser.save();
-  res.send(newAlbum);
+  try {
+    res.status(200).send(newAlbum);
+  } catch (error) {
+    res.status(500).send({ error: "Error al leer la base de datos" });
+  }
 };
 
 controller.getSearch = async (req, res) => {
@@ -163,6 +121,11 @@ controller.replays = async (req, res) => {
     { "songItem._id": req.body.id },
     { $set: { "songItem.$": songItem } }
   );
+  try {
+    res.status(200).send({ message: "Mixtape editada exitosamente" });
+  } catch (error) {
+    res.status(500).send({ error: "Error al leer la base de datos" });
+  }
 };
 
 module.exports = controller;

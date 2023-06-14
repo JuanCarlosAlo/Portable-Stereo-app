@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
 	}, []);
 
 	useEffect(() => {
-		const socket = io('https://portable-stereo-app.onrender.com');
+		const socket = io('http://localhost:4000');
 
 		socket.on('collectionUsersChange', async change => {
 			switch (change.operationType) {
@@ -63,7 +63,7 @@ const getUserInfoFromMongo = async (
 ) => {
 	try {
 		const response = await fetch(
-			`https://portable-stereo-app.onrender.com/users/${user.uid}`
+			`http://localhost:3000/portable-stereo/users/${user.uid}`
 		);
 		if (response.ok) {
 			const userInfo = await response.json();
