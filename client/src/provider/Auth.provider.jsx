@@ -63,7 +63,7 @@ const getUserInfoFromMongo = async (
 ) => {
 	try {
 		const response = await fetch(
-			`http://localhost:3000/portable-stereo/users/${user.uid}`
+			`https://portable-stereo.onrender.com/users/${user.uid}`
 		);
 		if (response.ok) {
 			const userInfo = await response.json();
