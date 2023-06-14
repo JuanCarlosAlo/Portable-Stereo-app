@@ -1,4 +1,4 @@
-const BASE = 'https://portable-stereo.onrender.com/portable-stereo/';
+const BASE = 'https://portable-stereo-app.onrender.com/portable-stereo/';
 
 export const USERS_URLS = {
 	ALL: BASE + 'users/',
