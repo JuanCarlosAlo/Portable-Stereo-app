@@ -3,7 +3,8 @@ import {
 	deleteUser,
 	getAuth,
 	reauthenticateWithCredential,
-	signInWithPopup
+	signInWithPopup,
+	signInWithRedirect
 } from 'firebase/auth';
 
 import { StyledButton, StyledButtonIcon } from './styles';
@@ -29,7 +30,7 @@ const registerWithGoogle = async (setFetchInfo, currentUser, fetchUrl, url) => {
 	const user = auth.currentUser;
 
 	try {
-		const result = await signInWithPopup(auth, provider);
+		const result = await signInWithRedirect(auth, provider);
 		const credential = GoogleAuthProvider.credentialFromResult(result);
 
 		await reauthenticateWithCredential(user, credential);

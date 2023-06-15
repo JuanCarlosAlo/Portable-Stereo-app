@@ -1,4 +1,8 @@
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {
+	GoogleAuthProvider,
+	signInWithPopup,
+	signInWithRedirect
+} from 'firebase/auth';
 import { auth } from '../../config/firebase.config';
 import { StyledButton, StyledButtonIcon } from './styles';
 import { HEADERS } from '../../constants/headers';
@@ -19,7 +23,7 @@ const registerWithGoogle = async setFetchInfo => {
 	const provider = new GoogleAuthProvider();
 
 	try {
-		const result = await signInWithPopup(auth, provider);
+		const result = await signInWithRedirect(auth, provider);
 		const credential = GoogleAuthProvider.credentialFromResult(result);
 		const userName = 'UserName' + Date.now();
 		console.log(credential);
