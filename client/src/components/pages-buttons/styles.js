@@ -12,7 +12,7 @@ const StyledPagesButtonsContainer = styled.ul`
 	height: 34px;
 	background-color: ${COLORS.BLACK};
 	@media screen and (min-width: 768px) {
-		position: static;
+		position: fixed;
 		gap: 1rem;
 	}
 `;
