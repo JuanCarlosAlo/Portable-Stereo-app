@@ -12,7 +12,7 @@ const StyledTitle = styled.p`
 	/* animation: movingtitle 5s infinite alternate linear; */
 	overflow: hidden;
 	text-overflow: ellipsis;
-	max-width: 160px;
+	max-width: 130px;
 	@media screen and (min-width: 478px) {
 		max-width: fit-content;
 	}
