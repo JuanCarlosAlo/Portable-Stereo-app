@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
 
 const StyledPagesButtonsContainer = styled.ul`
-	position: absolute;
+	position: fixed;
 	top: calc(100vh - 34px);
 	left: 0;
 	display: flex;
@@ -12,7 +12,7 @@ const StyledPagesButtonsContainer = styled.ul`
 	height: 34px;
 	background-color: ${COLORS.BLACK};
 	@media screen and (min-width: 768px) {
-		position: fixed;
+		position: static;
 		gap: 1rem;
 	}
 `;
