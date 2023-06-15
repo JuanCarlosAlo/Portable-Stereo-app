@@ -54,23 +54,28 @@ const handleClick = async (
 	index,
 	fetchUrl
 ) => {
+	console.log(url);
 	if (index) {
 		const storageRefDelete = ref(storage, currentUser.mixtapes[index].cover);
 		try {
 			await deleteObject(storageRefDelete);
-		} catch (error) {}
+		} catch (error) {
+			console.log(error);
+		}
 	}
-
-	console.log(fetchUrl);
-	await setFetchInfo({
-		url: fetchUrl + currentUser._id,
-		options: {
-			method: METHODS.DELETE,
-			body: JSON.stringify({ id }),
-			headers: HEADERS
-		},
-		navigateTo: url || undefined
-	});
+	try {
+		await setFetchInfo({
+			url: fetchUrl + currentUser._id,
+			options: {
+				method: METHODS.DELETE,
+				body: JSON.stringify({ id }),
+				headers: HEADERS
+			},
+			navigateTo: url || undefined
+		});
+	} catch (error) {
+		console.log(error);
+	}
 
 	setContent(null);
 };

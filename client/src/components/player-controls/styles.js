@@ -11,9 +11,15 @@ const StyledPlayerControls = styled.div`
 	padding-right: 0.5rem;
 `;
 const StyledSoundbarContainer = styled.div`
-	display: flex;
+	display: none;
 	gap: 1rem;
 	justify-content: flex-end;
+	display: none;
+	pointer-events: none;
+	@media screen and (min-width: 768px) {
+		display: flex;
+		pointer-events: all;
+	}
 `;
 const StyledSoundBar = styled.input`
 	width: 70px;
@@ -23,7 +29,7 @@ const StyledControlsContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
-	@media screen and (min-width: 1024px) {
+	@media screen and (min-width: 768px) {
 		flex-direction: row;
 	}
 `;

@@ -38,10 +38,18 @@ const StyledProfileImg = styled.img`
 	border-radius: 50%;
 `;
 
+const StyledUserInfo = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 2rem;
+`;
+
 export {
 	StyledHeader,
 	StyledHeaderLogo,
 	StyledMenu,
 	StyledLi,
-	StyledProfileImg
+	StyledProfileImg,
+	StyledUserInfo
 };

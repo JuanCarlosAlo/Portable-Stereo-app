@@ -87,7 +87,7 @@ const StyledBio = styled.p`
 	font-size: 0.8rem;
 `;
 const StyledArtistName = styled.p`
-	font-size: 1.2rem;
+	font-size: 1.5rem;
 	@media screen and (min-width: 1024px) {
 		font-size: 4rem;
 		font-weight: 800;

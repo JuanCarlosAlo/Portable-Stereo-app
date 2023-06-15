@@ -34,7 +34,7 @@ const StyledSlideBar = styled.div`
 `;
 const StyledDurationContainer = styled.div`
 	position: absolute;
-	top: -5rem;
+	top: -4rem;
 	left: 300px;
 	display: flex;
 	flex-direction: column;

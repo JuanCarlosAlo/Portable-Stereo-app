@@ -5,7 +5,8 @@ import {
 	StyledHeaderLogo,
 	StyledLi,
 	StyledMenu,
-	StyledProfileImg
+	StyledProfileImg,
+	StyledUserInfo
 } from './styles';
 
 import { Link } from 'react-router-dom';
@@ -22,10 +23,12 @@ const Header = () => {
 					<Link to='/'>
 						<StyledHeaderLogo>dass</StyledHeaderLogo>
 					</Link>
-					<PagesButtons userData={currentUser} />
-					<Link to={'/profile'}>
-						<StyledProfileImg src={currentUser.profileImg} alt='' />
-					</Link>
+					<StyledUserInfo>
+						<PagesButtons userData={currentUser} />
+						<Link to={'/profile'}>
+							<StyledProfileImg src={currentUser.profileImg} alt='' />
+						</Link>
+					</StyledUserInfo>
 				</StyledHeader>
 			) : (
 				<StyledHeader>

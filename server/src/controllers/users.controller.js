@@ -311,6 +311,7 @@ controller.deleteMixtape = async (req, res) => {
   const mixtapeToDelete = currentUser.mixtapes.find(
     (mixtape) => mixtape._id === req.body.id
   );
+
   try {
     const index = currentUser.mixtapes.indexOf(mixtapeToDelete);
     await currentUser.mixtapes.splice(index, 1);

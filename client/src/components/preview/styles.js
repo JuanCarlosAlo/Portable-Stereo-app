@@ -47,8 +47,11 @@ const StyledPlay = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	opacity: 0;
+	opacity: 1;
 	transition: opacity 0.2s ease-in-out;
+	@media screen and (min-width: 768px) {
+		opacity: 0;
+	}
 `;
 const StyledPreview = styled.div`
 	position: relative;
@@ -59,7 +62,7 @@ const StyledPreview = styled.div`
 	width: 130px;
 	cursor: pointer;
 
-	@media screen and (min-width: 1024px) {
+	@media screen and (min-width: 768px) {
 		width: 150px;
 		&:hover ${StyledPlay} {
 			opacity: 1;
