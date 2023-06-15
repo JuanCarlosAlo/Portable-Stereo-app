@@ -3,7 +3,7 @@ import { COLORS } from '../../constants/colors';
 
 const StyledPagesButtonsContainer = styled.ul`
 	position: fixed;
-	top: calc(100vh - 34px);
+	bottom: 0;
 	left: 0;
 	display: flex;
 	justify-content: space-evenly;
