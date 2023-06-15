@@ -8,9 +8,12 @@ const StyledAddButton = styled.div`
 	border-radius: 0.2rem;
 	cursor: pointer;
 	height: 30px;
-	width: 35px;
+	width: 30px;
 	padding: 0.4rem;
 	background-color: ${COLORS.GRAY};
+	@media screen and (min-width: 478px) {
+		width: 35px;
+	}
 `;
 
 export { StyledAddButton };
