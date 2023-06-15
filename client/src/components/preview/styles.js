@@ -58,11 +58,12 @@ const StyledPreview = styled.div`
 	align-items: center;
 	width: 130px;
 	cursor: pointer;
-	&:hover ${StyledPlay} {
-		opacity: 1;
-	}
-	@media screen and (min-width: 468px) {
+
+	@media screen and (min-width: 1024px) {
 		width: 150px;
+		&:hover ${StyledPlay} {
+			opacity: 1;
+		}
 	}
 `;
 
