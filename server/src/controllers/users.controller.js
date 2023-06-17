@@ -74,9 +74,9 @@ controller.createUser = async (req, res) => {
   if (userExist)
     return res.status(409).send({ error: "User Already has a profile" });
 
-  const currentUser = await newUser.save();
+  await newUser.save();
 
-  res.send(currentUser);
+  return res.status(409).send({ message: "Login successfull" });
 };
 
 controller.updateUser = async (req, res) => {
