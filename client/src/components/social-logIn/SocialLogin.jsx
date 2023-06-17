@@ -23,7 +23,7 @@ const registerWithGoogle = async setFetchInfo => {
 	const provider = new GoogleAuthProvider();
 
 	try {
-		const result = await signInWithRedirect(auth, provider);
+		const result = await signInWithPopup(auth, provider);
 		const credential = GoogleAuthProvider.credentialFromResult(result);
 		const userName = 'UserName' + Date.now();
 		console.log(credential);
