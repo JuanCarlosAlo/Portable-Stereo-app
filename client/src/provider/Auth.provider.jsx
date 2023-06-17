@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
 	}, []);
 
 	useEffect(() => {
-		const socket = io('https://portable-stereo-app.onrender.com/:4000');
+		const socket = io('https://portable-stereo-app.onrender.com');
 
 		socket.on('collectionUsersChange', async change => {
 			switch (change.operationType) {
