@@ -24,10 +24,9 @@ export const AuthProvider = ({ children }) => {
 	}, []);
 
 	useEffect(() => {
-		const socket = io('https://portable-stereo.onrender.com');
+		const socket = io('https://portable-stereo-app.onrender.com');
 
 		socket.on('collectionUsersChange', async change => {
-			console.log('socket');
 			switch (change.operationType) {
 				case 'update':
 					await getUserInfoFromMongo(
