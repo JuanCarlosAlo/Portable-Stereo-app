@@ -8,7 +8,7 @@ const { Server } = require("socket.io");
 const server = require("http").Server(app);
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: "https://portable-stereo-app.onrender.com",
     methods: ["GET,POST"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
