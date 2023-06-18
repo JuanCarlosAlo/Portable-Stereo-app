@@ -106,6 +106,7 @@ const onSubmit = async (formData, e, setFetchInfo, data, setFirebaseErrors) => {
 				}
 			});
 		} catch (error) {
+			console.log(error);
 			setFirebaseErrors(error.error);
 		}
 	}
