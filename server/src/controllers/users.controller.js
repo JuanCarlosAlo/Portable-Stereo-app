@@ -105,7 +105,7 @@ controller.deleteUser = async (req, res) => {
     await SongModel.deleteMany({ artistId: currentUser._id });
 
     // Eliminar al usuario
-    await UserModel.findByIdAndDelete(currentUser._id);
+    await UserModel.findByIdAndRemove(currentUser._id);
 
     res
       .status(200)
