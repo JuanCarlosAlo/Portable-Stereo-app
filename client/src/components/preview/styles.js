@@ -49,7 +49,7 @@ const StyledPlay = styled.div`
 	align-items: center;
 	opacity: 1;
 	transition: opacity 0.2s ease-in-out;
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 1024px) {
 		opacity: 0;
 	}
 `;
@@ -62,7 +62,7 @@ const StyledPreview = styled.div`
 	width: 130px;
 	cursor: pointer;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 1024px) {
 		width: 150px;
 		&:hover ${StyledPlay} {
 			opacity: 1;
