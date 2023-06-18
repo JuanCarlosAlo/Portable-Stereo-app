@@ -106,7 +106,7 @@ controller.deleteUser = async (req, res) => {
 
     // Eliminar al usuario
     await UserModel.findByIdAndRemove(currentUser._id);
-
+    console.log(currentUser);
     res
       .status(200)
       .json({ message: "Usuario y canciones eliminadas correctamente" });

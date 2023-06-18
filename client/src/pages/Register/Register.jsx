@@ -25,7 +25,7 @@ import HeaderBack from '../../components/header-back/HeaderBack';
 import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 const Register = () => {
 	const { currentUser } = useContext(AuthContext);
-
+	const [firebaseErrors, setFirebaseErrors] = useState('');
 	const {
 		handleSubmit,
 		register,
@@ -35,7 +35,6 @@ const Register = () => {
 	const { data, loading, error, setFetchInfo } = useFetch({
 		url: USERS_URLS.ALL
 	});
-	const [verificationError, setVerificationError] = useState();
 
 	if (currentUser) return <Navigate to={'/'} />;
 	if (loading) return <h2>Loading</h2>;
@@ -48,7 +47,7 @@ const Register = () => {
 
 			<form
 				onSubmit={handleSubmit((formData, e) =>
-					onSubmit(formData, e, setFetchInfo, data, setVerificationError)
+					onSubmit(formData, e, setFetchInfo, data, setFirebaseErrors)
 				)}
 			>
 				<StyledInputContainer>
@@ -71,9 +70,7 @@ const Register = () => {
 					/>
 					<StyledErrorText>{errors?.password?.message}</StyledErrorText>
 				</StyledInputContainer>
-				{verificationError && (
-					<StyledErrorText>{verificationError}</StyledErrorText>
-				)}
+				{firebaseErrors && <StyledErrorText>{firebaseErrors}</StyledErrorText>}
 				<MainButton text={'Next'} width={'250px'} type={'submit'} />
 			</form>
 			<p>You already have an account?</p>
@@ -82,13 +79,7 @@ const Register = () => {
 	);
 };
 
-const onSubmit = async (
-	formData,
-	e,
-	setFetchInfo,
-	data,
-	setVerificationError
-) => {
+const onSubmit = async (formData, e, setFetchInfo, data, setFirebaseErrors) => {
 	e.preventDefault();
 	const { email, password } = formData;
 
@@ -115,7 +106,7 @@ const onSubmit = async (
 				}
 			});
 		} catch (error) {
-			setVerificationError(error);
+			setFirebaseErrors(error.error);
 		}
 	}
 };

@@ -15,8 +15,10 @@ import SocialLogin from '../../components/social-logIn/SocialLogin';
 import { useFetch } from '../../hooks/useFetch';
 import HeaderBack from '../../components/header-back/HeaderBack';
 import SecondaryButton from '../../components/secondary-button/SecondaryButton';
+import { useState } from 'react';
 
 const Login = () => {
+	const [firebaseErrors, setFirebaseErrors] = useState('');
 	const {
 		handleSubmit,
 		register,
@@ -31,7 +33,7 @@ const Login = () => {
 			<SocialLogin setFetchInfo={setFetchInfo} />
 			<form
 				onSubmit={handleSubmit((formData, e) =>
-					onSubmit(formData, e, navigate)
+					onSubmit(formData, e, navigate, setFirebaseErrors)
 				)}
 			>
 				<StyledInputContainer>
@@ -55,6 +57,7 @@ const Login = () => {
 					<StyledErrorText>{errors?.email?.message}</StyledErrorText>
 				</StyledInputContainer>
 				<MainButton width={'250px'} text={'Log In'} />
+				{firebaseErrors && <StyledErrorText>{firebaseErrors}</StyledErrorText>}
 			</form>
 			<p>You already have an account?</p>
 			<SecondaryButton text={'Register here'} url={'/register'} />
@@ -62,14 +65,16 @@ const Login = () => {
 	);
 };
 
-const onSubmit = async (formData, e, navigate) => {
+const onSubmit = async (formData, e, navigate, setFirebaseErrors) => {
 	e.preventDefault();
 	const { email, password } = formData;
 
 	try {
 		await signInWithEmailAndPassword(auth, email, password);
 		navigate('/');
-	} catch (error) {}
+	} catch (error) {
+		setFirebaseErrors(error.error);
+	}
 	// e.target.reset();
 };
 
