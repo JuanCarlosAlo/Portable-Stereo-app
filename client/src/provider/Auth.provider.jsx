@@ -27,6 +27,7 @@ export const AuthProvider = ({ children }) => {
 		const socket = io('https://portable-stereo-app.onrender.com');
 
 		socket.on('collectionUsersChange', async change => {
+			console.log('socket');
 			switch (change.operationType) {
 				case 'update':
 					await getUserInfoFromMongo(
