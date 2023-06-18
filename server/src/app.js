@@ -5,8 +5,8 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const { MongoClient } = require("mongodb");
 const { Server } = require("socket.io");
-const server = require("http").Server(app);
-const io = new Server(server, {
+const httpServer = require("http").createServer(app);
+const io = new Server(httpServer, {
   cors: {
     origin: "https://portable-stereo-app.onrender.com",
     methods: ["GET,POST"],
@@ -18,14 +18,16 @@ const io = new Server(server, {
 // Rutas
 const usersRoutes = require("./routes/users.routes");
 const songsRoutes = require("./routes/songs.routes");
-// Middlewares para cliente
+
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
-// Configura la conexión a MongoDB
+// Configuración de conexión a MongoDB
 const uri = process.env.MONGODB_URL;
 const client = new MongoClient(uri);
 
+// Maneja la conexión de Socket.io
 io.on("connection", (socket) => {
   console.log("Cliente conectado");
 
@@ -55,23 +57,21 @@ io.on("connection", (socket) => {
   });
 });
 
-// Uso de rutas
+// Rutas
 app.use("/portable-stereo/users", usersRoutes);
 app.use("/portable-stereo/songs", songsRoutes);
+
+// Inicia el servidor
 const startServer = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URL);
-    console.log("Conected to Database");
+    console.log("Conectado a la base de datos");
   } catch (err) {
-    console.error("Conection error");
+    console.error("Error de conexión");
   }
-  app.listen(process.env.PORT, () =>
-    console.log("Servidor en ejecución en el puerto 3000")
-  );
-  server.listen(process.env.SOCKET_IO_PORT, () => {
-    console.log(
-      `Servidor Socket.io escuchando en el puerto ${process.env.SOCKET_IO_PORT}`
-    );
+
+  httpServer.listen(process.env.PORT, () => {
+    console.log(`Servidor en ejecución en el puerto ${process.env.PORT}`);
   });
 };
 
