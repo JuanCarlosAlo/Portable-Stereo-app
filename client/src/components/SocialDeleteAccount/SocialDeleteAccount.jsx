@@ -29,11 +29,6 @@ const registerWithGoogle = async (setFetchInfo, currentUser, fetchUrl, url) => {
 	const user = auth.currentUser;
 
 	try {
-		const result = await signInWithPopup(auth, provider);
-		const credential = GoogleAuthProvider.credentialFromResult(result);
-
-		await reauthenticateWithCredential(user, credential);
-		await deleteUser(user);
 		await setFetchInfo({
 			url: fetchUrl + currentUser._id,
 			options: {
@@ -43,6 +38,11 @@ const registerWithGoogle = async (setFetchInfo, currentUser, fetchUrl, url) => {
 			},
 			navigateTo: url || undefined
 		});
+		const result = await signInWithPopup(auth, provider);
+		const credential = GoogleAuthProvider.credentialFromResult(result);
+
+		await reauthenticateWithCredential(user, credential);
+		await deleteUser(user);
 
 		// User deleted.
 	} catch (error) {
