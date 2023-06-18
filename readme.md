@@ -4,7 +4,7 @@
 
 ## Live Demo
 
-- [Live Demo](https://portable-stereo-caxa.onrender.com/)
+- [Live Demo](https://portable-stereo.onrender.com/)
 
 ## Description
 
