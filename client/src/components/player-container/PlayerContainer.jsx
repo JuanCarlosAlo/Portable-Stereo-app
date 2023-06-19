@@ -36,7 +36,7 @@ const PlayerContainer = () => {
 		// Renderizar un mensaje de carga o algo apropiado mientras se carga el songData
 		return null;
 	}
-
+	console.log(songData);
 	const file = songData.song;
 	const index = songData.index;
 
