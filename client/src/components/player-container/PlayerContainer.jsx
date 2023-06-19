@@ -32,7 +32,10 @@ const PlayerContainer = () => {
 		}
 	}, [songData.index, localStorageLoaded]);
 
-	if (!songData) return;
+	if (!songData) {
+		// Renderizar un mensaje de carga o algo apropiado mientras se carga el songData
+		return null;
+	}
 
 	const file = songData.song;
 	const index = songData.index;
