@@ -7,7 +7,10 @@ import Player from '../player/Player';
 const PlayerContainer = () => {
 	const { songData } = useContext(SongContext);
 	const [localStorageLoaded, setLocalStorageLoaded] = useState(false);
-
+	if (!songData) {
+		// Renderizar un mensaje de carga o algo apropiado mientras se carga el songData
+		return;
+	}
 	// Obtener los datos guardados en el localStorage al cargar la página
 	useEffect(() => {
 		const storedState = JSON.parse(localStorage.getItem('playerState'));
@@ -32,10 +35,6 @@ const PlayerContainer = () => {
 		}
 	}, [songData.index, localStorageLoaded]);
 
-	if (!songData) {
-		// Renderizar un mensaje de carga o algo apropiado mientras se carga el songData
-		return null;
-	}
 	console.log(songData);
 	const file = songData.song;
 	const index = songData.index;
