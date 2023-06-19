@@ -13,9 +13,7 @@ import { METHODS } from '../../constants/methods';
 const SocialDeleteAccount = ({ setFetchInfo, currentUser, fetchUrl, url }) => {
 	return (
 		<StyledButton
-			onClick={() =>
-				registerWithGoogle(setFetchInfo, currentUser, fetchUrl, url)
-			}
+			onClick={() => DeleteWithGoogle(setFetchInfo, currentUser, fetchUrl, url)}
 		>
 			Continue in with Google
 			<StyledButtonIcon src={'/images/google-tile.svg'} alt='Google icon' />
@@ -23,7 +21,7 @@ const SocialDeleteAccount = ({ setFetchInfo, currentUser, fetchUrl, url }) => {
 	);
 };
 
-const registerWithGoogle = async (setFetchInfo, currentUser, fetchUrl, url) => {
+const DeleteWithGoogle = async (setFetchInfo, currentUser, fetchUrl, url) => {
 	const provider = new GoogleAuthProvider();
 	const auth = getAuth();
 	const user = auth.currentUser;
