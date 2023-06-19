@@ -6,7 +6,7 @@ import { StyledUpperPlayer } from './styles';
 import { useEffect, useState } from 'react';
 
 const Player = ({ file, index }) => {
-	console.log(file, index);
+	if (!file || !index) return;
 	const storedState = JSON.parse(localStorage.getItem('playerState')) || {};
 	const initialState = {
 		songIndex: storedState.songIndex || index,
