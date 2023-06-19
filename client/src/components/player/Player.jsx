@@ -6,26 +6,14 @@ import { StyledUpperPlayer } from './styles';
 import { useEffect, useState } from 'react';
 
 const Player = ({ file, index }) => {
-	if (!file || !index) return;
-	const storedState = JSON.parse(localStorage.getItem('playerState')) || {};
-	const initialState = {
-		songIndex: storedState.songIndex || index,
-		looping: storedState.looping || true,
-		volumeValue: storedState.volumeValue || 0.5,
-		autoplayValue: storedState.autoplayValue || true,
-		muted: storedState.muted || false
-	};
-	const [playerState, setPlayerState] = useState(initialState);
-
-	useEffect(() => {
-		localStorage.setItem('playerState', JSON.stringify(playerState));
-	}, [playerState]);
-
-	useEffect(() => {
-		if (index !== initialState.songIndex) {
-			setPlayerState(initialState);
-		}
-	}, [index, initialState.songIndex]);
+	const [playerState, setPlayerState] = useState({
+		songIndex: index,
+		looping: true,
+		volumeValue: 0.5,
+		autoplayValue: true,
+		muted: false
+	});
+	console.log(file);
 
 	const { togglePlayPause, ready, loading, playing, volume, mute } =
 		useAudioPlayer({
@@ -82,7 +70,6 @@ const Player = ({ file, index }) => {
 
 	return (
 		<>
-			{/* Contenido JSX del componente */}
 			<StyledUpperPlayer>
 				<PlayerInfo currentSong={file[playerState.songIndex]} />
 				<PlayerControls
