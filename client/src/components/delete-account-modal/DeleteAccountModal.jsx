@@ -83,7 +83,7 @@ const onSubmit = async (
 	try {
 		const auth = await getAuth();
 		const user = await auth.currentUser;
-		console.log(currentUser);
+
 		// Solicitar al usuario que vuelva a autenticarse antes de eliminar la cuenta
 
 		const credential = EmailAuthProvider.credential(
