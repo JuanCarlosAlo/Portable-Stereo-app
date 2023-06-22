@@ -3,35 +3,42 @@ import { AuthContext } from '../../context/Auth.context';
 import { v4 } from 'uuid';
 import { useFetch } from '../../hooks/useFetch';
 import CrossButton from '../cross-button/CrossButton';
-import { NavLink } from 'react-router-dom';
+
 import { METHODS } from '../../constants/methods';
 import { HEADERS } from '../../constants/headers';
 import { USERS_URLS } from '../../constants/urls';
+import {
+	AddToMixtapeContainer,
+	StyledAddToMixtapeTitle,
+	StyledCreateMixtape,
+	StyledMixtapeTitle
+} from './styles';
 
 const AddToMixtape = ({ setContent, id }) => {
 	const { setFetchInfo } = useFetch();
 	const { currentUser } = useContext(AuthContext);
 	return (
-		<div>
+		<AddToMixtapeContainer>
+			<StyledAddToMixtapeTitle>Add to mixtape</StyledAddToMixtapeTitle>
 			<CrossButton setState={setContent} stateValue={null} />
-			<NavLink to={'/create-mixtape'} state={{ songToAdd: id }}>
-				Create Mixtape
-			</NavLink>
+			<StyledCreateMixtape to={'/create-mixtape'} state={{ songToAdd: id }}>
+				+ Create Mixtape
+			</StyledCreateMixtape>
 			{currentUser.mixtapes && (
 				<>
 					{currentUser.mixtapes.map((mixtapes, index) => (
-						<p
+						<StyledMixtapeTitle
 							onClick={() =>
 								handleClick(setFetchInfo, id, setContent, currentUser, index)
 							}
 							key={v4()}
 						>
 							{mixtapes.title}
-						</p>
+						</StyledMixtapeTitle>
 					))}
 				</>
 			)}
-		</div>
+		</AddToMixtapeContainer>
 	);
 };
 
