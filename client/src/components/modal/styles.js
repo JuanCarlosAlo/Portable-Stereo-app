@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
 
 const StyledModal = styled.div`
-	position: absolute;
+	position: fixed;
 	display: flex;
 	justify-content: center;
 	align-items: center;
