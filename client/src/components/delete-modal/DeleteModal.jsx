@@ -54,7 +54,6 @@ const handleClick = async (
 	index,
 	fetchUrl
 ) => {
-	console.log(fetchUrl + currentUser._id);
 	if (index) {
 		const storageRefDelete = ref(storage, currentUser.mixtapes[index].cover);
 		try {

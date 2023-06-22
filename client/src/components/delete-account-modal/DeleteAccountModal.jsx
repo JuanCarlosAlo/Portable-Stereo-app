@@ -96,7 +96,6 @@ const onSubmit = async (
 
 		// Eliminar la cuenta del usuario
 		try {
-			await deleteUser(user);
 			await setFetchInfo({
 				url: fetchUrl + currentUser._id,
 				options: {
@@ -106,6 +105,7 @@ const onSubmit = async (
 				},
 				navigateTo: url || undefined
 			});
+			await deleteUser(user);
 		} catch (error) {
 			console.log(error);
 		}
