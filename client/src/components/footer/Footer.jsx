@@ -19,7 +19,7 @@ const Footer = () => {
 
 				<StyledGithubLink
 					target='_blank'
-					to='https://github.com/JuanCarlosAlo/Portable-Stereo-app/tree/main'
+					to='https://github.com/JuanCarlosAlo/Portable-Stereo-app'
 				>
 					<ButtonIcon img={'/images/github.svg'} />
 				</StyledGithubLink>
