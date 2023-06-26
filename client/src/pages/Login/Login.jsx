@@ -75,7 +75,6 @@ const onSubmit = async (formData, e, navigate, setFirebaseErrors) => {
 	} catch (error) {
 		setFirebaseErrors(error.error);
 	}
-	// e.target.reset();
 };
 
 export default Login;

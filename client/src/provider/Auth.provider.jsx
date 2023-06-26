@@ -7,7 +7,6 @@ export const AuthProvider = ({ children }) => {
 	const [currentUser, setCurrentUser] = useState(null);
 	const [attempts, setAttempts] = useState(0);
 	const [loadingFirebase, setLoadingFirebase] = useState(true);
-
 	useEffect(() => {
 		const unsubscribe = auth.onAuthStateChanged(async user => {
 			if (user) {
